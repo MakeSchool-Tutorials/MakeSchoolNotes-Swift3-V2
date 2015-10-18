@@ -8,12 +8,12 @@ We can think of table views as regular views that have been given extra function
 
 Table views are instances of the `UITableView` class and can be created in three ways: programmatically, visually using Interface Builder, or by using a *table view controller*. (For more information on table views check out this [explanation--BROKEN LINK](link to table view discussion))
 
-For the table view in **Make School Notes**, we will be using a *table view controller* as it is the easiest to get working.
+For the table view in Make School Notes, we will be using a *table view controller* as it is the easiest to get working.
 
 The starter project that you downloaded earlier already contains a table view controller, let's take a look at it now.
 
 > [action]
-Click the *Project navigator* icon, and select the `Main.storyboard` file:
+Click the *Project navigator* icon, expand the *MakeSchoolNotes* folder, and select the `Main.storyboard` file:
 >
 ![image illustrating how to open the Main.storyboard file](./images/open-main-storyboard.png)
 
@@ -21,19 +21,19 @@ Click the *Project navigator* icon, and select the `Main.storyboard` file:
 
 Table view controllers are the easiest way to use table views because they do a lot of the necessary table view setup for us. Table view controllers are instances of the `UITableViewController` class and, similar to table views, can be created programmatically or in Interface Builder.
 
-Although the table view controller in the starter project was created in Interface Builder, we will want to manipulate it from code. This situation is very common when building iOS apps and to make the connection from our objects in Interface Builder to code, we use a feature of Xcode called *custom classes*. We want to set the custom class of our table view controller to *NotesViewController*. The *NotesViewController*  class was included in the starter project and can be found in the `NotesViewController.swift` file.
+Although the table view controller in the starter project was created in Interface Builder, we will want to manipulate it from code. This situation is very common when building iOS apps and to make the connection from our objects in Interface Builder to code, we use a feature of Xcode called *custom classes*. We want to set the custom class of our table view controller to *ListNotesTableViewController*. The *ListNotesTableViewController* class was included in the starter project and can be found in the `ListNotesTableViewController.swift` file.
 
 > [action]
-Setup the code connection by selecting the table view controller in your storyboard, clicking the *Identity inspector* icon, and setting the *Class* field to "NotesViewController":
+Setup the code connection by selecting the table view controller in your storyboard, clicking the *Identity inspector* icon, and setting the *Class* field to "ListNotesTableViewController". (Note that when you have successfully selected the table view controller, it will be outlined in blue.)
 >
 ![image illustrating how to open the Main.storyboard file](./images/code-connection.png)
 
-Now that we have set the custom class of our table view controller, we will be able to programmatically make changes to our table view controller from inside the *NotesViewController* class. Let's see what code is already inside of the *NotesViewController* class.
+Now that we have set the custom class of our table view controller, we will be able to programmatically make changes to our table view controller from inside the *ListNotesTableViewController* class.
 
 > [action]
-Click the *Project navigator* icon, expand the *ViewControllers* folder, and select the `NotesViewController.swift` file.
+Click the *Project navigator* icon, expand the *Controllers* folder, and select the `ListNotesTableViewController.swift` file.
 >
-![image illustrating how to open the Main.storyboard file](./images/notesViewController.png)
+![image illustrating how to open the Main.storyboard file](./images/ListNotesTableViewController.png)
 
 Currently, there is nothing interesting in this file, but we will change that soon!
 
@@ -49,7 +49,7 @@ When displaying information, a table view *must* know two things:
 Let's add the necessary code to our project and discuss it afterwards.
 
 > [action]
-Add these two functions inside `NotesViewController.swift`:
+Add these two methods under the declaration of the *ListNotesTableViewController* class:
 >
     // 1
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +59,7 @@ Add these two functions inside `NotesViewController.swift`:
     // 2
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       // 3
-      let cell = tableView.dequeueReusableCellWithIdentifier("noteTableViewCell", forIndexPath: indexPath)
+      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath)
 >   
       // 4
       cell.textLabel?.text = "Yay - it's working!"
@@ -85,12 +85,15 @@ Before we can run our program, we need to set the identifier of the prototype ce
   ![image illustrating how to open the document outline](./images/document-outline.png)
 
 2. Select the *Table View Cell*.
+  ![image illustrating location of table view cell](./images/tableViewCell.png)
+
 3. Click the *Attributes inspector*.
-4. Enter "noteTableViewCell" into the *identifier* field.
+  ![image illustrating location of attributes inspector](./images/attributes-inspector.png)
 
-  ![image illustrating how to set reuse identifier](./images/reuse-identifier.png)
+4. Enter "listNotesTableViewCell" into the *identifier* field.
+  ![image illustrating location of identifier field](./images/identifier.png)
 
-Notice that when we changed the *identifier* of the cell to "noteTableViewCell", the name of the cell in the *Document Outline* changed from "Table View Cell" to "noteTableViewCell".
+Notice that when we changed the *identifier* of the cell to "listNotesTableViewCell", the name of the cell in the *Document Outline* changed from "Table View Cell" to "listNotesTableViewCell".
 
 ## Running the Program!
 
@@ -98,4 +101,4 @@ Now when you run the program you should see something like this:
 
 ![image of table view displaying data](./images/table-view-with-data.png)
 
-Congratulations - You have just successfully setup a table view controller! In the next tutorial let's customize our table view cells so that we can actually display our note's title and modification time.
+Congratulations - You have just successfully setup a table view controller! In the next tutorial we will customize our table view cells so that we can actually display our note's title and modification time.
