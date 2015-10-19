@@ -1,22 +1,35 @@
 
 Now that we have finished building our app's interface, let's focus on building the logic. In this tutorial we will define a *data model* and demonstrate how to use it in our app.
 
-## The Note Data Model
+# Introduction to Data Models
 
-Oftentimes when programming, we will need a way to represent an object that can be found in the real world - like a person or city or animal - we can represent these things in our programs by defining a data model. In the real world these objects have different characteristics (a person has a name, birthdate, and height) and valid actions (a person can walk, run, and jump). In our programs, we can represent a real world object as a class. The characteristics of the real world object correspond to the properties of the class and the valid actions of the real world object correspond to the methods of the class.
+Oftentimes when programming, we will need a way to represent an object that can be found in the physical world - like a person, city, or animal - we can represent these things in our programs by defining data models. In the physical world, these objects have different characteristics (a person has a name, birthdate, and height) and actions (a person can walk, run, and jump). In our programs, we can represent a physical world object as a class. The characteristics of the physical world object correspond to the properties of the class and the actions of the physical world object correspond to the methods of the class. For instance, if we wanted to define a data model for a person, we could do something like this:
 
-In **Make School Notes**, we need to create a data model that represents a note, thus we need to create a custom Note class.  
+    class Person {
 
-What properties should we include in our custom Note class?
+      // properties (characteristics)
+      var name = ""
+      let birthdate = NSDate()
+      var height = 0
 
-> [answer]
-Because our List Notes View Controller displays the title and modification time of our notes and the Display Note View Controller displays a note's title and content, our note data model will need to have *title*, *content*, and *modification time* properties.
+      // methods (actions)
+      func walk() {
+        ...
+      }
 
-Let's create our Note data model now.
+      func run() {
+        ...
+      }
 
-## Adding New Files to Our Project
+      func jump() {
+        ...
+      }
 
-In the Project navigator notice that there is an empty folder called *Models*. This folder was included in the starter project and will store all of our data models. (In **Make School Notes** we only have one data model, but in larger projects you could have many.)
+    }
+
+# Adding New Files to Our Project
+
+Before we define our note data model, we need to first create a `Note.swift` file. In the Project navigator notice that there is an empty folder called *Models*. This folder was included in the starter project and will store all of our data models. (In Make School Notes we only have one data model, but in larger projects you could have many.)
 
 We can add new source code files to our project as follows:
 
@@ -25,38 +38,40 @@ We can add new source code files to our project as follows:
 3. Select `iOS > Source > Swift File`.
 4. Specify the file name and click *Create*.
 
-Now, let's add a new file for our Note model.
-
 > [action]
 Add a new file called *Note* to the *Models* folder:
 >
 ![BROKEN LINK - play video/addFile.mov](video destination)
 
-Great! Now let's define our Note class.
+# The Note Data Model
+
+Because our List Notes View Controller displays the title and modification time of our notes and the Display Note View Controller displays a note's title and content, our note data model will need to have properties for *title*, *content*, and *modification time*.
+
+Additionally, we are going to need to be able to check if two notes are equal, so we will need to define the `==` method.
 
 > [action]
-Add the following to the `Note.swift` file:
+Define the Note class as follows:
 >
     class Note {
-      var title: String = ""
-      var content: String = ""
-      var modificationTime: NSDate = NSDate()
+      var title = ""
+      var content = ""
+      var modificationTime = NSDate()
     }
 
-In the above code we are creating a new class called *Note* which has three properties: title, content, and modificationTime.
-
-## Using our Note Data Model
+# Using our Note Data Model
 
 Prior to this point, the table view in our List Notes View Controller has been using hard coded values to populate its cells; however, we would like the table view to populate its cells based on a user's notes. This means that the List Notes View Controller is going to need to store all of a user's current notes.
 
 > [action]
-Select the `ListNotesViewController.swift` file and add the following just below the declaration of the ListNotesViewController class:
+> Select the `ListNotesViewController.swift` file and add the following just below the declaration of the ListNotesViewController class:
 >
     var notes = [Note]()
 
 The line above is creating a variable called `notes` that has been initialized to an empty array of *Note* objects. When a user creates a new note, we will add an element to our `notes` array, and when a user deletes a note, we will delete the corresponding note in our `notes` array.
 
-Now that we have a storage mechanism for all of a user's notes, let's modify the code which is populating our table view.
+Now when we populate the cells of the table view in the List Notes View Controller, we will use the note objects in our `notes` array, instead of the hard coded values!
+
+Let's update our code to reflect this change.
 
 > [action]
 Modify `func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int` as follows:
@@ -71,7 +86,7 @@ Remember that the above method is used by the table view to determine its number
 Modify `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` as follows:
 >
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier("noteTableViewCell", forIndexPath: indexPath) as! NoteTableViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath) as! ListNotesTableViewCell
 >
       // 1
       let row = indexPath.row
@@ -81,6 +96,8 @@ Modify `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: 
 >
       // 3
       cell.titleLabel.text = note.title
+>
+      // 4
       cell.modificationTimeLabel.text = note.modificationTime.convertToString()
 >      
       return cell
@@ -90,4 +107,15 @@ Remember that this method is called for each individual cell in the table view a
 
 1. We are getting the row property from the indexPath argument which was passed into the method.
 2. We are using the row to index into our `notes` array to get the appropriate data.
-3. We are setting the cell's title label and modification time label to the title and modification time of the note respectively.
+3. We are setting the title of the cell to be the title of the note.
+4. We are converting the modificationTime of the note (which is of type `NSDate`) to a `String` using a method that was included in the starter project. We are then setting the modification time of the cell to be the modification time of the note.
+
+# Running the App!
+
+At this point, your app should look something like this:
+
+![BROKEN LINK -- play videos/finished.mov](display movie!)
+
+Remember that our table view is now populating its cells based on a user's notes. Currently, we don't have any notes, so our table view has nothing to display!
+
+In the next tutorial, let's fix this by building the functionality that will allow us to add new notes.
