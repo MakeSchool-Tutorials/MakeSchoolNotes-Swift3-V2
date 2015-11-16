@@ -44,3 +44,5 @@ release_notes.*
 # Other source repository archive directories (protects when importing)
 .hg
 .svn
+
+Misc/*
