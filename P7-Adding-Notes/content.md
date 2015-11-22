@@ -109,12 +109,12 @@ The above code is identical to the previous implementation of `prepareForSegue()
 
 2. We are adding the new note to the `notes` array.
 
-3. Once we add the new note to the `notes` array the data in the table view becomes outdated; specifically, the table view does not display the note that was just added. We can force the table view to reload (and include the newly added note) by calling the `reloadData()` method.
+3. Remember that the table view is using the `notes` array to determine how many cells it has and the data to be displayed in each cell. After adding the new note to our `notes` array, the table view becomes outdated because it no longer displays all of a user's notes. Specifically, the newly added note is not displayed. We can force the table view to update by calling the `reloadData()` method.
 
 # Running the App!
 
-We are now able to add notes to our app!
+![BROKEN LINK -- play videos/complete.mov](display movie!)
 
-![BROKEN LINK -- play videos/finished.mov](display movie!)
+Great! Now we can add new notes to our app, but what happens if we wanted to modify one of our notes? If we were to tap a note in the table view, we would successfully segue to the Display Note View Controller, but the note's title and content would not be display! Let's fix that in the next tutorial. =]
 
-However, notice that when we tap a cell in the table view, the note's title and content aren't displayed in the Display Note View Controller. Let's fix that in the next tutorial! =]
+(Also, our current app doesn't persist note data between app launches. This means that if you create a new note and then relaunch your app, your note will be gone! But do not worry, we will fix this problem in a later tutorial!)
