@@ -114,7 +114,7 @@ Remember that this method is called for each individual cell in the table view a
 
 At this point, your app should look something like this:
 
-![BROKEN LINK -- play videos/finished.mov](display movie!)
+![BROKEN LINK -- play videos/complete.mov](display movie!)
 
 Remember that our table view is now populating its cells based on a user's notes. Currently, we don't have any notes, so our table view has nothing to display!
 
