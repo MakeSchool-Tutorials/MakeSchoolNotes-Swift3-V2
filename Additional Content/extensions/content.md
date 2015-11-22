@@ -8,7 +8,7 @@ To extend a type, we use the `extension` keyword. For instance, if we wanted to 
 
 ```
 extension UIColor {
-  static blueApplicationColor() {
+  static func blueApplicationColor() {
   //...
   }
 }
@@ -20,10 +20,10 @@ Now when we want to access our special blue color, all we have to do is:
 UIColor.blueApplicationColor()
 ```
 
-Oftentimes we use extensions to conform to protocols; we do this to keep our code clean and organized. For example, if we had a class named `CustomViewController` (assuming its a subclass of `UIViewController`) and wanted it to conform to the `UITableViewDataSource` protocol, we would define `CustomViewController` as follows:  
+Oftentimes we use extensions to conform to protocols; we do this to keep our code clean and organized. For example, if we had a class named `CustomViewController` and wanted it to conform to the `UITableViewDataSource` protocol, we would define `CustomViewController` as follows:  
 
 ```
-extension CustomViewController: UIViewController, UITableViewDataSource {
+extension CustomViewController: UITableViewDataSource {
 //...
 }
 ```

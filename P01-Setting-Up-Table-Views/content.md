@@ -46,7 +46,7 @@ When displaying information, a table view *must* know two things:
 1. Total number of cells
 2. What information to display for each specific cell
 
-Let's add the necessary code to our project and discuss it afterwards.
+Let's add the necessary code to our project; we will discuss it afterwards.
 
 > [action]
 Add these two methods under the declaration of the *ListNotesTableViewController* class:
@@ -71,9 +71,13 @@ Add these two methods under the declaration of the *ListNotesTableViewController
 So what exactly is happening in the code above?
 
 1. We use this method to tell our table view how many cells it should display. (Usually this is set to the number of elements in an array, but for now we will use the value 10 for demonstration.)
+
 2. We use this method to tell the table view what information it should display for a specific cell using the cell's *indexPath*. The index path of a cell tells us which *section* and *row* that specific cell belongs to within the table view. Currently, our table view has 1 section (the default value) and 10 rows.
+
 3. This line is fetching the actual cell which will be displayed in the table view. The identifier, "noteTableViewCell" in our case, is a unique name that we give to the *prototype cell* of a table view in our storyboard in Interface Builder. After setting the identifier, we can reference the cell in code using the identifier. (We will set the identifier for our cell in the next step.)
+
 4. We are setting the `text` property of our cell to "Yay - it's working!". Note that our cell has type `UITableViewCell` and that the `text` property is a property of a `UITableViewCell`.
+
 5. We return the cell to be used within the table view.
 
 ## Setting the Identifier
@@ -85,17 +89,20 @@ Before we can run our program, we need to set the identifier of the prototype ce
   ![image illustrating how to open the document outline](./images/document-outline.png)
 
 2. Select the *Table View Cell*.
+
   ![image illustrating location of table view cell](./images/tableViewCell.png)
 
 3. Click the *Attributes inspector*.
+
   ![image illustrating location of attributes inspector](./images/attributes-inspector.png)
 
 4. Enter "listNotesTableViewCell" into the *identifier* field.
+
   ![image illustrating location of identifier field](./images/identifier.png)
 
 Notice that when we changed the *identifier* of the cell to "listNotesTableViewCell", the name of the cell in the *Document Outline* changed from "Table View Cell" to "listNotesTableViewCell".
 
-## Running the Program!
+## Running the App!
 
 Now when you run the program you should see something like this:
 

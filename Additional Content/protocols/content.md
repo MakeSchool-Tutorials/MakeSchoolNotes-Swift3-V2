@@ -34,7 +34,7 @@ The name of the protocol follows immediately after the name of the superclass, a
 Although Swift does not support multiple inheritance, it does support objects conforming to multiple protocols, like so:
 
 ```
-class CustomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SomeCustomProtocol {
+class CustomViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SomeCustomProtocol {
 //...
 }
 ```

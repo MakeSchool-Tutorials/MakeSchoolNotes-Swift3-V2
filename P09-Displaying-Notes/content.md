@@ -106,6 +106,6 @@ Notice that we are once again using the `note` property to take different action
 
 Congratulations! We now have a note taking app that can add new notes and edit existing notes!
 
-![BROKEN LINK -- play videos/complete.mov](display movie!)
 
-...But what if we no longer need a note? In the next tutorial, let's add the functionality that allows our users to delete notes. 
+
+...But what if we no longer need a note? In the next tutorial, let's add the functionality that allows our users to delete notes.
