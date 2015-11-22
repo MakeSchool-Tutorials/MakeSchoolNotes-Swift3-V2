@@ -120,7 +120,7 @@ The code above is identical to the code we added in the `prepareForSegue()` meth
 
 Now when you run your app each segue should print the correct message to the screen like this:
 
-![BROKEN LINK -- play videos/finished.mov](display movie!)
+![BROKEN LINK -- play videos/complete.mov](display movie!)
 
 If you notice that the messages printed to the console do not match with the buttons you are tapping, you should change the identifiers of the mismatched segues.
 
