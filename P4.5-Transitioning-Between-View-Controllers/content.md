@@ -61,4 +61,4 @@ Before running your app, set the navigation controller as the *Initial View Cont
 
 Now when we tap a table view cell we should transition to the *Display Note View Controller* screen and a message should be printed to the console! Also, note that the navigation controller we added earlier is providing the back button functionality and that if we click either of the text boxes, a keyboard shows up and we can begin editing, although our changes won't be saved just yet. We'll add the note saving functionality in a later tutorial. =]
 
-![movie showing finished app -- BROKEN LINK](show finished.mov)
+![movie showing finished app -- BROKEN LINK](show complete.mov)
