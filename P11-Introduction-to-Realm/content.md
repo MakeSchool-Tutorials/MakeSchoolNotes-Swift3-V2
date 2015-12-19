@@ -105,7 +105,9 @@ The call to `realm.objects(Person)` will return all of the objects of type *Pers
 
 ## Realm's Results Type
 
-In the above code, the call to `realm.objects(Person)` returns an object of type `Results`. `Results` is a special type used by Realm and is similar to an array. The `Results` type can be indexed using square bracket [] notation or using `for..in` loops.  
+In the above code, the call to `realm.objects(Person)` returns an object of type `Results<Person>`. The `objects()` method is special because it returns a template type, indicated by the angled brackets <>. Template types are useful because they can take on many different types. For instance, the return type in the code above is `Results<Person>` because we requested all Person objects from our default Realm. However, if we had a `Dog` type and requested all Dogs from our default Realm, the return type would be `Results<Dog>`.
+
+The `Results` type is similar to arrays and can be indexed using square bracket [] notation or using `for..in` loops.  
 
 ## Filtering Objects
 
