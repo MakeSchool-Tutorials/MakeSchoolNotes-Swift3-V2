@@ -5,7 +5,9 @@ Now that we can add new notes and modify existing notes, let's add the functiona
 
 We would like our users to be able to swipe right on a note and be presented with a delete option:
 
-![BROKEN LINK -- play videos/delete.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/delete.mov" type="video/mp4">
+</video>
 
 Luckily, table views make this incredibly easy.
 
@@ -32,6 +34,8 @@ And that's all we have to do to delete a note! =]
 
 You should now be able to add, modify, and delete notes!
 
-![BROKEN LINK -- play videos/complete.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P10-complete.mov" type="video/mp4">
+</video>
 
 In the next tutorial we will start working on persisting data between app launches!

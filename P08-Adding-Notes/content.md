@@ -113,7 +113,9 @@ The above code is identical to the previous implementation of `prepareForSegue()
 
 # Running the App!
 
-![BROKEN LINK -- play videos/complete.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P08-complete.mov" type="video/mp4">
+</video>
 
 Great! Now we can add new notes to our app, but what happens if we wanted to modify one of our notes? If we were to tap a note in the table view, we would successfully segue to the Display Note View Controller, but the note's title and content would not be display! Let's fix that in the next tutorial. =]
 

@@ -86,7 +86,9 @@ With the *Assistant Editor* open, connecting our labels from Interface Builder t
 > [action]
 Add `IBOutlets` to the the *ListNotesTableViewCell* class as follows:
 >
-[./videos/add-iboutlets.mov video should be played here -- BROKEN LINK!]
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mov" type="video/mp4">
+</video>
 
 We can now access the labels of our *listNotesTableViewCell* through the `noteTitle` and `noteModificationTime` instance properties of the *ListNotesTableViewCell* class! One last small change and then we will be ready to run our app!
 

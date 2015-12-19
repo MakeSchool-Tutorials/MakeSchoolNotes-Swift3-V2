@@ -41,7 +41,9 @@ We can add new source code files to our project as follows:
 > [action]
 Add a new file called *Note* to the *Models* folder:
 >
-![BROKEN LINK - play video/addFile.mov](video destination)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addFile.mov" type="video/mp4">
+</video>
 
 # The Note Data Model
 
@@ -114,7 +116,9 @@ Remember that this method is called for each individual cell in the table view a
 
 At this point, your app should look something like this:
 
-![BROKEN LINK -- play videos/complete.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P07-complete.mov" type="video/mp4">
+</video>
 
 Remember that our table view is now populating its cells based on a user's notes. Currently, we don't have any notes, so our table view has nothing to display!
 

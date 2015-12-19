@@ -106,6 +106,8 @@ Notice that we are once again using the `note` property to take different action
 
 Congratulations! We now have a note taking app that can add new notes and edit existing notes!
 
-
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P09-complete.mov" type="video/mp4">
+</video>
 
 ...But what if we no longer need a note? In the next tutorial, let's add the functionality that allows our users to delete notes.

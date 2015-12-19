@@ -7,7 +7,9 @@ To transition to new screens in iOS we use what are called *segues* (pronounced 
 > [action]
 `Control-click` from the *listNotesTableViewCell* to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
 >
-![BROKEN LINK -- display segue.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/segue.mov" type="video/mp4">
+</video>
 
 Notice that when we added the segue an arrow appeared pointing from our *List Notes Table View Controller* to our *Display Note View Controller* and that a new segue entry appeared in our Document Outline. We can click either of the two to view the segue's attributes.
 
@@ -61,4 +63,6 @@ Before running your app, set the navigation controller as the *Initial View Cont
 
 Now when we tap a table view cell we should transition to the *Display Note View Controller* screen and a message should be printed to the console! Also, note that the navigation controller we added earlier is providing the back button functionality and that if we click either of the text boxes, a keyboard shows up and we can begin editing, although our changes won't be saved just yet. We'll add the note saving functionality in a later tutorial. =]
 
-![movie showing finished app -- BROKEN LINK](show complete.mov)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P05-complete.mov" type="video/mp4">
+</video>

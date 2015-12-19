@@ -120,4 +120,6 @@ For the most, the above code is identical to what we had before, except for 3 th
 
 Congratulations -- you have just built a fully functioning note taking app!
 
-![BROKEN LINK -- play videos/complete.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P13-complete.mov" type="video/mp4">
+</video>

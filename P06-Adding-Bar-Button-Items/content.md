@@ -88,7 +88,10 @@ Next, we need to connect our **Cancel** and **Save** buttons to the unwind segue
 
 >[action] `Control-drag` from the **Cancel** button (and **Save** button) to the *Exit icon* and select `unwindToListNotesViewController` when prompted.
 >
-![BROKEN LINK -- play videos/connectToExit.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/connectToExit.mov" type="video/mp4">
+</video>
+
 
 # Adding Unwind Segue Identifiers
 
@@ -120,7 +123,9 @@ The code above is identical to the code we added in the `prepareForSegue()` meth
 
 Now when you run your app each segue should print the correct message to the screen like this:
 
-![BROKEN LINK -- play videos/complete.mov](display movie!)
+<video width="100%" controls>
+    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P06-complete.mov" type="video/mp4">
+</video>
 
 If you notice that the messages printed to the console do not match with the buttons you are tapping, you should change the identifiers of the mismatched segues.
 
