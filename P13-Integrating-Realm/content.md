@@ -61,7 +61,7 @@ Update the `func tableView(tableView: UITableView, commitEditingStyle editingSty
       //1
       RealmHelper.deleteNote(notes[indexPath.row])
       //2
-      notes = RealmHelper.updateNotes()
+      notes = RealmHelper.retrieveNotes()
     }
 
 1. We are deleting the note from the default Realm using the helper method we defined earlier.
@@ -104,7 +104,7 @@ Update the `prepareForSegue()` method as follows:
           RealmHelper.addNote(note)
         }
         // 3
-        destinationViewController.notes = RealmHelper.updateNotes()
+        destinationViewController.notes = RealmHelper.retrieveNotes()
       }
     }
 
@@ -115,3 +115,9 @@ For the most, the above code is identical to what we had before, except for 3 th
 2. We are using our Realm helper to create a new note when appropriate.
 
 3. We are setting the `notes` property in the ListNotesViewController to be the updates objects in the default Realm.
+
+# Running the App
+
+Congratulations -- you have just built a fully functioning note taking app!
+
+![BROKEN LINK -- play videos/complete.mov](display movie!)
