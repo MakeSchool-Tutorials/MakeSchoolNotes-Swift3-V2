@@ -1,7 +1,11 @@
+---
+title: "Creating Custom Table Views Cells"
+slug: custom-table-view-cells
+---
 
 Now that we have our table view up and running, in this step, let's customize the table view cells so that we can display the note's title and modification time.
 
-## Resizing our Cell
+#Resizing our Cell
 
 To display the note's title and modification time, we are going to need two labels. To ensure we have enough room for both of our labels, let's make the cell a little bit bigger.
 
@@ -18,7 +22,7 @@ Select the *Table View* in the *Document Outline*, click the *Size inspector* ic
 Notice that we had to change the row height for both our table view and our table view cell!
 
 
-## Adding Labels to our Cell
+#Adding Labels to our Cell
 
 Now that we have enough room, let's add our labels! (If you forgot how, revisit the [*Introduction to Interface Builder* -- BROKEN LINK](link to tutoral) tutorial.)
 
@@ -28,7 +32,7 @@ Add two labels to our *listNotesTableViewCell*. Your cell should look something 
 ![image showing listNotesTableViewCell with two labels](./images/labels.png)
 
 
-## Customizing our Label's Text
+#Customizing our Label's Text
 
 Let's customize the look of our labels by changing the text size, font, and color.
 
@@ -38,7 +42,7 @@ Let's customize the look of our labels by changing the text size, font, and colo
 
 Our cell is starting to come together, but we haven't finished yet!
 
-## Connecting our Cell to Code
+#Connecting our Cell to Code
 
 Because we want to be able to access our custom table view cell in code, we will need to set its custom class. We want to set the custom class of our table view cell (named *listNotesTableViewCell*) to the class named *listNotesTableViewCell*. The *listNotesTableViewCell* class was included in the starter project and can be found in the `ListNotesTableViewCell.swift` file within the *Views* folder in your Project navigator.
 
@@ -58,7 +62,7 @@ Click on the *Project navigator* icon, expand the *Views* folder, and select the
 
 Although we set our custom class to enable us to programmatically alter our table view cell, we currently do not have any way to reference the labels we created in Interface Builder from the *ListNotesTableViewCell* class. To access the labels from this class, we must setup another type of connection called an `IBOutlet`.
 
-## Introducing IBOutlets
+#Introducing IBOutlets
 
 `IBOutlets` are used to connect an object's properties in Interface Builder to properties in their respective classes. (The "IB" in "IBOutlet" stands for "Interface Builder".) In our case, we want to connect the two labels in our *listNotesTableViewCell* in Interface Builder, to two label properties in our *ListNotesTableViewCell* class.
 
@@ -92,7 +96,7 @@ Add `IBOutlets` to the the *ListNotesTableViewCell* class as follows:
 
 We can now access the labels of our *listNotesTableViewCell* through the `noteTitle` and `noteModificationTime` instance properties of the *ListNotesTableViewCell* class! One last small change and then we will be ready to run our app!
 
-## Typecasting our Cell to ListNotesTableViewCell
+#Typecasting our Cell to ListNotesTableViewCell
 
 > [action]
 Switch back to the *Standard Editor*, show the *Navigator* and *Utilities* menus, and select the `NotesViewController.swift` file.
@@ -118,7 +122,7 @@ So what did we change in the code above?
 1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. This casts the return type of this method to *ListNotesTableViewCell*. This is necessary because we want the table view to display our custom *listNotesTableViewCell* which has type *ListNotesTableViewCell*.
 2. Because `cell` now has type *ListNotesTableViewCell*, we can access the `noteTitle` and `noteModificationTime` instance properties.
 
-## Running the App!
+#Running the App!
 
 We have now finished making our custom table view cells and are ready to run the app! Your app should look similar to this:
 

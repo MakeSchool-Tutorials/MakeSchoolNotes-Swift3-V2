@@ -1,6 +1,11 @@
+---
+title: "Integrating Realm"
+slug: integrating-realm
+---
+
 Make School Notes is almost finished! In this tutorial let's integrate Realm into our project.
 
-# Updating the ListNotesViewController
+##Updating the ListNotesViewController
 
 First, before we forget, let's import the RealmSwift module to this file.
 

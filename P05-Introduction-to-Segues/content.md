@@ -1,6 +1,9 @@
-Now that we have our view controllers set up, let's add the functionality that allows us to transition between view controllers!
+---
+title: "Introduction to Segues"
+slug: intro-segues
+---
 
-# Introduction to Segues
+Now that we have our view controllers set up, let's add the functionality that allows us to transition between view controllers!
 
 To transition to new screens in iOS we use what are called *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell we want to trigger a *segue* to our *Display Note View Controller Screen*. To set up this segue all we have to do is `Control-click` from our *listNotesTableViewCell* in our Document Outline to our *Display Note View Controller* in our storyboard.
 
@@ -15,7 +18,7 @@ Notice that when we added the segue an arrow appeared pointing from our *List No
 
  ![image showing changes from segue](./images/segue.png)
 
-## Segue Identifiers
+#Segue Identifiers
 
 Segue identifiers are used to uniquely identify segues. We can set a segue's identifier in the Attributes inspector.
 
@@ -24,7 +27,7 @@ Set the identifier of the segue that we created above to "displayNote".
 >
 ![image showing changes from segue](./images/segue-id.png)
 
-## The prepareForSegue() method
+#The prepareForSegue() method
 
 When a segue is triggered, before the app actually transitions from one view controller to another, it calls a method called `prepareForSegue()`. The `prepareForSegue()` method is used when we want to take a specific action when a specific segue is triggered.
 
@@ -56,7 +59,7 @@ All `print()` statements are printed to the console. The console can be opened b
 
 ![opening the console](./images/console.png)
 
-## Running the App!
+#Running the App!
 
 > [action]
 Before running your app, set the navigation controller as the *Initial View Controller*.

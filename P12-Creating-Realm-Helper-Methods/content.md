@@ -1,4 +1,9 @@
-In this tutorial we will create  Realm helper methods that will make it easier to integrate Realm in the next tutorial. Note that the Realm framework was included in the demo project that was downloaded at the start of this tutorial series.
+---
+title: "Creating Realm Helper Methods"
+slug: realm-helpers
+---
+
+In this tutorial we will create Realm helper methods that will make it easier to integrate Realm into our project in the next tutorial. Our Realm helper methods will allow us to easily add new notes, update existing notes, delete old notes, and retrieve existing notes.
 
 # Updating our Note Model
 

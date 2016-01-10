@@ -1,3 +1,7 @@
+---
+title: "Deleting Notes"
+slug: deleting-notes
+---
 
 Now that we can add new notes and modify existing notes, let's add the functionality to delete notes.
 

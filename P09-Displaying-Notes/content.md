@@ -1,3 +1,7 @@
+---
+title: "Displaying Notes"
+slug: displaying-notes
+---
 
 In this tutorial we will add the functionality that allows our users to modify existing notes. Remember that a user's notes are stored in the `notes` array in the List Notes View Controller and that all note modifications happen in the Display Note View Controller. When a user taps a cell in the table view in the List Notes View Controller, we must pass the corresponding note to the Display Note View Controller so that it can be displayed and modified.
 

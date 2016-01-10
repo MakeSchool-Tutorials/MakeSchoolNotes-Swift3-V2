@@ -1,19 +1,22 @@
-# Welcome
+---
+title: "Welcome to Make School Notes!"
+slug: welcome
+---
 
-Welcome to the Make School Notes tutorial series and congratulations on taking the first step to building your very own iOS app!
+Welcome to the *Make School Notes* tutorial series and congratulations on taking the first step to building your very own iOS app!
 
-This series was designed for beginning iOS developer and will teach you the fundamentals of iOS application development. After finishing this series, you will have built a fully functional note taking app and will be well prepared to start the advanced tutorial, Makestagram.
+This series was designed for beginning iOS developers and will teach you the fundamentals of iOS application development. After finishing this series, you will have built a fully functional note taking app and will be well prepared to start the advanced tutorial, *Makestagram*.
 
-This tutorial has been divided into three parts:
+The *Make School Notes* tutorial consists of three parts:
 
-1. In the first part, we will focus on building the **interface** of our app. You will learn how to:
+1. In the first part we will focus on building the **interface** of our app. You will learn how to:
 
-* Use and setup table views to display lists of information
+* Display lists of information using table views
 * Create custom table view cells in Interface Builder
-* Use and create new view controllers
+* Create new view controllers
 * Setup navigation controllers
-* Use and setup segues to transition between view controllers
-* Use and create bar button items
+* Use segues to transition between view controllers
+* Trigger user initiated actions using bar button items
 
 2. The second part is devoted to programming our apps **logic**. You will learn how to:
 
@@ -28,12 +31,13 @@ This tutorial has been divided into three parts:
 * Create static helper methods
 * Modify existing code to integrate data persistence
 
-## Getting Started
+##Getting Started
 
-The goal of this tutorial is to teach you the fundamentals of iOS development, not to confuse you with how to setup and structure a new project in Xcode. For this reason, we have provided a starter project that includes the necessary libraries and some files that have already been properly structured. This will allow us to get started quickly, and most importantly, ensure that nobody gets discouraged by errors from setting up the project incorrectly.
+The goal of this tutorial is to teach you the fundamentals of iOS development, not to confuse you with how to setup Xcode projects. For this reason, we have provided a starter project that will allow us to hit the ground running with learning iOS development.
 
 > [action]
 Download the Make School Notes (Starter Project BROKENLINK)[PATH TO STARTER PROJECT]
 
-## Feedback
+##Feedback
+
 If you have feedback on this tutorial or find any mistakes, please open issues on the GitHub Repository.

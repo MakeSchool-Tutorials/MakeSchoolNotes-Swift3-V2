@@ -1,7 +1,9 @@
+---
+title: "Introduction to Bar Button Items"
+slug: intro-bar-button
+---
 
 The basic interface of our app is nearly finished! Only one more step to go and then we are on to implementing our app's logic.
-
-# Introducing Bar Button Items
 
 *Bar button items* are special buttons that function the same way as normal buttons, but can be placed inside a navigation bar.
 

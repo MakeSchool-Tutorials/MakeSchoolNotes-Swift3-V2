@@ -1,10 +1,13 @@
-With the ability to add, modify, and delete notes, our app is nearly finished! The last step is to persist data between app launches so that user's notes won't get deleted every time they close the app.
+---
+title: "Introduction to realm"
+slug: intro-realm
+---
 
-# Introducing Realm
+With the ability to add, modify, and delete notes, our app is nearly finished! The last step is to persist data between app launches so that user's notes won't get deleted every time they close the app.
 
 [Realm](https://realm.io/) is a fast and easy-to-use mobile database that's used by companies like Google and Amazon. Realm is used to save and retrieve objects locally on our user's device. In Make School Notes, we will need want to save all of a user's notes when they close the app, and retrieve all of their notes when they reopen the app.
 
-## Importing the Realm Framework
+#Importing the Realm Framework
 
 When using the Realm framework in Swift you must use the following import statement:
 
@@ -14,7 +17,7 @@ import RealmSwift
 
 We will assume that `RealmSwift` has been properly imported for the remainder of this tutorial.
 
-## Realm's Object Type
+#Realm's Object Type
 
 When using Realm to store objects, the object we are storing must inherit from a Realm provided class called `Object`. For instance, if we wanted to store and retrieve objects of type `Person`, we would declare the `Person` class as follows:
 

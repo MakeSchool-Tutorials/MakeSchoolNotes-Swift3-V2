@@ -1,7 +1,10 @@
+---
+title: "Introduction to Data Models"
+slug: intro-data-models
+---
 
 Now that we have finished building our app's interface, let's focus on building the logic. In this tutorial we will define a *data model* and demonstrate how to use it in our app.
 
-# Introduction to Data Models
 
 Oftentimes when programming, we will need a way to represent an object that can be found in the physical world - like a person, city, or animal - we can represent these things in our programs by defining data models. In the physical world, these objects have different characteristics (a person has a name, birthdate, and height) and actions (a person can walk, run, and jump). In our programs, we can represent a physical world object as a class. The characteristics of the physical world object correspond to the properties of the class and the actions of the physical world object correspond to the methods of the class. For instance, if we wanted to define a data model for a person, we could do something like this:
 

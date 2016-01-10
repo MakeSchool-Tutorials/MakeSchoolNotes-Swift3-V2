@@ -1,4 +1,7 @@
-## Introducing the Navigation Controller
+---
+title: "Introduction to Navigation Controllers"
+slug: intro-nav-controller
+---
 
 The *navigation controller* is a special controller that manages how other view controllers are displayed. Like table views, navigation controllers are very common throughout iOS apps.
 

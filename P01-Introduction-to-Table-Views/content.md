@@ -1,23 +1,32 @@
-## Introducing the Table View
+---
+title: "Introduction to Table Views"
+slug: intro-table-view
+---
 
-Table views are one of the most popular objects used in iOS development and can be found in many of the apps bundled with iOS: **Messages**, **Photos**, **Maps**, and many more! Table views are used to display lists of information, where each piece of information is represented by one *cell*:
+Table views are one of the most popular objects used in iOS development and can be found in many of the apps bundled with iOS: *Messages*, *Photos*, *Maps*, and many more! Table views use *cells* to display lists of information.
 
 ![image illustrating difference between table views and cells](./images/tableview-vs-cell.png)
 
-We can think of table views as regular views that have been given extra functionality, namely the ability to vertically scroll through content and select cells.
+We can think of table views as regular views that have been given the ability to vertically scroll through content and select cells.
 
-Table views are instances of the `UITableView` class and can be created in three ways: programmatically, visually using Interface Builder, or by using a *table view controller*. (For more information on table views check out this [explanation--BROKEN LINK](link to table view discussion))
+Table views are instances of the `UITableView` class and can be created in three ways:
+
+1. Programmatically
+2. Visually using Interface Builder
+3. Using a *table view controller*.
+
+(For more information on table views check out this [explanation--BROKEN LINK](link to table view discussion))
 
 For the table view in Make School Notes, we will be using a *table view controller* as it is the easiest to get working.
 
-The starter project that you downloaded earlier already contains a table view controller, let's take a look at it now.
+The starter project that you downloaded earlier already contains a table view controller. Let's take a look at it now.
 
 > [action]
 Click the *Project navigator* icon, expand the *MakeSchoolNotes* folder, and select the `Main.storyboard` file:
 >
 ![image illustrating how to open the Main.storyboard file](./images/open-main-storyboard.png)
 
-## Introducing the Table View Controller
+##Introducing Table View Controllers
 
 Table view controllers are the easiest way to use table views because they do a lot of the necessary table view setup for us. Table view controllers are instances of the `UITableViewController` class and, similar to table views, can be created programmatically or in Interface Builder.
 
@@ -102,7 +111,7 @@ Before we can run our program, we need to set the identifier of the prototype ce
 
 Notice that when we changed the *identifier* of the cell to "listNotesTableViewCell", the name of the cell in the *Document Outline* changed from "Table View Cell" to "listNotesTableViewCell".
 
-## Running the App!
+#Running the App!
 
 Now when you run the program you should see something like this:
 

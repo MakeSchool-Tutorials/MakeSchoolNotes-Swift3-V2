@@ -1,7 +1,9 @@
+---
+title: "Creating View Controllers"
+slug: creating-view-controllers
+---
 
 Now that we have a decent looking interface to list all of our notes, let's add a new view controller which can display our notes!
-
-# Adding a New View Controller
 
 For Make School Notes, when a user clicks on a note in the table view, we want to display the content of the note in a new screen. (Remember that in iOS, each view controller can display one screen.)
 
@@ -10,7 +12,7 @@ Add a *View Controller* from the Object library to your storyboard. Set the cust
 >
 ![image displaying new view controller in storyboard](./images/addVC.png)
 
-## Displaying and Editing Text
+#Displaying and Editing Text
 
 In our new *Display Note View Controller*, we want to give our users the ability to view and optionally edit the title and content of their notes. In this case, using a label would not be sufficient because users cannot change the text of labels. Luckily there are two other objects that will give us this functionality: the *text field* and the *text view*.
 
@@ -28,7 +30,7 @@ Select the *Display Note View Controller* from the Document Outline, then select
 >
  ![image displaying how to resolve auto layout constraints](./images/resolve.png)
 
-## Running the App!
+#Running the App!
 
 Before testing to ensure our Display Note View Controller is setup correctly, we must set the Display Note View Controller to be the *Initial View Controller*. (We must do this because currently we have no way to transition between view controllers.) The Initial View Controller is the first view controller that is displayed when your app is launched.
 

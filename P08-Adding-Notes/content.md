@@ -1,7 +1,11 @@
+---
+title: "Adding Notes"
+slug: adding-notes
+---
 
 Now that we have our table view setup correctly, let's add note taking functionality!
 
-# Removing the Default Text
+#Removing the Default Text
 
 Currently, when we tap the **+** button and segue to the Display Note View Controller, we are greeted with this screen:
 
@@ -25,7 +29,7 @@ So what is going on with this whole viewWillAppear() thing?
 
 Every time a view controller is about to be displayed on screen, the operating system will call the `viewWillAppear()` method. This gives us the opportunity to execute some view controller specific code before our user's see the view controller. In the code above, we used that opportunity to remove the "Lorem ipsum..." text from the Display Note View Controller.
 
-# Creating the Note
+#Creating the Note
 
 Great! We are finally ready to create our first note!
 
@@ -74,7 +78,7 @@ So what did we change in the code above?
 
 Notice that the code we added is inside of the `else if identifier == "Save"` block and will only be executed if the user taps the **Save** button.
 
-# Saving the Note
+#Saving the Note
 
 When a user is finished creating their note, we need a way to store the new note in the `notes` array in the List Notes View Controller. Whenever we need to pass data between view controllers, we use segues (or unwind segues)!
 
@@ -111,7 +115,7 @@ The above code is identical to the previous implementation of `prepareForSegue()
 
 3. Remember that the table view is using the `notes` array to determine how many cells it has and the data to be displayed in each cell. After adding the new note to our `notes` array, the table view becomes outdated because it no longer displays all of a user's notes. Specifically, the newly added note is not displayed. We can force the table view to update by calling the `reloadData()` method.
 
-# Running the App!
+#Running the App!
 
 <video width="100%" controls>
     <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P08-complete.mov" type="video/mp4">
