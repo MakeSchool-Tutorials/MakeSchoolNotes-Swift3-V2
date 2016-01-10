@@ -11,7 +11,7 @@ The basic interface of our app is nearly finished! Only one more step to go and 
 
 In Make School Notes we want our users to be able to add new notes, remove old notes, and edit the content or title of any note. To enable our note adding and editing functionality (we will add note removal in a later tutorial), we are going to use three bar button items :
 
-  1. A **+** button on the top right of the *List Notes View Controller* so that users can add new notes.
+  1. A **+** button on the top right of the *List Notes Table View Controller* so that users can add new notes.
   2. A **Save** button on the top right of the *Display Note View Controller* so that users can save their changes after modifying or creating a note.
   3. A **Cancel** button on the top left of the *Display Note View Controller* so that users can discard their changes after modifying a note.
 
@@ -25,7 +25,7 @@ Let's add a Navigation Item to the *Display Notes View Controller* now.
 
 Great! Now that both of our view controllers have Navigation items, we can easily add our bar button items.
 
-> [action] Select the *List Notes View Controller* from the Document Outline and drag a *Bar Button Item* from the Object library to the right side of the navigation bar.
+> [action] Select the List Notes Table View Controller (which is now named "Notes" in the Document Outline)  and drag a *Bar Button Item* from the Object library to the right side of the navigation bar.
 >
 ![image showing how to add bar button item](./images/add-barButtonItem.png)
 
@@ -45,7 +45,7 @@ Great! We have successfully added the necessary bar buttons items for Make Schoo
 >
 (Remember that when we want to create segues, all we have to do is `Control-click` from an object in our storyboard to a view controller!)
 >
-Also, update the `prepareForSegue()` method in the List Notes View Controller as follows:
+Also, update the `prepareForSegue()` method in the List Notes Table View Controller as follows:
 >
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if let identifier = segue.identifier {
@@ -59,9 +59,9 @@ Also, update the `prepareForSegue()` method in the List Notes View Controller as
 
 The code above is identical to our previous code with the exception that we have added an `else if` statement to check when the **+** button is tapped.
 
-Now when you tap the **+** button the Display Note View Controller scene should appear. We would like to trigger segues when we tap the *Cancel* and *Save* buttons as well; however, we must use a special type of segue for these buttons called an *unwind segue*.
+Now when you tap the **+** button the Display Note View Controller should appear. We would like to trigger segues when we tap the *Cancel* and *Save* buttons as well; however, we must use a special type of segue for these buttons called an *unwind segue*.
 
-# Introducing Unwind Segues
+#Introducing Unwind Segues
 
 Unwind segues are used to undue transitions that were triggered by other segues. For instance, if we had used a segue to get from view controller A to view controller B, we could use an unwind segue to undue that segue, thus taking us from view controller B back to view controller A.
 
@@ -73,11 +73,11 @@ To create an unwind segue we must do two things:
 
 2. Connect an action to the unwind segue.
 
-For Make School Notes, when our users are in the Display Note View Controller and they tap either the **Cancel** or **Save** buttons, we want to execute an unwind segue back to the List Notes View Controller.
+For Make School Notes, when our users are in the Display Note View Controller and they tap either the **Cancel** or **Save** buttons, we want to execute an unwind segue back to the List Notes Table View Controller.
 
-To accomplish this we must first setup the unwind segue method in the List Notes View Controller class.
+To accomplish this we must first setup the unwind segue method in the List Notes Table View Controller class.
 
->[action] Select the `ListNotesViewController.swift` file and add the following method:
+>[action] Select the `ListNotesTableViewController.swift` file and add the following method:
 >
     @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue){
 >
@@ -95,7 +95,7 @@ Next, we need to connect our **Cancel** and **Save** buttons to the unwind segue
 </video>
 
 
-# Adding Unwind Segue Identifiers
+#Adding Unwind Segue Identifiers
 
 Unlike regular segues, unwind segues are only accessible from the Document outline. Also, there is no easy way to identify which button corresponds to which segue. Thus we must use the guess-and-check method when setting the identifier of unwind segues.
 
@@ -119,7 +119,7 @@ Select the top  *Unwind segue to "Exit"* segue from the Document Outline, then i
       }
     }
 
-The code above is identical to the code we added in the `prepareForSegue()` method in the List Notes View Controller.
+The code above is identical to the code we added in the `prepareForSegue()` method in the List Notes Table View Controller.
 
 # Running the App!
 

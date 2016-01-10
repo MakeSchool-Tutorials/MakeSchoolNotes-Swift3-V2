@@ -18,14 +18,15 @@ Instead, we would like to see an empty text view so that our users can immediate
 2. Create an IBOutlet for the text field as well, name it "noteContentTextField".
 3. Add the following method:
 >
-        override func viewWillAppear() {
+        override func viewWillAppear(animated: Bool) {
+          super.viewWillAppear(animated)
           // 1
           noteTitleTextField.text = ""
           noteContentTextView.text = ""
         }
 
 
-So what is going on with this whole viewWillAppear() thing?
+So what is going on with this whole `viewWillAppear(animated: Bool)` thing?
 
 Every time a view controller is about to be displayed on screen, the operating system will call the `viewWillAppear()` method. This gives us the opportunity to execute some view controller specific code before our user's see the view controller. In the code above, we used that opportunity to remove the "Lorem ipsum..." text from the Display Note View Controller.
 
@@ -80,7 +81,7 @@ Notice that the code we added is inside of the `else if identifier == "Save"` bl
 
 #Saving the Note
 
-When a user is finished creating their note, we need a way to store the new note in the `notes` array in the List Notes View Controller. Whenever we need to pass data between view controllers, we use segues (or unwind segues)!
+When a user is finished creating their note, we need a way to store the new note in the `notes` array in the List Notes Table View Controller. Whenever we need to pass data between view controllers, we use segues (or unwind segues)!
 
 > [action]
 Update the `prepareForSegue()` method in the Display Note View Controller class to the following:
@@ -98,7 +99,7 @@ Update the `prepareForSegue()` method in the Display Note View Controller class 
           note.modificationTime = NSDate()
 >
           // 1
-          let destinationViewController = segue.destinationViewController as! ListNotesViewController
+          let destinationViewController = segue.destinationViewController as! ListNotesTableViewController
           // 2
           destinationViewController.notes.append(note)
           // 3
@@ -107,9 +108,9 @@ Update the `prepareForSegue()` method in the Display Note View Controller class 
       }
     }
 
-The above code is identical to the previous implementation of `prepareForSegue()` except that we are now adding the new note to the `notes` array in List Notes View Controller.
+The above code is identical to the previous implementation of `prepareForSegue()` except that we are now adding the new note to the `notes` array in List Notes Table View Controller.
 
-1. Since a segue is like a link between two view controllers, you can access both the source and destination view controllers of a segue using the `sourceViewController` and `destinationViewController` properties. Notice that we must forcefully cast the property to the correct type. Since we are segueing to the List Notes View Controller, the `destinationViewController` property has type `ListNotesViewController`. (The `sourceViewController` property would have type `DisplayNoteViewController`.)
+1. Since a segue is like a link between two view controllers, you can access both the source and destination view controllers of a segue using the `sourceViewController` and `destinationViewController` properties. Notice that we must forcefully cast the property to the correct type. Since we are segueing to the List Notes Table View Controller, the `destinationViewController` property has type `ListNotesViewController`. (The `sourceViewController` property would have type `DisplayNoteViewController`.)
 
 2. We are adding the new note to the `notes` array.
 

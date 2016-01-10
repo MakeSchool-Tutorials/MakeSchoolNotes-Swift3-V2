@@ -17,6 +17,8 @@ Table views are instances of the `UITableView` class and can be created in three
 
 (For more information on table views check out this [explanation--BROKEN LINK](link to table view discussion))
 
+#Make School Note's Table View Controller
+
 For the table view in Make School Notes, we will be using a *table view controller* as it is the easiest to get working.
 
 The starter project that you downloaded earlier already contains a table view controller. Let's take a look at it now.
@@ -26,9 +28,7 @@ Click the *Project navigator* icon, expand the *MakeSchoolNotes* folder, and sel
 >
 ![image illustrating how to open the Main.storyboard file](./images/open-main-storyboard.png)
 
-##Introducing Table View Controllers
-
-Table view controllers are the easiest way to use table views because they do a lot of the necessary table view setup for us. Table view controllers are instances of the `UITableViewController` class and, similar to table views, can be created programmatically or in Interface Builder.
+Table view controllers are the easiest way to use table views because they do a lot of the necessary table view setup for you. Table view controllers are instances of the `UITableViewController` class and, similar to table views, can be created programmatically or in Interface Builder.
 
 Although the table view controller in the starter project was created in Interface Builder, we will want to manipulate it from code. This situation is very common when building iOS apps and to make the connection from our objects in Interface Builder to code, we use a feature of Xcode called *custom classes*. We want to set the custom class of our table view controller to *ListNotesTableViewController*. The *ListNotesTableViewController* class was included in the starter project and can be found in the `ListNotesTableViewController.swift` file.
 
@@ -46,7 +46,7 @@ Click the *Project navigator* icon, expand the *Controllers* folder, and select 
 
 Currently, there is nothing interesting in this file, but we will change that soon!
 
-## Displaying Information with our Table View
+#Displaying Information with our Table View
 
 Table views have two components: the *functionality* and the *information*. The functionality (vertical scrolling and the ability to select cells) is provided for free by the table view. To inform our table view about which information to display, we must do some setup.
 
@@ -55,7 +55,7 @@ When displaying information, a table view *must* know two things:
 1. Total number of cells
 2. What information to display for each specific cell
 
-Let's add the necessary code to our project; we will discuss it afterwards.
+Let's add the necessary code to our project -- we will discuss it afterwards.
 
 > [action]
 Add these two methods under the declaration of the *ListNotesTableViewController* class:

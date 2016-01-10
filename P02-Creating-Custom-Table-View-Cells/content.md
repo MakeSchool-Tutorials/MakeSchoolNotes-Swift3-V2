@@ -44,7 +44,7 @@ Our cell is starting to come together, but we haven't finished yet!
 
 #Connecting our Cell to Code
 
-Because we want to be able to access our custom table view cell in code, we will need to set its custom class. We want to set the custom class of our table view cell (named *listNotesTableViewCell*) to the class named *listNotesTableViewCell*. The *listNotesTableViewCell* class was included in the starter project and can be found in the `ListNotesTableViewCell.swift` file within the *Views* folder in your Project navigator.
+Because we want to be able to access our custom table view cell in code, we will need to set its custom class. We want to set the custom class of our table view cell (named *listNotesTableViewCell*) to the class named *ListNotesTableViewCell*. The *ListNotesTableViewCell* class was included in the starter project and can be found in the `ListNotesTableViewCell.swift` file within the *Views* folder in your Project navigator.
 
 Notice the naming convention we are following: Our cell in Interface Builder is named "listNotesTableViewCell" (first letter is lowercase) and  we are connecting that cell to a class named "ListNotesTableViewCell" (first letter is uppercase). This convention is used heavily throughout iOS development.
 
@@ -85,7 +85,7 @@ Open the *Assistant Editor* as follows:
 
 
 
-With the *Assistant Editor* open, connecting our labels from Interface Builder to the *ListNotesTableViewCell* class is very easy: all we have to do is select the label and ***CTRL-click*** from the label to somewhere inside the *ListNotesTableViewCell* class definition.
+With the *Assistant Editor* open, connecting our labels from Interface Builder to the *ListNotesTableViewCell* class is very easy: all we have to do is select the label and ***Control-click*** from the label to somewhere inside the *ListNotesTableViewCell* class definition.
 
 > [action]
 Add `IBOutlets` to the the *ListNotesTableViewCell* class as follows:
@@ -94,7 +94,7 @@ Add `IBOutlets` to the the *ListNotesTableViewCell* class as follows:
     <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mov" type="video/mp4">
 </video>
 
-We can now access the labels of our *listNotesTableViewCell* through the `noteTitle` and `noteModificationTime` instance properties of the *ListNotesTableViewCell* class! One last small change and then we will be ready to run our app!
+We can now access the labels of our *listNotesTableViewCell* through the `noteTitleLabel` and `noteModificationTimeLabel` instance properties of the *ListNotesTableViewCell* class! One last small change and then we will be ready to run our app!
 
 #Typecasting our Cell to ListNotesTableViewCell
 

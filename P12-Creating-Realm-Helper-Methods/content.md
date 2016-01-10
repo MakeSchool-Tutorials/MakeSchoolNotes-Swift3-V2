@@ -32,7 +32,7 @@ In `RealmHelper.swift` we will define static methods that we can call to add, up
 First we will want to import RealmSwift and define a RealmHelper class as follows:
 
 ```
-include RealmSwift
+import RealmSwift
 
 class RealmHelper {
   //static methods will go here

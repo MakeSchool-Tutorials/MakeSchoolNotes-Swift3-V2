@@ -18,12 +18,12 @@ The *Make School Notes* tutorial consists of three parts:
 * Use segues to transition between view controllers
 * Trigger user initiated actions using bar button items
 
-2. The second part is devoted to programming our apps **logic**. You will learn how to:
+2. The second part is devoted to programming our app's **logic**. You will learn how to:
 
 * Create appropriate data models
 * Pass data between view controllers
 * Program the functionality to add, display, modify, and delete notes
-* Connect our interface to our logic
+* Connect app interface to app logic
 
 3. In the third and final part we will focus on **persisting data** between app launches. You will learn how to:
 
@@ -31,13 +31,13 @@ The *Make School Notes* tutorial consists of three parts:
 * Create static helper methods
 * Modify existing code to integrate data persistence
 
-##Getting Started
+#Getting Started
 
-The goal of this tutorial is to teach you the fundamentals of iOS development, not to confuse you with how to setup Xcode projects. For this reason, we have provided a starter project that will allow us to hit the ground running with learning iOS development.
+The goal of this tutorial is to teach you the fundamentals of iOS development, not to confuse you with how to setup Xcode projects. For this reason, we have provided a starter project that will allow you to hit the ground running with learning iOS development.
 
 > [action]
-Download the Make School Notes (Starter Project BROKENLINK)[PATH TO STARTER PROJECT]
+Download the [Make School Notes Starter Project](https://github.com/orcudy/MakeSchoolNotesProject/archive/starter.zip)
 
-##Feedback
+#Feedback
 
-If you have feedback on this tutorial or find any mistakes, please open issues on the GitHub Repository.
+If you have feedback on this tutorial or find any mistakes, please open issues on the [GitHub repository](https://github.com/orcudy/MakeSchoolNotesTutorial) -- we would love to hear from you!

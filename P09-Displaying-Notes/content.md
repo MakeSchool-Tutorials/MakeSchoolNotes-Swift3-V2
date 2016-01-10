@@ -3,14 +3,14 @@ title: "Displaying Notes"
 slug: displaying-notes
 ---
 
-In this tutorial we will add the functionality that allows our users to modify existing notes. Remember that a user's notes are stored in the `notes` array in the List Notes View Controller and that all note modifications happen in the Display Note View Controller. When a user taps a cell in the table view in the List Notes View Controller, we must pass the corresponding note to the Display Note View Controller so that it can be displayed and modified.
+In this tutorial we will add the functionality that allows our users to modify existing notes. Remember that a user's notes are stored in the `notes` array in the List Notes Table View Controller and that all note modifications happen in the Display Note View Controller. When a user taps a cell in the table view in the List Notes Table View Controller, we must pass the corresponding note to the Display Note View Controller so that it can be displayed and modified.
 
-# Determining the Selected Note
+#Determining the Selected Note
 
-When creating a new note, we used the `prepareForSegue()` method to pass a *newly created* note from the Display Note View Controller to the List Notes View Controller. When modifying a note, we will take a similar approach, except we will pass an *existing* note from the List Notes View Controller to the Display Note View Controller.
+When creating a new note, we used the `prepareForSegue()` method to pass a *newly created* note from the Display Note View Controller to the List Notes Table View Controller. When modifying a note, we will take a similar approach, except we will pass an *existing* note from the List Notes Table View Controller to the Display Note View Controller.
 
 > [action]
-Add the following to the `prepareForSegue()` method in the ListNotesViewController class:
+Add the following to the `prepareForSegue()` method in the ListNotesTableViewController class:
 >
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if let identifier = segue.identifier {
@@ -78,7 +78,7 @@ If you were to run your app now, you would be able to add new notes and modify e
 Update the `prepareForSegue()` in the *DisplayNoteViewController* class as follows:
 >
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      let destinationViewController = segue.destinationViewController as! ListNotesViewController
+      let destinationViewController = segue.destinationViewController as! ListNotesTableViewController
       if segue.identifier == "Save" {
 >
         if let note = note {

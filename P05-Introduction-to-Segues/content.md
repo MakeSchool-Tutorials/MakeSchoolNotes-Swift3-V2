@@ -5,10 +5,10 @@ slug: intro-segues
 
 Now that we have our view controllers set up, let's add the functionality that allows us to transition between view controllers!
 
-To transition to new screens in iOS we use what are called *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell we want to trigger a *segue* to our *Display Note View Controller Screen*. To set up this segue all we have to do is `Control-click` from our *listNotesTableViewCell* in our Document Outline to our *Display Note View Controller* in our storyboard.
+To transition to new screens in iOS we use what are called *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell we want to trigger a *segue* to our *Display Note View Controller Screen*. To set up this segue all we have to do is ***Control-click*** from our *listNotesTableViewCell* in our Document Outline to our *Display Note View Controller* in our storyboard.
 
 > [action]
-`Control-click` from the *listNotesTableViewCell* to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
+***Control-click*** from the *listNotesTableViewCell* to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
 >
 <video width="100%" controls>
     <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/segue.mov" type="video/mp4">
@@ -32,7 +32,7 @@ Set the identifier of the segue that we created above to "displayNote".
 When a segue is triggered, before the app actually transitions from one view controller to another, it calls a method called `prepareForSegue()`. The `prepareForSegue()` method is used when we want to take a specific action when a specific segue is triggered.
 
 > [action]
-Add the following method to the List Notes View Controller:
+Add the following method to the List Notes Table View Controller:
 >
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       // 1

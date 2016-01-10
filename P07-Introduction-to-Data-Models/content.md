@@ -30,7 +30,7 @@ Oftentimes when programming, we will need a way to represent an object that can 
 
     }
 
-# Adding New Files to Our Project
+#Adding New Files to Our Project
 
 Before we define our note data model, we need to first create a `Note.swift` file. In the Project navigator notice that there is an empty folder called *Models*. This folder was included in the starter project and will store all of our data models. (In Make School Notes we only have one data model, but in larger projects you could have many.)
 
@@ -48,14 +48,12 @@ Add a new file called *Note* to the *Models* folder:
     <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addFile.mov" type="video/mp4">
 </video>
 
-# The Note Data Model
+#The Note Data Model
 
-Because our List Notes View Controller displays the title and modification time of our notes and the Display Note View Controller displays a note's title and content, our note data model will need to have properties for *title*, *content*, and *modification time*.
-
-Additionally, we are going to need to be able to check if two notes are equal, so we will need to define the `==` method.
+Because our List Notes Table View Controller displays the title and modification time of our notes and the Display Note View Controller displays a note's title and content, our note data model will need to have properties for *title*, *content*, and *modification time*.
 
 > [action]
-Define the Note class as follows:
+Define the Note class as follows inside `Note.swift`:
 >
     class Note {
       var title = ""
@@ -63,25 +61,25 @@ Define the Note class as follows:
       var modificationTime = NSDate()
     }
 
-# Using our Note Data Model
+#Using our Note Data Model
 
-Prior to this point, the table view in our List Notes View Controller has been using hard coded values to populate its cells; however, we would like the table view to populate its cells based on a user's notes. This means that the List Notes View Controller is going to need to store all of a user's current notes.
+Prior to this point, the table view in our List Notes Table View Controller had been using hard coded values to populate its cells; however, we would like the table view to populate its cells based on a user's notes. This means that the List Notes Table View Controller is going to need to store all of a user's current notes.
 
 > [action]
-> Select the `ListNotesViewController.swift` file and add the following just below the declaration of the ListNotesViewController class:
+> Select the `ListNotesTableViewController.swift` file and add the following just below the declaration of the ListNotesTableViewController class:
 >
     var notes = [Note]()
 
 The line above is creating a variable called `notes` that has been initialized to an empty array of *Note* objects. When a user creates a new note, we will add an element to our `notes` array, and when a user deletes a note, we will delete the corresponding note in our `notes` array.
 
-Now when we populate the cells of the table view in the List Notes View Controller, we will use the note objects in our `notes` array, instead of the hard coded values!
+Now when we populate the cells of the table view in the List Notes Table View Controller, we will use the note objects in our `notes` array, instead of the hard coded values!
 
 Let's update our code to reflect this change.
 
 > [action]
 Modify `func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int` as follows:
 >
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return notes.count
     }
 
@@ -90,7 +88,7 @@ Remember that the above method is used by the table view to determine its number
 > [action]
 Modify `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` as follows:
 >
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath) as! ListNotesTableViewCell
 >
       // 1
@@ -100,10 +98,10 @@ Modify `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: 
       let note = notes[row]
 >
       // 3
-      cell.titleLabel.text = note.title
+      cell.noteTitleLabel.text = note.title
 >
       // 4
-      cell.modificationTimeLabel.text = note.modificationTime.convertToString()
+      cell.noteModificationTimeLabel.text = note.modificationTime.convertToString()
 >      
       return cell
     }

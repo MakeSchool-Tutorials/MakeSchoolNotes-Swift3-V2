@@ -5,9 +5,9 @@ slug: integrating-realm
 
 Make School Notes is almost finished! In this tutorial let's integrate Realm into our project.
 
-##Updating the ListNotesViewController
+##Updating the List Notes Table View Controller
 
-First, before we forget, let's import the RealmSwift module to this file.
+First, before we forget, let's import the RealmSwift module to the `ListNotesTableViewController.swift` file.
 
 > [action]
 Import the RealmSwift module by adding the following above the class definition:
@@ -16,7 +16,7 @@ Import the RealmSwift module by adding the following above the class definition:
 import RealmSwift
 ```
 
-## Retrieving Notes
+##Retrieving Notes
 
 Remember that all of a user's notes are displayed in the ListNotesViewController. When the app is launched, we need to retrieve all the notes from the default Realm and store them in the `notes` property of the ListNotesViewController. However, notice that our `retrieveNotes()` helper method returns a `Results<Note>` object, whereas the `notes` property has type `[Note]`.
 
@@ -29,7 +29,7 @@ var notes: Results<Note>!
 Now we can call the `retrieveNotes()` method and store the result directly in the `notes` property.
 
 > [action]
-Update the `viewDidLoad()` method in ListNotesViewController as follows:
+Update the `viewDidLoad()` method in ListNotesTableViewController as follows:
 >
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -52,7 +52,7 @@ Update the `notes` property as follows:
 
 We are using the `didSet` property observer to update the table view whenever our `notes` property is changed.
 
-## Deleting Notes
+##Deleting Notes
 
 Remember that our notes are deleted in the
 `func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)` method.
@@ -73,7 +73,7 @@ Update the `func tableView(tableView: UITableView, commitEditingStyle editingSty
 
 2. We are updating the `notes` property to reflect the changes.
 
-# Updating the DisplayNoteViewController
+#Updating the DisplayNoteViewController
 
 Once again, let's import the RealmSwift module before we forget!
 
@@ -90,7 +90,7 @@ Remember that we both create new notes and modify existing notes in the DisplayN
 Update the `prepareForSegue()` method as follows:
 >
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      let destinationViewController = segue.destinationViewController as! ListNotesViewController
+      let destinationViewController = segue.destinationViewController as! ListNotesTableViewController
       if segue.identifier == "Save" {
         // if note exists, update title and content
         if let note = note {
@@ -121,7 +121,7 @@ For the most, the above code is identical to what we had before, except for 3 th
 
 3. We are setting the `notes` property in the ListNotesViewController to be the updates objects in the default Realm.
 
-# Running the App
+#Running the App
 
 Congratulations -- you have just built a fully functioning note taking app!
 
