@@ -15,7 +15,7 @@ Table views are instances of the `UITableView` class and can be created in three
 2. Visually using Interface Builder
 3. Using a *table view controller*.
 
-(For more information on table views check out this [explanation--BROKEN LINK](link to table view discussion))
+(For more information on table views check out this [explanation](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html))
 
 #Make School Note's Table View Controller
 
