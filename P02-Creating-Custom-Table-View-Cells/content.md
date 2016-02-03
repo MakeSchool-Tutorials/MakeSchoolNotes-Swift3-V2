@@ -24,7 +24,7 @@ Notice that we had to change the row height for both our table view and our tabl
 
 #Adding Labels to our Cell
 
-Now that we have enough room, let's add our labels! (If you forgot how, revisit the [*Introduction to Interface Builder* -- BROKEN LINK](link to tutoral) tutorial.)
+Now that we have enough room, let's add our labels! (If you forgot how, revisit the [*Introduction to Interface Builder*](https://www.makeschool.com/tutorials/learn-how-to-build-your-very-first-ios-app/interface-builder) tutorial.)
 
 > [action]
 Add two labels to our *listNotesTableViewCell*. Your cell should look something like this when finished:
