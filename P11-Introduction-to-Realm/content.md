@@ -56,7 +56,7 @@ let realm = try! Realm()
 
 The `try` keyword in the above code signals that the call to `Realm()` can *throw an error*. (Throwing an error is a fancy way of saying that a method can fail.) By using the `try!` keyword (note the exclamation point) we are indicating that we know the `Realm()` method can throw an error, but that we are sure that it will not, and therefore will not handle the error case.
 
-In Swift, errors are handled using the do/try/catch paradigm. For more information on the do/try/catch paradigm of error handling, check out this quick [tutorial](link to error handling tutorial).
+In Swift, errors are handled using the do/try/catch paradigm. For more information on the do/try/catch paradigm of error handling, check out this quick [tutorial](https://www.makeschool.com/tutorials/advanced-ios-development/error-handling-swift).
 
 ## Write Transactions in Realm
 
