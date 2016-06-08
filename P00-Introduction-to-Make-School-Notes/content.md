@@ -3,7 +3,7 @@ title: "Welcome to Make School Notes!"
 slug: welcome
 ---
 
-Welcome to the *Make School Notes* tutorial series and congratulations on taking the first step to building your very own iOS app!
+Welcome to the *Make School Notes* tutorial series and congratulations on taking the first step to building your very own iOS app! We're going to build something very similar to iOS's built in Notes app - an easy way for you to jot down some notes.
 
 This series was designed for beginning iOS developers and will teach you the fundamentals of iOS application development. After finishing this series, you will have built a fully functional note taking app and will be well prepared to start the more advanced tutorial, *Makestagram*.
 
