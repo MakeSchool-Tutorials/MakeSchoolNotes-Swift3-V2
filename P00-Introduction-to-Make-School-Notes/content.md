@@ -7,6 +7,10 @@ Welcome to the *Make School Notes* tutorial series and congratulations on taking
 
 This series was designed for beginning iOS developers and will teach you the fundamentals of iOS application development. After finishing this series, you will have built a fully functional note taking app and will be well prepared to start the more advanced tutorial, *Makestagram*.
 
+The final product will look something like this:
+
+<!-- ACTION: Insert GIF -->
+
 The *Make School Notes* tutorial consists of three parts:
 
 1. In the first part we will focus on building the **interface** of our app. You will learn how to:
@@ -30,6 +34,8 @@ The *Make School Notes* tutorial consists of three parts:
 	* Locally store information using the Realm framework
 	* Create static helper methods
 	* Modify existing code to integrate data persistence
+
+<!-- ACTION: Explanation warranted: What does persisting data mean? -->
 
 #Getting Started
 
