@@ -153,7 +153,7 @@ We have now finished making our custom table view cells and are ready to run the
 
 ![image of finished custom table view cells](./images/finished-custom-cell.png)
 
-Notice that the first cell is slightly hidden behind the *status bar*, let's fix that in the next section!
+Notice that the first cell is slightly hidden behind the *status bar*. We'll fix that in the next section!
 
 >[info]
 >###On this page, you should have:
