@@ -36,7 +36,7 @@ The *Make School Notes* tutorial consists of three parts:
 The goal of this tutorial is to teach you the fundamentals of iOS development, not to confuse you with how to set up Xcode projects. For this reason, we have provided a starter project that will allow you to hit the ground running with learning iOS development.
 
 > [action]
-Download the [Make School Notes Starter Project](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Solution/archive/54a8a71dc6e9482318e14c4bd496fc0bf734a26d.zip)
+Download the [Make School Notes Starter Project](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Starter/archive/master.zip)
 
 #Feedback
 
