@@ -43,21 +43,21 @@ Replace the text of the top label with `Note Title` and the bottom with `Note Mo
 
 Let's customize the look of our labels by changing the text size, font, and color.
 
-> [action] 
+> [action]
 > Select a label from the Document Outline, click the Attribute inspector icon, and experiment with changing the *Color* and *Font* fields. It's also a pretty good idea to increase the label's width. To do that, select the label and click and drag the right middle bounding box. Labels might look something like this afterwards:
 >
 ![image showing listNotesTableViewCell with custom text](./images/custom.png)
 
 > [info]
 > If you want to make your cell look like mine, I did the following:
-> 
+>
 > Note title label
-> 
+>
 > * 18.0 point System font
 > * Hex color #53A8D2
-> 
+>
 > Note modification time label
-> 
+>
 > * 15 point System font
 > * Hex color #67656C
 
@@ -156,7 +156,7 @@ We have now finished making our custom table view cells and are ready to run the
 Notice that the first cell is slightly hidden behind the *status bar*, let's fix that in the next section!
 
 >[info]
->##On this page, you should have:
+>###On this page, you should have:
 >
 >1. Learned how to resize a table view cell in Interface Builder. We gave our prototype cell a height of 60 points.
 >2. Added two labels to the cell, one for the note's title and one for the note's modification time.

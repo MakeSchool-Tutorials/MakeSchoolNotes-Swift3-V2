@@ -122,9 +122,8 @@ Now when you run your app, you should see something like this:
 Congratulations - You have just successfully set up a table view controller! In the next tutorial we will customize our table view cells so that we can display our note's title and modification time.
 
 >[info]
->##On this page, you should have:
+>###On this page, you should have:
 >
 >1. Learned how to link a view controller in Interface Builder to your code with a *custom class*. We linked the table view controller in Interface Builder to our custom ListNotesTableViewController class.
 >2. Added the functions for `tableView(:_,numberOfRowsInSection)` and `tableView(:_,cellForRowAtIndexPath)`, to our ListNotesTableViewController class. These methods are the minimum required to be able to display custom information in our table view.
 >3. Learned how to set a prototype table view cell's reuse identifier. In this case, we set it to `listNotesTableViewCell`.
-
