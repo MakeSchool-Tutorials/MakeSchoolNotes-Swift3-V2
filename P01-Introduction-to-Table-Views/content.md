@@ -65,7 +65,7 @@ Add these two methods inside the scope of the *ListNotesTableViewController* cla
     // 2
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       // 3
-      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath)
+      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell")
 >   
       // 4
       cell.textLabel?.text = "Yay - it's working!"

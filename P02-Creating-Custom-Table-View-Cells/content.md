@@ -122,7 +122,7 @@ Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexP
 
 So what did we change in the code above?
 
-1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. This casts the return type of this method to *ListNotesTableViewCell*. This is necessary because we want the table view to display our custom *listNotesTableViewCell* which has type *ListNotesTableViewCell*.
+1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. Normally, `dequeueReusableCellWithIdentifier(_:,withIndexPath)` returns a `UITableViewCell`. However, now that we've set up the custom class for the cell in Interface Builder, we are now *certain* that `dequeueReusableCellWithIdentifier()` is going
 2. Because `cell` now has type *ListNotesTableViewCell*, we can access the `noteTitle` and `noteModificationTime` instance properties.
 
 #Running the App!
