@@ -3,34 +3,38 @@ title: "Creating Custom Table Views Cells"
 slug: custom-table-view-cells
 ---
 
-Now that we have our table view up and running, in this step, let's customize the table view cells so that we can display the note's title and modification time.
+In the last step, we got a table view up and running. We're going to use this table view to display a list of each of the notes the user has made. We're going to customize the table view cells so that we can display the note's title and modification time.
 
 #Resizing our Cell
 
-To display the note's title and modification time, we are going to need two labels. To ensure we have enough room for both of our labels, let's make the cell a little bit bigger.
+We're going to need two labels to display the note's title and modification time. To ensure we have enough room for both of our labels, let's make the cell a little bit bigger.
 
 > [action]
 Select the *listNotesTableViewCell* in the *Document Outline*, click the *Size inspector* icon, and change the *Row Height* to 60:
 >
 ![image showing how to change the row height](./images/height.png)
 
-Now let's change the hight of the table view to match.
+Now let's change the height of the table view to match.
 
 > [action]
 Select the *Table View* in the *Document Outline*, click the *Size inspector* icon, and change the row height to 60:
+![image showing changing table view row height](./images/tableview-row-height.png)
 
 Notice that we had to change the row height for both our table view and our table view cell!
 
 
 #Adding Labels to our Cell
 
-<!-- ACTION: Remind them to set the constraints using auto layout before referring them back to the tutorial.  They should know how to do this at this point, but might need a quick reminder as to the steps involved.  A quick video of clicking "reset to suggested constraints "  -->
-<!-- LATER ACTION: update link to Tip Calc  -->
+<!-- MAYBE LATER ACTION: Currently the labels don't use autolayout at all. Maybe later set them up to use it.  -->
 
-Now that we have enough room, let's add our labels! (If you forgot how, revisit the [*Introduction to Interface Builder*](https://www.makeschool.com/tutorials/learn-how-to-build-your-very-first-ios-app/interface-builder) tutorial.)
+Now that we have enough room, let's add our labels!
 
 > [action]
-Add two labels to our *listNotesTableViewCell*. Your cell should look something like this when finished:
+Add two labels to the *listNotesTableViewCell* prototype. Open *Main.storyboard*, find the *object library* on the bottom of the right-hand side panel. From the object library, drag two labels onto the prototype cell. See the video below:
+>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/drag-labels.mov)
+>
+Replace the text of the top label with `Note Title` and the bottom with `Note Modification Time`. Your cell should look something like this when finished:
 >
 ![image showing listNotesTableViewCell with two labels](./images/labels.png)
 
@@ -39,22 +43,41 @@ Add two labels to our *listNotesTableViewCell*. Your cell should look something 
 
 Let's customize the look of our labels by changing the text size, font, and color.
 
-> [action] Select a label from the Document Outline, click the Attribute inspector icon, and experiment with changing the *Color* and *Font* fields. Your labels might look something like this afterwards:
+> [action] 
+> Select a label from the Document Outline, click the Attribute inspector icon, and experiment with changing the *Color* and *Font* fields. It's also a pretty good idea to increase the label's width. To do that, select the label and click and drag the right middle bounding box. Labels might look something like this afterwards:
 >
 ![image showing listNotesTableViewCell with custom text](./images/custom.png)
+
+> [info]
+> If you want to make your cell look like mine, I did the following:
+> 
+> Note title label
+> 
+> * 18.0 point System font
+> * Hex color #53A8D2
+> 
+> Note modification time label
+> 
+> * 15 point System font
+> * Hex color #67656C
 
 Our cell is starting to come together, but we haven't finished yet!
 
 #Connecting our Cell to Code
 
-Because we want to be able to access our custom table view cell in code, we will need to set its custom class. We want to set the custom class of our table view cell (named *listNotesTableViewCell*) to the class named *ListNotesTableViewCell*. The *ListNotesTableViewCell* class was included in the starter project and can be found in the `ListNotesTableViewCell.swift` file within the *Views* folder in your Project navigator.
-
-Notice the naming convention we are following: Our cell in Interface Builder is named "listNotesTableViewCell" (first letter is lowercase) and  we are connecting that cell to a class named "ListNotesTableViewCell" (first letter is uppercase). This convention is used heavily throughout iOS development.
+Because we want to be able to access our custom table view cell in code, we will need to give it a custom class.
 
 > [action]
 Select the *listNotesTableViewCell* in the *Document Outline*, click the *Identity inspector* icon, and set the *Class* field to "ListNotesTableViewCell":
 >
 ![image showing listNotesTableViewCell's custom class](./images/custom-class.png)
+>
+The *ListNotesTableViewCell* class was included in the starter project and can be found in the `ListNotesTableViewCell.swift` file within the *Views* folder in your Project navigator.
+
+<!-- html comment to break boxes -->
+
+> [info]
+> Notice the naming convention we are following: Our cell in Interface Builder is named "listNotesTableViewCell" (first letter is lowercase) and  we are connecting that cell to a class named "ListNotesTableViewCell" (first letter is uppercase). This is a common convention in iOS development.
 
 Now that we have set the class of our *listNotesTableViewCell* to "ListNotesTableViewCell", let's take a look at the contents of the `ListNotesTableViewCell.swift` file.
 
@@ -63,7 +86,7 @@ Click on the *Project navigator* icon, expand the *Views* folder, and select the
 >
 ![image showing the NotesTableViewCell.swift file](./images/code.png)
 
-Although we set our custom class to enable us to programmatically alter our table view cell, we currently do not have any way to reference the labels we created in Interface Builder from the *ListNotesTableViewCell* class. To access the labels from this class, we must setup another type of connection called an `IBOutlet`.
+We want to use this class to alter what our table view cell displays, but we currently do not have any way to reference the labels we created in Interface Builder from code. To access the labels from this class, we must set up another type of connection called an `IBOutlet`.
 
 #Introducing IBOutlets
 
@@ -74,18 +97,18 @@ When creating `IBOutlets` we will often use the *Assistant Editor*. The *Assista
 > [action]
 Open the *Assistant Editor* as follows:
 >
-1. Click the *Assistant Editor* icon.
+1. First, open `Main.storyboard`.
+2. Click the *Assistant Editor* icon.
 >
   ![image showing the assistant editor icon](./images/assistant.png)
 >
-2. Hide the *Navigator* and *Utilities* menus.
+3. Hide the *Navigator* and *Utilities* menus.
 >
   ![image showing how to setup the assistant editor](./images/hide.png)
 >
-3. Setup the *Assistant Editor* by selecting: `Manual > MakeSchoolNotes > MakeSchoolNotes > Views > ListNotesTableViewCell.swift`
+4. Change the file the *Assistant Editor* is displaying by selecting: `Manual > MakeSchoolNotes > MakeSchoolNotes > Views > ListNotesTableViewCell.swift`
 >
   ![image showing how to setup the assistant editor](./images/setup.png)
-
 
 
 With the *Assistant Editor* open, connecting our labels from Interface Builder to the *ListNotesTableViewCell* class is very easy: all we have to do is select the label and ***Control-click*** from the label to somewhere inside the *ListNotesTableViewCell* class definition.
@@ -100,17 +123,17 @@ We can now access the labels of our *listNotesTableViewCell* through the `noteTi
 #Typecasting our Cell to ListNotesTableViewCell
 
 > [action]
-Switch back to the *Standard Editor*, show the *Navigator* and *Utilities* menus, and select the `NotesViewController.swift` file.
+Switch back to the *Standard Editor*, show the *Navigator* and *Utilities* menus, and select the `ListNotesTableViewController.swift` file.
 >
 ![image showing how to switch back to standard editor](./images/standard-editor.png)
 
-Now that we are using a custom cell with type *ListNotesTableViewCell*, we must make some changes to our table view methods. Let's make the necessary changes and then discuss what changed afterwards.
+Now that we are using a custom cell with type *ListNotesTableViewCell*, we must make some changes to our table view methods. Let's make the necessary changes and then discuss what was changed afterwards.
 
 > [action]
 Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` method with the following:
 >
     // 1
-    let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath) as! ListNotesTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell") as! ListNotesTableViewCell
 >    
     // 2
     cell.noteTitleLabel.text = "note's title"
@@ -118,12 +141,11 @@ Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexP
 >    
     return cell
 
-<!-- ACTION: When casting the cell type to ListNotesTableViewCell, add a sentence to explain (1) why this is okay (2) The benefit:  Help students make the connection between the specified return type and our cast (e.g. "Since ListNotesTableViewCell is a subclass of UITableViewCell, this is allowed.  In this way, we can return custom table view cells instead of the ones provided by Xcode.")   -->
-
 So what did we change in the code above?
 
-1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. Normally, `dequeueReusableCellWithIdentifier(_:,withIndexPath)` returns a `UITableViewCell`. However, now that we've set up the custom class for the cell in Interface Builder, we are now *certain* that `dequeueReusableCellWithIdentifier()` is going
-2. Because `cell` now has type *ListNotesTableViewCell*, we can access the `noteTitle` and `noteModificationTime` instance properties.
+1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. That code is a *downcast*, it's how we tell the compiler that we expect `dequeueReusableCellWithIdentifier(_:)` to return a more specific kind of `UITableViewCell`, in this case a `ListNotesTableViewCell`. The downcast works because `ListNotesTableViewCell` is a subclass of `UITableViewCell`.
+
+2. Because `cell` now has type *ListNotesTableViewCell*, we can access the `noteTitle` and `noteModificationTime` properties that we just created.
 
 #Running the App!
 
@@ -131,6 +153,14 @@ We have now finished making our custom table view cells and are ready to run the
 
 ![image of finished custom table view cells](./images/finished-custom-cell.png)
 
-Notice that the first cell is slightly hidden behind the *status bar*, let's fix that in the next tutorial!
+Notice that the first cell is slightly hidden behind the *status bar*, let's fix that in the next section!
 
-<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial. (see P01) -->
+>[info]
+>##On this page, you should have:
+>
+>1. Learned how to resize a table view cell in Interface Builder. We gave our prototype cell a height of 60 points.
+>2. Added two labels to the cell, one for the note's title and one for the note's modification time.
+>3. Learned how to customize the look and feel of the labels by changing some of their visual properties.
+>4. Connected the prototype cell to our code by assigning it the custom class `ListNotesTableViewCell`.
+>5. Connected the labels from our prototype cell to code using *IBOutlet*s.
+>6. Learned how to *downcast* an instance of an object to a subclass type. We downcast the `UITableViewCell` returned by `dequeueReusableCellWithIdentifier(_:)` to our custom `ListNotesTableViewCell`.
