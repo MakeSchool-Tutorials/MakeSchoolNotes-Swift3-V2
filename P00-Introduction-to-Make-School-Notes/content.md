@@ -35,7 +35,7 @@ The *Make School Notes* tutorial consists of three parts:
 	* Create static helper methods
 	* Modify existing code to integrate data persistence
 
-<!-- ACTION: Explanation warranted: What does persisting data mean? -->
+*Persisting data* is a fancy way of saying "saving data to disk". Apps in iOS don't keep data around between app launches by default, it's up to you as the developer to implement it.
 
 #Getting Started
 
