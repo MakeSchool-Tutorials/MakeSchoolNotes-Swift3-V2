@@ -3,27 +3,30 @@ title: "Introduction to Navigation Controllers"
 slug: intro-nav-controller
 ---
 
-The *navigation controller* is a special controller that manages how other view controllers are displayed. Like table views, navigation controllers are very common throughout iOS apps.
+The *navigation controller* is a special controller that manages how other view controllers are displayed. Like table views, navigation controllers are very common in iOS apps.
 
-To demonstrate the functionality provided by a navigation controller let's use Apple's *Calendar* app: The *Calendar* app has several different layers which can be thought of as screens that are stacked one on top of the other. The top screen of the *Calendar* app consists of a calendar that shows the entire year:
+Let's use Apple's Calendar app to demonstrate the functionality provided by a navigation controller. The first view of the Calendar app consists of a calendar that shows the entire year:
 
 ![calendar app year view](./images/year.png)
 
-The top grey section you see in the *Calendar* app is called the *navigation bar* and is provided by the navigation controller. When we tap on a specific month, we go a layer deeper into the app. Since we are no longer on the top layer, we now have the option to go back to the previous layer. This *back button* functionality is provided for free by the navigation controller.
+The top grey section you see in the Calendar app is called the *navigation bar* and is provided by the navigation controller. When we tap on a specific month, a view presenting the month appears. We can think of the month view as having been pushed on top of the year view. Because there are views below the currently displayed view, we now have a *back button* in the navigation bar that can be used to go back to the previous view. This functionality is provided for free by the navigation controller.
 
 ![calendar app month view](./images/month.png)
 
-If we select a specific day, we will once again go another layer deeper into the app. If we wanted to go back to any of the previous layers, all we would have to do is keep hitting the back button.
+If we select a specific day, we will once again go another view deeper into the app. To go back to any of the previous views, all we have to do is use the back button.
 
 ![calendar app day view](./images/day.png)
 
 Notice that the **Calendar** app has a hierarchical (layered) structure, meaning that the only way to get to the *day screen* is to go through the *year* and *month screens* first. Navigation controllers are best suited for apps that have a similar hierarchical structure.
 
-In Make School Notes we will have two different layers: a top layer that display all the notes, and a bottom layer that displays a specific note after a user taps a specific table view cell. Because we have a layered structure, Make School Notes is a great place to use a navigation controller.
+In Make School Notes we will have two different views: a top view that display all the notes, and a view layer that displays a specific note after a user taps a specific table view cell. Because this is a hierarchical structure, Make School Notes is a great place to use a navigation controller.
+
+> [info]
+> When working with navigation controllers, we're working with what's called a *navigation stack*, which is simply a list of the views we've gone through. When we transition to a new view, that's called *pushing* a view on to the stack, and when we go back, that's called *popping* the current view from the stack.
 
 #Setting up the Navigation Controller
 
-Although navigation controllers provide us with some pretty complex functionality, luckily, they are incredibly easy to set up.
+Navigation controllers provide us with some pretty complex functionality; luckily they are incredibly easy to set up.
 
 > [action]
 Set up a navigation controller by selecting the *List Notes Table View Controller* from the Document Outline and selecting Editor > Embed In > Navigation Controller.
@@ -34,16 +37,14 @@ You should now see a navigation controller in your storyboard:
 
 ![navigation controller in storyboard image](./images/nav.png)
 
-#Naming the Screen
+#Naming the View
 
-Another cool feature of a navigation controller is the ability to display the title of the current screen in the navigation bar. Let's give our *List Notes Table View Controller* screen the name "Notes".
+Another cool feature of a navigation controller is the ability to display the title of the current view in the navigation bar. Let's give our *List Notes Table View Controller* the name "Notes".
 
 > [action]
 Select the *Navigation Item* in the Document Outline, click on the Attributes inspector, and set the *Title* field to "Notes".
 >
 ![setting the title to "Notes" image](./images/notes.png)
-
-Notice that after setting our title to "Notes" the name of the *List Notes Table View Controller* changed to "Notes" in the Document Outline. However, as this view controller is used to list notes, the name *List Notes Table View Controller* will continue to be used.
 
 #Running the App!
 
@@ -53,4 +54,9 @@ Your app should now look something like this:
 
 Great job -- our note app is really starting to come along!
 
-<!-- Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->
+>[info]
+>###On this page, you should have:
+>
+>1. Learned the basics of what a navigation controller does.
+>2. Added a navigation controller to your app by embedding the `ListNotesTableViewController` in one.
+>3. Learned how set the title of a view so that it displays in the navigation bar. We set the `ListNotesTableViewController`'s title to Notes.
