@@ -41,6 +41,8 @@ Now that you know how to add and customize bar button items, try adding the Canc
 
 Great! We have successfully added the necessary bar buttons items for Make School Notes! However, if you tried clicking the + button you would notice that is doesn't do anything. Let's fix that by creating a new segue from the + button to the *Display Note View Controller*.
 
+<!-- ACTION: Change wording to make it explicit that the show segue goes from the add button to the view controller we want to segue to.  As is, students that didn't fully grasp the concept last time it was presented may mistakenly think they are supposed to control-drag to the view controller that contains the add button.  Add a quick video of this.  -->
+
 >[action] Create a *show* segue from the + button to the *Display Note View Controller*. Set the segue identifier to "addNote".
 >
 (Remember that when we want to create segues, all we have to do is `Control-click` from an object in our storyboard to a view controller!)
@@ -62,6 +64,8 @@ The code above is identical to our previous code with the exception that we have
 Now when you tap the **+** button the Display Note View Controller should appear. We would like to trigger segues when we tap the *Cancel* and *Save* buttons as well; however, we must use a special type of segue for these buttons called an *unwind segue*.
 
 #Introducing Unwind Segues
+
+<!-- ACTION: Great explanation of unwind segues.  Add a diagram demonstrating the difference between shows and unwinds.  -->
 
 Unwind segues are used to undue transitions that were triggered by other segues. For instance, if we had used a segue to get from view controller A to view controller B, we could use an unwind segue to undue that segue, thus taking us from view controller B back to view controller A.
 
@@ -90,9 +94,7 @@ Next, we need to connect our **Cancel** and **Save** buttons to the unwind segue
 
 >[action] `Control-drag` from the **Cancel** button (and **Save** button) to the *Exit icon* and select `unwindToListNotesViewController` when prompted.
 >
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/connectToExit.mov" type="video/mp4">
-</video>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/connectToExit.mov)
 
 
 #Adding Unwind Segue Identifiers
@@ -125,10 +127,10 @@ The code above is identical to the code we added in the `prepareForSegue()` meth
 
 Now when you run your app each segue should print the correct message to the screen like this:
 
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P06-complete.mov" type="video/mp4">
-</video>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P06-complete.mov)
 
 If you notice that the messages printed to the console do not match with the buttons you are tapping, you should change the identifiers of the mismatched segues.
 
 Congratulations! We have finished building the interface of Make School Notes! In the next tutorial we will start programming the logic. =]
+
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

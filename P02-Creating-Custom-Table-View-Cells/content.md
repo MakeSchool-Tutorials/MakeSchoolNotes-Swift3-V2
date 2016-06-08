@@ -24,6 +24,9 @@ Notice that we had to change the row height for both our table view and our tabl
 
 #Adding Labels to our Cell
 
+<!-- ACTION: Remind them to set the constraints using auto layout before referring them back to the tutorial.  They should know how to do this at this point, but might need a quick reminder as to the steps involved.  A quick video of clicking "reset to suggested constraints "  -->
+<!-- LATER ACTION: update link to Tip Calc  -->
+
 Now that we have enough room, let's add our labels! (If you forgot how, revisit the [*Introduction to Interface Builder*](https://www.makeschool.com/tutorials/learn-how-to-build-your-very-first-ios-app/interface-builder) tutorial.)
 
 > [action]
@@ -90,9 +93,7 @@ With the *Assistant Editor* open, connecting our labels from Interface Builder t
 > [action]
 Add `IBOutlets` to the the *ListNotesTableViewCell* class as follows:
 >
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mov" type="video/mp4">
-</video>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mov)
 
 We can now access the labels of our *listNotesTableViewCell* through the `noteTitleLabel` and `noteModificationTimeLabel` instance properties of the *ListNotesTableViewCell* class! One last small change and then we will be ready to run our app!
 
@@ -117,6 +118,8 @@ Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexP
 >    
     return cell
 
+<!-- ACTION: When casting the cell type to ListNotesTableViewCell, add a sentence to explain (1) why this is okay (2) The benefit:  Help students make the connection between the specified return type and our cast (e.g. "Since ListNotesTableViewCell is a subclass of UITableViewCell, this is allowed.  In this way, we can return custom table view cells instead of the ones provided by Xcode.")   -->
+
 So what did we change in the code above?
 
 1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. This casts the return type of this method to *ListNotesTableViewCell*. This is necessary because we want the table view to display our custom *listNotesTableViewCell* which has type *ListNotesTableViewCell*.
@@ -129,3 +132,5 @@ We have now finished making our custom table view cells and are ready to run the
 ![image of finished custom table view cells](./images/finished-custom-cell.png)
 
 Notice that the first cell is slightly hidden behind the *status bar*, let's fix that in the next tutorial!
+
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial. (see P01) -->

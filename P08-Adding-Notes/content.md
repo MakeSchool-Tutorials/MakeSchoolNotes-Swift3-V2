@@ -118,10 +118,10 @@ The above code is identical to the previous implementation of `prepareForSegue()
 
 #Running the App!
 
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P08-complete.mov" type="video/mp4">
-</video>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P08-complete.mov)
 
 Great! Now we can add new notes to our app, but what happens if we wanted to modify one of our notes? If we were to tap a note in the table view, we would successfully segue to the Display Note View Controller, but the note's title and content would not be display! Let's fix that in the next tutorial. =]
 
 (Also, our current app doesn't persist note data between app launches. This means that if you create a new note and then relaunch your app, your note will be gone! But do not worry, we will fix this problem in a later tutorial!)
+
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

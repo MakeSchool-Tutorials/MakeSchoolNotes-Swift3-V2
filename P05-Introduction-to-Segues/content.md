@@ -10,9 +10,7 @@ To transition to new screens in iOS we use what are called *segues* (pronounced 
 > [action]
 ***Control-click*** from the *listNotesTableViewCell* to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
 >
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/segue.mov" type="video/mp4">
-</video>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/segue.mov)
 
 Notice that when we added the segue an arrow appeared pointing from our *List Notes Table View Controller* to our *Display Note View Controller* and that a new segue entry appeared in our Document Outline. We can click either of the two to view the segue's attributes.
 
@@ -28,6 +26,8 @@ Set the identifier of the segue that we created above to "displayNote".
 ![image showing changes from segue](./images/segue-id.png)
 
 #The prepareForSegue() method
+
+<!-- ACTION: Explicitly spell out that students will never actually have to call PrepareForSegue themselves.  Make it clear that apple calls this without needing to be told to call it when a segue is performed.  To help students better grasp this, consider using viewDidLoad() as an example of this. Also spell out that this function is NOT responsible for actually calling/performing the segue itself.   -->
 
 When a segue is triggered, before the app actually transitions from one view controller to another, it calls a method called `prepareForSegue()`. The `prepareForSegue()` method is used when we want to take a specific action when a specific segue is triggered.
 
@@ -61,11 +61,13 @@ All `print()` statements are printed to the console. The console can be opened b
 
 #Running the App!
 
+<!-- ACTION: Add a quick video showing how to do this   -->
+
 > [action]
 Before running your app, set the navigation controller as the *Initial View Controller*.
 
 Now when we tap a table view cell we should transition to the *Display Note View Controller* screen and a message should be printed to the console! Also, note that the navigation controller we added earlier is providing the back button functionality and that if we click either of the text boxes, a keyboard shows up and we can begin editing, although our changes won't be saved just yet. We'll add the note saving functionality in a later tutorial. =]
 
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P05-complete.mov" type="video/mp4">
-</video>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P05-complete.mov)
+
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

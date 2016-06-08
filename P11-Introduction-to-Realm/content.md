@@ -142,3 +142,5 @@ We have discussed how to add, modify, retrieve, and delete objects in Realm and 
 If you would like more practice with Realm, check out this [demo project](http://github.com/orcudy/RealmDemo).
 
 If you are interested in some of the more advanced features that Realm offers, check out the [full documentation](https://realm.io/docs/swift/latest/).
+
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

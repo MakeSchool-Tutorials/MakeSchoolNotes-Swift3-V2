@@ -16,6 +16,9 @@ Table views are instances of the `UITableView` class and can be created in two w
 
 #Make School Note's Table View Controller
 
+<!-- ACTION: add video of dragging table view and table view cell on to view controller  -->
+<!-- ACTION: add video of creating outlet for tableview in view controller  -->
+
 For the table view in Make School Notes, we will be using a *table view controller* created in a *storyboard* as it is the quickest way to get started.
 
 The starter project that you downloaded earlier already contains a table view controller. Let's take a look at it now.
@@ -120,3 +123,14 @@ Now when you run your app, you should see something like this:
 ![image of table view displaying data](./images/table-view-with-data.png)
 
 Congratulations - You have just successfully set up a table view controller! In the next tutorial we will customize our table view cells so that we can display our note's title and modification time.
+
+>[info]
+>##On this page, you should have:
+>
+>1. dragged a table view on to the view controller.
+>2. dragged a table view cell on the to the table view.
+>3. clicked on the table view, opened identity inspector, and set the cell's reuse identifier to "cell"
+>4. opened assistant editor, control+dragged from the table view to the view controller and created an IBOutlet called "tableView"
+>5. On line [x], after `class ViewController: UIViewController`, added `UITableViewDelegate, UITableViewDataSource`.
+>6. In `viewDidLoad()`, added `tableView.datasource = self` and `tableView.delegate = self`
+>7. Added the functions for `tableView(:_, numberOfRowsInSection)` and `tableView(:_, cellForRowAtIndexPath)`, as provided above.
