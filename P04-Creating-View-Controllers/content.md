@@ -44,3 +44,5 @@ Now when you run, your app should display the Display Note View Controller as fo
 ![image showing finished Display Note View Controller](./images/finished.png)
 
 In the next tutorial let's add the functionality that allows us to transition between screens!
+
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

@@ -16,8 +16,8 @@ Table views are instances of the `UITableView` class and can be created in two w
 
 #Make School Note's Table View Controller
 
-<!-- ACTION: add GIF of dragging table view and table view cell on to view controller  -->
-<!-- ACTION: add GIF of creating outlet for tableview in view controller  -->
+<!-- ACTION: add video of dragging table view and table view cell on to view controller  -->
+<!-- ACTION: add video of creating outlet for tableview in view controller  -->
 
 For the table view in Make School Notes, we will be using a *table view controller* created in a *storyboard* as it is the quickest way to get started.
 

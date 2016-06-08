@@ -46,6 +46,7 @@ We want to define a static method that accepts a `Note` object as its one parame
 **Try it on your own and then compare with the solution below.**
 
 > [solution]
+>
 ```
 static func addNote(note: Note){
   let realm = try! Realm()
@@ -62,6 +63,7 @@ We want to define a static method that accepts an old note and new note and upda
 **Try it on your own and then compare with the solution below.**
 
 > [solution]
+>
 ```
 static func updateNote(oldNote: Note, newNote: Note){
   let realm = try! Realm()
@@ -80,6 +82,7 @@ We want to define a static method that accepts a `Note` object as its one parame
 **You should know the drill by now ;]**
 
 > [solution]
+>
 ```
 static func deleteNote(note: Note){
   let realm = try! Realm()
@@ -96,7 +99,7 @@ We want to define a static method that retrieves all notes from the default Real
 **Try it on your own first!**
 
 > [solution]
-
+>
 ```
 static func retrieveNotes() -> Results<Note> {
   let realm = try! Realm()
@@ -109,3 +112,5 @@ Notice that I am using a method provided by Realm called `sorted()` to sort the 
 # Wrapping Up
 
 We now have all the helper methods we will need to integrate Realm into Make School Notes! In the next tutorial let's (finally) add persistence to our Make School Notes app!
+
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

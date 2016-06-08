@@ -18,6 +18,8 @@ import RealmSwift
 
 ##Retrieving Notes
 
+<!-- ACTION: Results<Note>! is a foreign idea for first timers working with Realm and/or iOS.  Add a sentence explaining that results is a custom data type built into the Realm framework, and its relationship to our Note object in this context.  -->
+
 Remember that all of a user's notes are displayed in the ListNotesViewController. When the app is launched, we need to retrieve all the notes from the default Realm and store them in the `notes` property of the ListNotesViewController. However, notice that our `retrieveNotes()` helper method returns a `Results<Note>` object, whereas the `notes` property has type `[Note]`.
 
 To fix this issue, we will update the type of the `notes` property as follows:
@@ -51,6 +53,8 @@ Update the `notes` property as follows:
     }
 
 We are using the `didSet` property observer to update the table view whenever our `notes` property is changed.
+
+<!-- ACTION: didSet and other property observers are likely a new concept to students unfamiliar with iOS.  Expand on your example of how didSet works, so that students can generalize the use case for other times they might need to use property observers. -->
 
 ##Deleting Notes
 
@@ -125,6 +129,4 @@ For the most, the above code is identical to what we had before, except for 3 th
 
 Congratulations -- you have just built a fully functioning note taking app!
 
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P13-complete.mov" type="video/mp4">
-</video>
+<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

@@ -52,3 +52,5 @@ Your app should now look something like this:
 ![app with navigation controller image](./images/finished.png)
 
 Great job -- our note app is really starting to come along!
+
+<!-- Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->

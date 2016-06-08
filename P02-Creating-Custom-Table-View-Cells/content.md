@@ -24,7 +24,7 @@ Notice that we had to change the row height for both our table view and our tabl
 
 #Adding Labels to our Cell
 
-<!-- ACTION: Remind them to set the constraints using auto layout before referring them back to the tutorial.  They should know how to do this at this point, but might need a quick reminder as to the steps involved.  A quick GIF of clicking "reset to suggested constraints "  -->
+<!-- ACTION: Remind them to set the constraints using auto layout before referring them back to the tutorial.  They should know how to do this at this point, but might need a quick reminder as to the steps involved.  A quick video of clicking "reset to suggested constraints "  -->
 <!-- LATER ACTION: update link to Tip Calc  -->
 
 Now that we have enough room, let's add our labels! (If you forgot how, revisit the [*Introduction to Interface Builder*](https://www.makeschool.com/tutorials/learn-how-to-build-your-very-first-ios-app/interface-builder) tutorial.)
@@ -93,9 +93,7 @@ With the *Assistant Editor* open, connecting our labels from Interface Builder t
 > [action]
 Add `IBOutlets` to the the *ListNotesTableViewCell* class as follows:
 >
-<video width="100%" controls>
-    <source src="https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mov" type="video/mp4">
-</video>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mov)
 
 We can now access the labels of our *listNotesTableViewCell* through the `noteTitleLabel` and `noteModificationTimeLabel` instance properties of the *ListNotesTableViewCell* class! One last small change and then we will be ready to run our app!
 

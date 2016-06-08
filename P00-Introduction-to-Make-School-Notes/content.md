@@ -9,7 +9,7 @@ This series was designed for beginning iOS developers and will teach you the fun
 
 The final product will look something like this:
 
-<!-- ACTION: Insert GIF -->
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P13-complete.mov)
 
 The *Make School Notes* tutorial consists of three parts:
 
