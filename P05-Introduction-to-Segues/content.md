@@ -3,18 +3,18 @@ title: "Introduction to Segues"
 slug: intro-segues
 ---
 
-Now that we have our view controllers set up, let's add the functionality that allows us to transition between view controllers!
+Now that we have our view controllers set up, let's add the functionality that will allow us to transition between view controllers!
 
-To transition to new screens in iOS we use what are called *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell we want to trigger a *segue* to our *Display Note View Controller Screen*. To set up this segue all we have to do is ***Control-click*** from our *listNotesTableViewCell* in our Document Outline to our *Display Note View Controller* in our storyboard.
+To transition to new view in iOS we use *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell in the List Notes Table View Controller we want to trigger a segue to our Display Note View Controller Screen. Segues can be created programatically, but they can also be created in storyboards, which is how we're going to do it.
 
 > [action]
-***Control-click*** from the *listNotesTableViewCell* to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
+***Control-click*** starting on the *listNotesTableViewCell* and drag to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
 >
 ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/segue.mov)
 
 Notice that when we added the segue an arrow appeared pointing from our *List Notes Table View Controller* to our *Display Note View Controller* and that a new segue entry appeared in our Document Outline. We can click either of the two to view the segue's attributes.
 
- ![image showing changes from segue](./images/segue.png)
+![image showing changes from segue](./images/segue.png)
 
 #Segue Identifiers
 
@@ -27,9 +27,7 @@ Set the identifier of the segue that we created above to "displayNote".
 
 #The prepareForSegue() method
 
-<!-- ACTION: Explicitly spell out that students will never actually have to call PrepareForSegue themselves.  Make it clear that apple calls this without needing to be told to call it when a segue is performed.  To help students better grasp this, consider using viewDidLoad() as an example of this. Also spell out that this function is NOT responsible for actually calling/performing the segue itself.   -->
-
-When a segue is triggered, before the app actually transitions from one view controller to another, it calls a method called `prepareForSegue()`. The `prepareForSegue()` method is used when we want to take a specific action when a specific segue is triggered.
+When a segue is triggered, but before the segue actually happens, the system can notify us by calling a method called `prepareForSegue()`. This method doesn't actually perform the segue, and we will never call it ourselves. Instead, it's a way for us to be told that a segue is about to happen, so that we can do some set up work before the next view is displayed. 
 
 > [action]
 Add the following method to the List Notes Table View Controller:
@@ -61,13 +59,20 @@ All `print()` statements are printed to the console. The console can be opened b
 
 #Running the App!
 
-<!-- ACTION: Add a quick video showing how to do this   -->
-
 > [action]
 Before running your app, set the navigation controller as the *Initial View Controller*.
 
-Now when we tap a table view cell we should transition to the *Display Note View Controller* screen and a message should be printed to the console! Also, note that the navigation controller we added earlier is providing the back button functionality and that if we click either of the text boxes, a keyboard shows up and we can begin editing, although our changes won't be saved just yet. We'll add the note saving functionality in a later tutorial. =]
+![set navigation controller as initial view controller](./images/reset-initial-view-controller.png)
+
+Now when we tap a table view cell we should transition to the *Display Note View Controller* screen and a message should be printed to the console! Also, note that the navigation controller we added earlier is providing the back button functionality. Also, if you click either of the text boxes, a keyboard shows up and you can begin editing, although the changes won't be saved just yet. We'll add the note saving functionality in a later. =]
 
 ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P05-complete.mov)
 
-<!-- ACTION: Add a tl;dr info box containing all steps they should have completed on this page of the tutorial.  For an example, see page 1 of tutorial.   -->
+>[info]
+>###On this page, you should have:
+>
+>1. Created a segue from the listNotesTableViewCell to the Display Note View Controller.
+>2. Added the identifier *displayNote* to the segue
+>3. Added the `prepareForSegue()` method to the List Notes Table View Controller.
+>4. Made the navigation controller the initial view controller.
+>5. Run and tested your app
