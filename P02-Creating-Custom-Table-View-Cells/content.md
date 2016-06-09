@@ -133,7 +133,7 @@ Now that we are using a custom cell with type *ListNotesTableViewCell*, we must 
 Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` method with the following:
 >
     // 1
-    let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell") as! ListNotesTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath) as! ListNotesTableViewCell
 >    
     // 2
     cell.noteTitleLabel.text = "note's title"
@@ -143,7 +143,7 @@ Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexP
 
 So what did we change in the code above?
 
-1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. That code is a *downcast*, it's how we tell the compiler that we expect `dequeueReusableCellWithIdentifier(_:)` to return a more specific kind of `UITableViewCell`, in this case a `ListNotesTableViewCell`. The downcast works because `ListNotesTableViewCell` is a subclass of `UITableViewCell`.
+1. In this line the only difference between our previous implementation is that we appended `as! ListNotesTableViewCell` to the end. That code is a *downcast*, it's how we tell the compiler that we expect `dequeueReusableCellWithIdentifier(_:forIndexPath:)` to return a more specific kind of `UITableViewCell`, in this case a `ListNotesTableViewCell`. The downcast works because `ListNotesTableViewCell` is a subclass of `UITableViewCell`.
 
 2. Because `cell` now has type *ListNotesTableViewCell*, we can access the `noteTitle` and `noteModificationTime` properties that we just created.
 
@@ -163,4 +163,4 @@ Notice that the first cell is slightly hidden behind the *status bar*. We'll fix
 >3. Learned how to customize the look and feel of the labels by changing some of their visual properties.
 >4. Connected the prototype cell to our code by assigning it the custom class `ListNotesTableViewCell`.
 >5. Connected the labels from our prototype cell to code using *IBOutlet*s.
->6. Learned how to *downcast* an instance of an object to a subclass type. We downcast the `UITableViewCell` returned by `dequeueReusableCellWithIdentifier(_:)` to our custom `ListNotesTableViewCell`.
+>6. Learned how to *downcast* an instance of an object to a subclass type. We downcast the `UITableViewCell` returned by `dequeueReusableCellWithIdentifier(_:forIndexPath:)` to our custom `ListNotesTableViewCell`.

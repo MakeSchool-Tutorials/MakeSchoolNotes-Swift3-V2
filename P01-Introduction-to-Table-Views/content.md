@@ -65,7 +65,7 @@ Add these two methods inside the scope of the *ListNotesTableViewController* cla
     // 2
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       // 3
-      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell")
+      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath)
 >   
       // 4
       cell.textLabel?.text = "Yay - it's working!"
@@ -85,7 +85,7 @@ Let's take a look at what's happening line by line:
 3. This line is fetching the actual cell that will be displayed in the table view. Option click on `cell` to see the type: `UITableViewCell`. The identifier, `"listNotesTableViewCell"`, is a unique name that we give to the *prototype cell* of a table view in our storyboard in Interface Builder. After setting the identifier, we can reference the prototype cell in code using the identifier. (We will set the identifier for our cell in the next step.) The reason identifiers exist is because we might want to have more than one kind of cell in our table view. Using different identifiers will allow us to reference the different prototype designs that we create in Interface Builder.
 
 > [info]
-> Notice that we are *dequeueing* a *reusable cell*. This is actually an interesting performance optimization: it turns out that it's fairly expensive to create and lay out a brand new `UITableViewCell`. So instead of creating new cells as they're about to display on screen, and destroying them as they scroll out of view, `UITableView` relies on giving us previously constructed cells for us to update with new information. If there's no recycled cells ready to be reused, `dequeueReusableCellWithIdentifier` will give us a new one instead.
+> Notice that we are *dequeueing* a *reusable cell*. This is actually an interesting performance optimization: it turns out that it's fairly expensive to create and lay out a brand new `UITableViewCell`. So instead of creating new cells as they're about to display on screen, and destroying them as they scroll out of view, `UITableView` relies on giving us previously constructed cells for us to update with new information. If there's no recycled cells ready to be reused, `dequeueReusableCellWithIdentifier(_:forIndexPath:)` will give us a new one instead.
 
 4. Here we set the `text` property of our cell's `UILabel` to "Yay - it's working!".
 
