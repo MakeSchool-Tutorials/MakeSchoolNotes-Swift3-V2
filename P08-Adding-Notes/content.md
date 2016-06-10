@@ -34,22 +34,6 @@ Every time a view controller is about to be displayed on screen, the operating s
 
 Great! We are finally ready to create our first note!
 
-Currently, our Display Note View Controller doesn't contain any property to hold a note, let's add one now.
-
-> [action]
-Add the following near the top of the Display Note View Controller class to create a `note` property:
->
-    var note: Note?
-
-<!-- ACTION: It feels weird to ask this question without a bit more setup / explanation first. In fact, this note property isn't even used anywhere on this page. Probably it should be added and explained in a later section. -->
-
-**Why did we declare the `note` as an `Note?` (optional Note) and not just `Note`?**
-
-> [solution]
-The `note` must be of type `Note?` because it could either contain a value (in the case where an existing note is being modified) or it could be `nil` (in the case where we are creating a new note).
-
-We can now use the text from the text field and text view to create a new note and store it in the `note` property.
-
 > [action]
 Update the `prepareForSegue(_:sender:)` method in the Display Note View Controller class to the following:
 >
@@ -131,7 +115,6 @@ Also we still have the issue that our current app doesn't persist note data betw
 >
 >1. Linked the `noteTitleTextField` and `noteContentTextView` to the Display Note View Controller using IBOutlets.
 >2. Implemented `viewWillAppear()` in the Display Note View Controller and used it to delete the placeholder text.
->3. Added a `note` property to the Display Note View Controller.
->4. Modified Display Note View Controller's `prepareForSegue(_:sender:)` method to create a new `Note()` with the user's input.
->5. Modified `prepareForSegue(_:sender:)` again to place the created note into the List Notes Table View Controller's array.
->6. Tried running the app to see what happens.
+>3. Modified Display Note View Controller's `prepareForSegue(_:sender:)` method to create a new `Note()` with the user's input.
+>4. Modified `prepareForSegue(_:sender:)` again to place the created note into the List Notes Table View Controller's array.
+>5. Tried running the app to see what happens.

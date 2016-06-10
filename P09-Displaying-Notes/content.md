@@ -3,7 +3,23 @@ title: "Displaying Notes"
 slug: displaying-notes
 ---
 
-In this tutorial we will add the functionality that allows our users to modify existing notes. Remember that a user's notes are stored in the `notes` array in the List Notes Table View Controller and that all note modifications happen in the Display Note View Controller. When a user taps a cell in the table view in the List Notes Table View Controller, we must pass the corresponding note to the Display Note View Controller so that it can be displayed and modified.
+In this section we will make it so users can modify existing notes. Remember that the user's notes are stored in the `notes` array in the List Notes Table View Controller and that any modifications they would make will happen in the Display Note View Controller. When a user taps a cell in the List Notes Table View Controller, we must pass the corresponding note to the Display Note View Controller so that it can be displayed and modified.
+
+Currently, our Display Note View Controller doesn't contain any property to hold a note, let's add one now.
+
+> [action]
+Add the following near the top of the Display Note View Controller class to create a `note` property:
+>
+    var note: Note?
+
+<!-- ACTION: It feels weird to ask this question without a bit more setup / explanation first. In fact, this note property isn't even used anywhere on this page. Probably it should be added and explained in a later section. -->
+
+**Why did we declare the `note` as an `Note?` (optional Note) and not just `Note`?**
+
+> [solution]
+The `note` must be of type `Note?` because it could either contain a value (in the case where an existing note is being modified) or it could be `nil` (in the case where we are creating a new note).
+
+We can now use the text from the text field and text view to create a new note and store it in the `note` property.
 
 #Determining the Selected Note
 
