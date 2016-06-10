@@ -5,7 +5,7 @@ slug: adding-notes
 
 Now that we have the table view set up correctly, let's add some note taking functionality!
 
-#Removing the Default Text
+##Removing the Default Text
 
 Currently, when we tap the **+** button and segue to the Display Note View Controller, we are greeted with this screen:
 

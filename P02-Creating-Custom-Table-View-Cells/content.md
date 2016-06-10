@@ -5,7 +5,7 @@ slug: custom-table-view-cells
 
 In the last step, we got a table view up and running. We're going to use this table view to display a list of each of the notes the user has made. We're going to customize the table view cells so that we can display the note's title and modification time.
 
-#Resizing our Cell
+##Resizing our Cell
 
 We're going to need two labels to display the note's title and modification time. To ensure we have enough room for both of our labels, let's make the cell a little bit bigger.
 

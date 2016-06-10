@@ -5,8 +5,6 @@ slug: deleting-notes
 
 Now that we can add new notes and modify existing notes, let's make it so users can delete notes.
 
-# Deleting Notes
-
 We would like our users to be able to swipe right on a note and be presented with a delete option:
 
 ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/delete.mov)

@@ -5,9 +5,9 @@ slug: realm-helpers
 
 In this section of the tutorial we will create Realm helper methods that will make it easier to integrate Realm into our project in the next section. The Realm helper methods will allow us to easily add new notes, update existing notes, delete old notes, and retrieve existing notes.
 
-# Updating the Note Class
+## Updating the Note Class
 
-**How do we update the Note class to be used with Realm?**
+**What do we need to do to update the Note class so that it can be used with Realm?** Don't be afraid to refer back to the previous page; the "Realm's Object Type" section in particular.
 
 > [solution]
 We need to import the `RealmSwift` header, make `Note` a subclass of Realm's `Object` class, and make the properties are `dynamic`. The `Note.swift` file should look as follows:

@@ -7,7 +7,7 @@ With the ability to add, modify, and delete notes, our app is nearly finished! T
 
 [Realm](https://realm.io/) is a fast and easy-to-use mobile database that's used by many companies, including Google and Amazon. Realm is used to save and retrieve objects locally on our user's device. For Make School Notes, we want to save all of a user's notes when they close the app, and retrieve all of their notes when they reopen the app.
 
-#Importing the Realm Framework
+##Importing the Realm Framework
 
 When using the Realm framework in Swift you must use the following import statement:
 
