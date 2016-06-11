@@ -18,12 +18,12 @@ Instead, it would be better to show an empty text view so that our users can beg
 2. Create an IBOutlet for the text field as well, name it "noteTitleTextField".
 3. Add the following method to the Display Note View Controller:
 >
-        override func viewWillAppear(animated: Bool) {
-          super.viewWillAppear(animated)
-          // 1
-          noteTitleTextField.text = ""
-          noteContentTextView.text = ""
-        }
+	override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // 1
+        noteTitleTextField.text = ""
+        noteContentTextView.text = ""
+    }
 
 
 So what's going on with this whole `viewWillAppear(animated: Bool)` thing?
@@ -37,29 +37,29 @@ Great! We are finally ready to create our first note!
 > [action]
 Update the `prepareForSegue(_:sender:)` method in the Display Note View Controller class to the following:
 >
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      if let identifier = segue.identifier {
-        if identifier == "Cancel" {
-          print("Cancel button tapped")
-        } else if identifier == "Save" {
-          print("Save button tapped")
->
-          // 1
-          let note = Note()
-          // 2
-          note.title = noteTitleTextField.text ?? ""
-          note.content = noteContentTextView.text
-          // 3
-          note.modificationTime = NSDate()
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == "Cancel" {
+                print("Cancel button tapped")
+            } else if identifier == "Save" {
+                print("Save button tapped")
+>                
+                // 1
+                let note = Note()
+                // 2
+                note.title = noteTitleTextField.text ?? ""
+                note.content = noteContentTextView.text
+                // 3
+                note.modificationTime = NSDate()
+            }
         }
-      }
     }
 
 So what did we change in the code above?
 
-1. When the save button is pressed, we need to store the text from the noteTitleTextField and noteContentTextView. What better place to put it, than in our data model, the `Note` class? So first, we create an instance of `Note`.
+1. When the save button is pressed, we need to store the text from the `noteTitleTextField` and `noteContentTextView`. What better place to put it, than in our data model, the `Note` class? So first, we create an instance of `Note`.
 
-2. We are setting the note's title and content to the text contained in the noteTitleTextField and noteContentTextView respectively. Recall that the `??` is the *nil coalescing operator* and provides a default value if the object is `nil`.
+2. We are setting the note's title and content to the text contained in the `noteTitleTextField` and `noteContentTextView` respectively. Recall that the `??` is the *nil coalescing operator* and provides a default value if the object is `nil`.
 
 3. We are setting the note's modification time to the current time.
 
@@ -72,26 +72,26 @@ Once the user is finished creating their note, we need a way to store the new no
 > [action]
 Add the lines marked `1` `2` and `3` to the `prepareForSegue(_:sender:)` method in the Display Note View Controller class:
 >
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      if let identifier = segue.identifier {
-        if identifier == "Cancel" {
-          print("Cancel button tapped")
-        } else if identifier == "Save" {
-          print("Save button tapped")
->
-          let note = Note()
-          note.title = noteTitleTextField.text ?? ""
-          note.content = noteContentTextView.text
-          note.modificationTime = NSDate()
->
-          // 1
-          let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
-          // 2
-          listNotesTableViewController.notes.append(note)
-          // 3
-          listNotesTableViewController.tableView.reloadData()
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == "Cancel" {
+                print("Cancel button tapped")
+            } else if identifier == "Save" {
+                print("Save button tapped")
+>                
+                let note = Note()
+                note.title = noteTitleTextField.text ?? ""
+                note.content = noteContentTextView.text
+                note.modificationTime = NSDate()
+>                
+                // 1
+                let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
+                // 2
+                listNotesTableViewController.notes.append(note)
+                // 3
+                listNotesTableViewController.tableView.reloadData()
+            }
         }
-      }
     }
 
 We are now adding the new note to the `notes` array in List Notes Table View Controller. Read on to find out how:
