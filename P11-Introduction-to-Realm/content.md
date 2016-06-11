@@ -36,7 +36,7 @@ Despite the fact that we added a special superclass and a fancy keyword to the p
 	chris.name = "Chris"
 	chris.age = 23
 
-## Realm's Realm Type
+##Realm's Realm Type
 
 Realm is the name of the framework; the framework also has an object that has type `Realm`. We save and retrieve objects from the *default Realm*. Realm (the framework) can be configured in many different ways, but for our purposes, the default Realm will suffice.
 
@@ -48,7 +48,7 @@ The `try` keyword in the above code signals that the call to `Realm()` can *thro
 
 In Swift, errors are handled using the do/try/catch paradigm. For more information on the do/try/catch paradigm of error handling, check out this quick [tutorial](https://www.makeschool.com/tutorials/advanced-ios-development/error-handling-swift).
 
-## Write Transactions in Realm
+##Write Transactions in Realm
 
 *Write transactions* are a special way to inform Realm that we want to change something in the default Realm. For instance, if we wanted to add, modify, or delete an object we would do so inside of a write transaction. (We do not need to retrieve objects inside write transactions because object retrieval does not change anything in the default Realm.)
 
@@ -59,7 +59,7 @@ To start a write transaction, we do the following:
 	  // save, modify, or delete some object(s) here
 	}
 
-## Saving Objects
+##Saving Objects
 
 Once inside the write transaction, we can save an object using the `add()` method. We pass the object we want to save to the `add()` method. If we wanted to save the `chris` variable from above, we would do the following:
 
@@ -69,7 +69,7 @@ Once inside the write transaction, we can save an object using the `add()` metho
 
 The above code saves the `chris` variable to the default Realm.
 
-## Updating Objects
+##Updating Objects
 
 Updating objects in the default Realm is really easy. All we have to do is create a write transaction and modify the object as desired. If we wanted to change the age property of the `chris` variable, we would do the following:
 
@@ -79,7 +79,7 @@ Updating objects in the default Realm is really easy. All we have to do is creat
 
 The above code will both update the age of `chris` and save it in the default realm.
 
-## Retrieving Objects
+##Retrieving Objects
 
 We use the `objects()` method to retrieve objects. We pass the *type* of the desired object to the `object()` method to specify what kind of objects we want to retrieve. If we wanted to retrieve all of our *Person* objects we would do the following:
 
@@ -88,13 +88,13 @@ We use the `objects()` method to retrieve objects. We pass the *type* of the des
 
 The call to `realm.objects(Person)` will return all of the objects of type `Person` that have been saved to the default Realm.
 
-## Realm's Results Type
+##Realm's Results Type
 
 In the above code, the call to `realm.objects(Person)` returns an object of type `Results<Person>`. The `objects()` method is special because it returns a template type, indicated by the angled brackets `<>`. Template types are useful because they can take on many different types. For instance, the return type in the code above is `Results<Person>` because we requested all `Person` objects from our default Realm. However, if we had a `Dog` type and requested all `Dog`s from our default Realm, the return type would be `Results<Dog>`.
 
 The `Results` type is similar to arrays and can be indexed using square bracket `[]` notation or using `for..in` loops.  
 
-## Filtering Objects
+##Filtering Objects
 
 What if we wanted to retrieve a specific instance of the *Person* class?
 
@@ -103,7 +103,7 @@ In Realm, there is no direct way to retrieve a single object. We must retrieve a
 	let realm = try! Realm()
 	let chris = realm.objects(Person).filter("name = 'Chris' AND age = 23")
 
-## Deleting Objects
+##Deleting Objects
 
 Once inside the write transaction, we can delete an object using the `delete()` method. We pass the object we want to delete to the `delete()` method. If we wanted to delete the `chris` variable, we would do the following:
 

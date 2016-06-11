@@ -35,7 +35,7 @@ Add the following method to the *ListNotesViewController* class:
 
 And that's all we have to do to delete a note! =]
 
-# Running the App!
+#Running the App!
 
 You should now be able to add, modify, and delete notes!
 

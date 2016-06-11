@@ -130,7 +130,7 @@ Add the following to the *Display Note View Controller* class:
 
 The code above is identical to the code we added in the `prepareForSegue()` method in the *List Notes Table View Controller*.
 
-# Running the App!
+#Running the App!
 
 Now when you run your app each segue should print the correct message to the screen like this:
 

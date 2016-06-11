@@ -57,7 +57,7 @@ What's going on here?
 
 4. We are setting the `note` property of the Display Note View Controller to the note corresponding to the cell that the user tapped.
 
-# Displaying the Note
+#Displaying the Note
 
 Now that the note is being passed to the Display Note View Controller, we must display its title and contents.
 
@@ -87,7 +87,7 @@ Because the Display Note View Controller is used to both create new notes and mo
 
 3.  This code is executed if the `note` property was `nil`. This happens if we are creating a new note, so we set the text field and text view to empty strings to ensure that our users can immediately begin typing their new note.
 
-# Updating the Table View
+#Updating the Table View
 
 We've done it! You can now add new notes and modify existing notes. However, there is a small problem: when saving modifications to existing notes, they are added to the `notes` array as new notes! Try it out and see for yourself.
 
@@ -125,7 +125,7 @@ Notice that we are once again using the `note` property to take different action
 
 3. Because we changed the contents of the `notes` array (by either adding a new note or modifying an existing note), we must force the table view to reload its data. 
 
-# Running the App!
+#Running the App!
 
 Congratulations! We now have a note taking app that can add new notes and edit existing notes! Run it and try it out!
 

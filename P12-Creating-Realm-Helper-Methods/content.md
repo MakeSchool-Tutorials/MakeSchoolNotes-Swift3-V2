@@ -5,7 +5,7 @@ slug: realm-helpers
 
 In this section of the tutorial we will create Realm helper methods that will make it easier to integrate Realm into our project in the next section. The Realm helper methods will allow us to easily add new notes, update existing notes, delete old notes, and retrieve existing notes.
 
-## Updating the Note Class
+##Updating the Note Class
 
 **What do we need to do to update the Note class so that it can be used with Realm?** Don't be afraid to refer back to the previous page; the "Realm's Object Type" section in particular.
 
@@ -22,7 +22,7 @@ We need to import the `RealmSwift` header, make `Note` a subclass of Realm's `Ob
 	}
 
 
-# Creating Realm Helper Methods
+#Creating Realm Helper Methods
 
 > [action]
 Create a new file called `RealmHelper.swift` in the *Helpers* group.
@@ -37,7 +37,7 @@ First we will want to import RealmSwift and define a RealmHelper class as follow
 	  //static methods will go here
 	}
 
-## Static Methods
+##Static Methods
 
 Static methods are methods that can be called directly on the class, without having to instantiate an instance of the class first. For example, if we add a static method called `doSomething()` to the `RealmHelper` class, we can call it like this:
  
@@ -56,7 +56,7 @@ To declare a static method is very easy, just add the `static` keyword to the fr
 		}
 	}
 
-## Add Note
+##Add Note
 
 We want to define a static method that accepts a `Note` object as its one parameter and then saves that note to the default Realm.
 
@@ -74,7 +74,7 @@ We want to define a static method that accepts a `Note` object as its one parame
 		}
 	}
 
-## Delete Note
+##Delete Note
 
 We want to define a static method that accepts a `Note` object as its one parameter and then deletes that note from the default Realm.
 
@@ -93,7 +93,7 @@ We want to define a static method that accepts a `Note` object as its one parame
 		}
 	}
 
-## Update Note
+##Update Note
 
 We want to define a static method that accepts a `noteToBeUpdated` and a `newNote`. The `noteToBeUpdated` is assumed to already be in the default Realm - we want to update that note's contents with the contents of the `newNote`, and we want to do it in such a way that the it's updated in Realm too.
 
@@ -114,7 +114,7 @@ We want to define a static method that accepts a `noteToBeUpdated` and a `newNot
 		}
 	}
 
-## Retrieve Notes
+##Retrieve Notes
 
 We want to define a static method that retrieves all notes from the default Realm. Unlike the other helper methods, this one should return a `Results<Note>` object. For bonus points, see if you can figure out how to sort the notes based on their modification time.
 
@@ -132,7 +132,7 @@ We want to define a static method that retrieves all notes from the default Real
 >
 Notice that I am using a method provided by Realm called `sorted()` to sort the returned objects in ascending order by their `modificationTime` property.
 
-# Wrapping Up
+#Wrapping Up
 
 We now have all the helper methods we will need to integrate Realm into Make School Notes! In the next section let's (finally) add persistence to our Make School Notes app!
 

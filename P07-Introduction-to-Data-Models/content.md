@@ -110,7 +110,7 @@ Remember that the table view calls this method for each row in the table view, a
 3. We set the text of the `noteTitleLabel` in the cell to be the title of the note.
 4. We are converting the `modificationTime` of the note (which is of type `NSDate`) to a `String` using a method that was included in the starter project. We are then setting the `text` property of the `noteModificationTimeLabel`'s to be the modification time of the note.
 
-# Running the App!
+#Running the App!
 
 At this point, your app should look something like this:
 

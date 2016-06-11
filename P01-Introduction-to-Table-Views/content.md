@@ -91,7 +91,7 @@ Let's take a look at what's happening line by line:
 
 5. We return the updated cell to be used within the table view.
 
-## Setting the Identifier
+##Setting the Identifier
 
 Before we can run our app, we need to set the identifier of the prototype cell in the storyboard to match the identifier we used in the code above:
 
