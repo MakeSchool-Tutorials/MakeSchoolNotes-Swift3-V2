@@ -5,7 +5,7 @@ slug: intro-segues
 
 Now that we have our view controllers set up, let's add the functionality that will allow us to transition between view controllers!
 
-To transition to new view in iOS we use *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell in the List Notes Table View Controller we want to trigger a segue to our Display Note View Controller Screen. Segues can be created programatically, but they can also be created in storyboards, which is how we're going to do it.
+To transition to new view in iOS we use *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell in the List Notes Table View Controller we want to trigger a segue to our Display Note View Controller Screen. Segues can be created programmatically, but they can also be created in storyboards, which is how we're going to do it.
 
 > [action]
 ***Control-click*** starting on the *listNotesTableViewCell* and drag to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
