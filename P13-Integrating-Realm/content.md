@@ -54,7 +54,7 @@ Update the `notes` property as follows:
     	}
     }
 
-We are using the `didSet` *property observer* to update the table view whenever our `notes` property is changed. A property observer is some code you can add to a property that will be triggered whenever the property changes. With `didSet` the code is triggered immediately following a property change. The other property observer is called `willSet`, and is triggered immediately before a property is going to change.
+Remember the `didSet` from before?  As a reminder, it's a kind of *property observer* and it allows us to execute some code whenever the property its declared under changes. In this case, every time the `notes` property changes, we tell the table view to reload its data.
 
 ##Deleting Notes
 

@@ -88,8 +88,6 @@ Add the lines marked `1` `2` and `3` to the `prepareForSegue(_:sender:)` method 
                 let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
                 // 2
                 listNotesTableViewController.notes.append(note)
-                // 3
-                listNotesTableViewController.tableView.reloadData()
             }
         }
     }
@@ -100,7 +98,27 @@ We are now adding the new note to the `notes` array in List Notes Table View Con
 
 2. We are adding the new note to the `notes` array.
 
-3. After adding the new note to our `notes` array, the table view becomes outdated because it no longer displays all of a user's notes. Specifically, the newly added note is not displayed. We can force the table view to update by calling the `reloadData()` method.
+#Property Observers
+
+This is all well and good, but we have a problem. 
+
+> [action]
+> Try running the app. Create and a new note and save it. See any problems? Our table view is still blank!
+
+We have to tell the table view to update itself when there are new notes.
+
+> [action]
+> Open `ListNotesTableViewController` and modify your `notes` property to look as follows:
+> 
+```
+var notes = [Note]() {
+	didSet {
+   		tableView.reloadData()
+   	}
+}
+```
+
+Look at that fancy syntax!  Ooh. We are using the `didSet` *property observer* to tell the table view to reload all of its data whenever our `notes` property is changed. A property observer is some code you can add to a property that will be triggered whenever the property changes. With `didSet` the code is triggered immediately following a property change. There's a second property observer is called `willSet`, which is triggered immediately before a property is about to change.
 
 #Running the App!
 

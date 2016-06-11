@@ -3,7 +3,7 @@ title: "Displaying Notes"
 slug: displaying-notes
 ---
 
-In this section we will make it so users can modify existing notes. Remember that the user's notes are stored in the `notes` array in the List Notes Table View Controller and that any modifications they would make will happen in the Display Note View Controller. When a user taps a cell in the List Notes Table View Controller, we must pass the corresponding note to the Display Note View Controller so that it can be displayed and modified.
+In this section we will make it so users can modify existing notes. Remember that the user's notes are stored in the `notes` array in the List Notes Table View Controller, but any modifications they would make will happen in the Display Note View Controller. When a user taps a cell in the List Notes Table View Controller, we must pass the corresponding note to the Display Note View Controller so that it can be displayed and modified.
 
 Currently, our Display Note View Controller doesn't contain any property to hold a note, so let's add one now.
 
@@ -97,33 +97,32 @@ To solve this problem, we are going to need to check wether we are creating a ne
 Update `prepareForSegue(_:sender:)` in the *DisplayNoteViewController* class as follows:
 >
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
-      if segue.identifier == "Save" {
->
-        if let note = note {
-          // 1
-          note.title = noteTitleTextField.text ?? ""
-          note.content = noteContentTextView.text ?? ""
-        } else {
-          // 2
-          let newNote = Note()
-          newNote.title = noteTitleTextField.text ?? ""
-          newNote.content = noteContentTextView.text ?? ""
-          newNote.modificationTime = NSDate()
-          listNotesTableViewController.notes.append(newNote)
+        let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
+        if segue.identifier == "Save" {
+            if let note = note {
+                // 1
+                note.title = noteTitleTextField.text ?? ""
+                note.content = noteContentTextView.text ?? ""
+                // 2
+                listNotesTableViewController.tableView.reloadData()
+            } else {
+                // 3
+                let newNote = Note()
+                newNote.title = noteTitleTextField.text ?? ""
+                newNote.content = noteContentTextView.text ?? ""
+                newNote.modificationTime = NSDate()
+                listNotesTableViewController.notes.append(newNote)
+            }
         }
-        // 3
-        listNotesTableViewController.tableView.reloadData()
-      }
     }
 
 Notice that we are once again using the `note` property to take different actions depending on whether we are creating a new note or modifying an existing note.
 
 1. We only reach this code if the `note` property contains a value (indicating that we are modifying an existing note) so we only need to update the title and content of the note. (Notice that we do not have to pass the modified note back to the table view because class types are *passed by reference* in Swift.)
 
-2. This code is executed if the `note` property was `nil` (indicating that we are creating a new note) so we create the new note and add it to the `notes` array.
+2. Here we tell the table view to reload its data, so that any edits to an existing note we've made will be reflected in the notes list.
 
-3. Because we changed the contents of the `notes` array (by either adding a new note or modifying an existing note), we must force the table view to reload its data. 
+3. This code is executed if the `note` property was `nil` (indicating that we are creating a new note) so we create the new note and add it to the `notes` array. Notice we don't have to tell the ListNotesTableViewController to refresh in this case, because our `didSet` property observer takes care of that for us!
 
 #Running the App!
 
