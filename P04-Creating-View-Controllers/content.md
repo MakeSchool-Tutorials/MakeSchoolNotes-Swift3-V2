@@ -6,9 +6,9 @@ slug: creating-view-controllers
 For Make School Notes, when a user clicks on a note in the table view, we want to display the content of that note in a new view. Remember that in iOS, each view controller can display one view.
 
 > [action]
-Add a *View Controller* from the Object library to your storyboard by dragging it to a blank area. Set the custom class of this view controller to *DisplayNoteViewController*.
+Add a *View Controller* from the Object library to your storyboard by dragging it to a blank area. Click the view controller, then click the identity inspector button on the right panel. Set the custom class of this view controller to *DisplayNoteViewController*.
 >
-![image displaying new view controller in storyboard](./images/addVC.png)
+![image displaying new view controller in storyboard](./images/addVC-labeled.png)
 
 #Displaying and Editing Text
 
