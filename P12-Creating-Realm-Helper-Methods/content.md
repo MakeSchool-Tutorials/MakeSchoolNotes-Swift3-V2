@@ -103,11 +103,11 @@ We want to define a static method that accepts a `noteToBeUpdated` and a `newNot
 <!-- html comment to break boxes -->
 
 > [solution]
-> If you couldn't figure it out on your own, that's okay. It's a little hard to explan, but reading the code should make it pretty clear what's happening:
+> If you couldn't figure it out on your own, that's okay. It's a little hard to explain, but reading the code should make it pretty clear what's happening:
 >
 	static func updateNote(noteToBeUpdated: Note, newNote: Note) {
 		let realm = try! Realm()
-		try! realm.write() { 
+		try! realm.write() {
 			noteToBeUpdated.title = newNote.title
 			noteToBeUpdated.content = newNote.content
 			noteToBeUpdated.modificationTime = newNote.modificationTime
