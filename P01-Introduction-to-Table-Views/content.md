@@ -86,6 +86,8 @@ Let's take a look at what's happening line by line:
 
 > [info]
 > Notice that we are *dequeueing* a *reusable cell*. This is actually an interesting performance optimization: it turns out that it's fairly expensive to create and lay out a brand new `UITableViewCell`. So instead of creating new cells as they're about to display on screen, and destroying them as they scroll out of view, `UITableView` relies on giving us previously constructed cells for us to update with new information. If there's no recycled cells ready to be reused, `dequeueReusableCellWithIdentifier(_:forIndexPath:)` will give us a new one instead.
+>
+The nice thing is that this is all handled for you automatically by Apple's `UITableView` code. Apple's code figures out which cells it can reuse and when cells need to be created! All you have to do is call `dequeueReusableCellWithIdentifier(_:forIndexPath:)`.
 
 4. Here we set the `text` property of our cell's `UILabel` to "Yay - it's working!".
 
