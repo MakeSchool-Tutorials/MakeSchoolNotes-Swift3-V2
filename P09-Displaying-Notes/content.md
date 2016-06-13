@@ -67,16 +67,17 @@ Recall that the `viewWillAppear()` method is called immediately before the view 
 Modify the `viewWillAppear()` method in the *DisplayNoteViewController* class as follows:
 >
     override func viewWillAppear(animated: Bool) {
-      // 1
-      if let note = note {
-        // 2
-        noteTitleTextField.text = note.title
-        noteContentTextView.text = note.content
-      } else {
-        // 3
-        noteTitleTextField.text = ""
-        noteContentTextView.text = ""
-      }
+        super.viewWillAppear(animated)
+        // 1
+        if let note = note {
+            // 2
+            noteTitleTextField.text = note.title
+            noteContentTextView.text = note.content
+        } else {
+            // 3
+            noteTitleTextField.text = ""
+            noteContentTextView.text = ""
+        }
     }
 
 Because the Display Note View Controller is used to both create new notes and modify existing notes, we must check whether the `note` property is `nil` (which would indicate that we are creating a new note) or if it contains a value (which would indicate that we are modifying an existing note) to determine the appropriate action.
