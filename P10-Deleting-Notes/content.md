@@ -12,7 +12,7 @@ We would like our users to be able to swipe right on a note and be presented wit
 Luckily, table views make this incredibly easy.
 
 > [action]
-Add the following method to the *ListNotesViewController* class:
+Add the following method to the *ListNotesTableViewController* class:
 >
     // 1
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
