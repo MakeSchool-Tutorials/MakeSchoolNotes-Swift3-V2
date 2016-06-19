@@ -14,7 +14,6 @@ The final product will look something like this:
 The *Make School Notes* tutorial consists of three parts:
 
 1. In the first part we will focus on building the **interface** of our app. You will learn how to:
-
 	* Display lists of information using table views
 	* Create custom table view cells in Interface Builder
 	* Create new view controllers
@@ -23,14 +22,12 @@ The *Make School Notes* tutorial consists of three parts:
 	* Trigger user initiated actions using bar button items
 
 2. The second part is devoted to programming our app's **logic**. You will learn how to:
-
 	* Create appropriate data models
 	* Pass data between view controllers
 	* Program the functionality to add, display, modify, and delete notes
 	* Connect app interface to app logic
 
 3. In the third and final part we will focus on **persisting data** between app launches. You will learn how to:
-
 	* Locally store information using the Realm framework
 	* Create static helper methods
 	* Modify existing code to integrate data persistence

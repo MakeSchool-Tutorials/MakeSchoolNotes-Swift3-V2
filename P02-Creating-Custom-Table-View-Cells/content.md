@@ -48,6 +48,8 @@ Let's customize the look of our labels by changing the text size, font, and colo
 >
 ![image showing listNotesTableViewCell with custom text](./images/custom.png)
 
+<!--  -->
+
 > [info]
 > If you want to make your cell look like mine, I did the following:
 >
