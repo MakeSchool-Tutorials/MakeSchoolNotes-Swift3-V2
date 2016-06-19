@@ -20,14 +20,14 @@ Notice that when we added the segue an arrow appeared pointing from our *List No
 
 Segue identifiers are used to uniquely identify segues. We can set a segue's identifier in the Attributes inspector.
 
-> action
+> [action]
 Set the identifier of the segue that we created above to "displayNote".
 >
 ![image showing changes from segue](./images/segue-id.png)
 
 #The prepareForSegue() method
 
-When a segue is triggered, but before the segue actually happens, the system can notify us by calling a method called `prepareForSegue()`. This method doesn't actually perform the segue, and we will never call it ourselves. Instead, it's a way for us to be told that a segue is about to happen, so that we can do some set up work before the next view is displayed. 
+When a segue is triggered, but before the segue actually happens, the system can notify us by calling a method called `prepareForSegue()`. This method doesn't actually perform the segue, and we will never call it ourselves. Instead, it's a way for us to be told that a segue is about to happen, so that we can do some set up work before the next view is displayed.
 
 > [action]
 Add the following method to the List Notes Table View Controller:
