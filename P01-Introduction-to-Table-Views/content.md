@@ -58,14 +58,14 @@ Let's add the necessary code to our project -- we will discuss it afterwards.
 Add these two methods inside the scope of the *ListNotesTableViewController* class:
 >
     // 1
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 10
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
 >   
     // 2
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       // 3
-      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath)
 >   
       // 4
       cell.textLabel?.text = "Yay - it's working!"

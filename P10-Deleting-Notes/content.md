@@ -15,11 +15,11 @@ Luckily, table views make this incredibly easy.
 Add the following method to the *ListNotesTableViewController* class:
 >
     // 1
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // 2
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             // 3
-            notes.removeAtIndex(indexPath.row)
+            notes.remove(at: indexPath.row)
             // 4
             tableView.reloadData()
         }

@@ -17,7 +17,7 @@ During this tutorial you have learned how to:
 * Pass data between view controllers
 * Program the functionality to add, display, modify, and delete notes
 * Connect app interface to app logic
-* Persist data using the Realm framework
+* Persist data using the CoreData framework
 * Create static helper methods
 * Modify existing code to integrate data persistence
 

@@ -43,15 +43,15 @@ Now that you know how to add and customize bar button items, try adding the Canc
 
 Great! We have successfully added the necessary bar buttons items for Make School Notes! If you tried running the app and clicking the **+** button you will have noticed that it doesn't actually do anything yet. Let's fix that by creating a new segue from the + button to the *Display Note View Controller*.
 
->[action] Create a *show* segue from the **+** button to the *Display Note View Controller*. Start by selecting the **+** button, then **control+clicking** on it and dragging to the *Display Note View Controller*. 
+>[action] Create a *show* segue from the **+** button to the *Display Note View Controller*. Start by selecting the **+** button, then **control+clicking** on it and dragging to the *Display Note View Controller*.
 >
 > ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addNoteSegue.mov)
-> 
+>
 > Set the segue identifier to "addNote".
 >
 Next, update the `prepareForSegue()` method in the *List Notes Table View Controller* as follows:
 >
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let identifier = segue.identifier {
         if identifier == "displayNote" {
           print("Table view cell tapped")

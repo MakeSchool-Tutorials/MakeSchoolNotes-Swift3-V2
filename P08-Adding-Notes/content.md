@@ -18,7 +18,7 @@ Instead, it would be better to show an empty text view so that our users can beg
 2. Create an IBOutlet for the text field as well, name it "noteTitleTextField".
 3. Add the following method to the Display Note View Controller:
 >
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 1
         noteTitleTextField.text = ""
@@ -37,7 +37,7 @@ Great! We are finally ready to create our first note!
 > [action]
 Update the `prepareForSegue(_:sender:)` method in the Display Note View Controller class to the following:
 >
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "Cancel" {
                 print("Cancel button tapped")
@@ -50,7 +50,7 @@ Update the `prepareForSegue(_:sender:)` method in the Display Note View Controll
                 note.title = noteTitleTextField.text ?? ""
                 note.content = noteContentTextView.text
                 // 3
-                note.modificationTime = NSDate()
+                note.modificationTime = Date()
             }
         }
     }
@@ -85,7 +85,7 @@ Add the lines marked `1` `2` and `3` to the `prepareForSegue(_:sender:)` method 
                 note.modificationTime = NSDate()
 >                
                 // 1
-                let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
+                let listNotesTableViewController = segue.destination as! ListNotesTableViewController
                 // 2
                 listNotesTableViewController.notes.append(note)
             }
@@ -100,7 +100,7 @@ We are now adding the new note to the `notes` array in List Notes Table View Con
 
 #Property Observers
 
-This is all well and good, but we have a problem. 
+This is all well and good, but we have a problem.
 
 > [action]
 > Try running the app. Create and a new note and save it. See any problems? Our table view is still blank!
@@ -109,7 +109,7 @@ We have to tell the table view to update itself when there are new notes.
 
 > [action]
 > Open `ListNotesTableViewController` and modify your `notes` property to look as follows:
-> 
+>
 ```
 var notes = [Note]() {
 	didSet {
