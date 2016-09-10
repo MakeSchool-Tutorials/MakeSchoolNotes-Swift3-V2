@@ -24,7 +24,7 @@ When creating a new note, we used the `prepareForSegue()` method to pass a *newl
 > [action]
 Add the following to the `prepareForSegue(_:sender:)` method in the ListNotesTableViewController class:
 >
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let identifier = segue.identifier {
         if identifier == "displayNote" {
           print("Table view cell tapped")
@@ -34,7 +34,7 @@ Add the following to the `prepareForSegue(_:sender:)` method in the ListNotesTab
           // 2
           let note = notes[indexPath.row]
           // 3
-          let displayNoteViewController = segue.destinationViewController as! DisplayNoteViewController
+          let displayNoteViewController = segue.destination as! DisplayNoteViewController
           // 4
           displayNoteViewController.note = note
 >          
@@ -46,14 +46,14 @@ Add the following to the `prepareForSegue(_:sender:)` method in the ListNotesTab
 
 What's going on here?
 
-1. Every table view has a property called `indexPathForSelectedRow`. When a user has selected a cell from a table view, we can use this method to access that particular cell's index path. Remember, an index path has `section` and `row` properties, which we can use to associate the selected table view cell with the data model backing it, in this case the `notes` array. 
+1. Every table view has a property called `indexPathForSelectedRow`. When a user has selected a cell from a table view, we can use this method to access that particular cell's index path. Remember, an index path has `section` and `row` properties, which we can use to associate the selected table view cell with the data model backing it, in this case the `notes` array.
 
 	> [info]
 	> Notice that we are forcefully unwrapping the `indexPathForSelectedRow` property. We have to be sure that `indexPathForSelectedRow` is not nil, otherwise this will cause a crash. In this case, we are sure that this is safe because we will only execute this code when the segue identifier is set to *displayNote*, which can only happen when a user has just selected a cell from the table view.
 
 2. Because our table view only has one section, we can uniquely identify each cell only using the `row` property of its corresponding index path. We use `indexPath.row` to retrieve the note from the `notes` array that corresponds to the touched cell.
 
-3. We are get access to the Display Note View Controller using the segue's `destinationViewController` property. Notice we downcast it, just like we did before for the segue from the Display Note View Controller.
+3. We are get access to the Display Note View Controller using the segue's `destination` property. Notice we downcast it, just like we did before for the segue from the Display Note View Controller.
 
 4. We are setting the `note` property of the Display Note View Controller to the note corresponding to the cell that the user tapped.
 
@@ -66,7 +66,7 @@ Recall that the `viewWillAppear()` method is called immediately before the view 
 > [action]
 Modify the `viewWillAppear()` method in the *DisplayNoteViewController* class as follows:
 >
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 1
         if let note = note {
@@ -97,8 +97,8 @@ To solve this problem, we are going to need to check wether we are creating a ne
 > [action]
 Update `prepareForSegue(_:sender:)` in the *DisplayNoteViewController* class as follows:
 >
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let listNotesTableViewController = segue.destination as! ListNotesTableViewController
         if segue.identifier == "Save" {
             if let note = note {
                 // 1
@@ -111,7 +111,7 @@ Update `prepareForSegue(_:sender:)` in the *DisplayNoteViewController* class as 
                 let newNote = Note()
                 newNote.title = noteTitleTextField.text ?? ""
                 newNote.content = noteContentTextView.text ?? ""
-                newNote.modificationTime = NSDate()
+                newNote.modificationTime = Date()
                 listNotesTableViewController.notes.append(newNote)
             }
         }

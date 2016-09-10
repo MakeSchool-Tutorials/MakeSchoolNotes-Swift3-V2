@@ -135,7 +135,7 @@ Now that we are using a custom cell with type *ListNotesTableViewCell*, we must 
 Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` method with the following:
 >
     // 1
-    let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath) as! ListNotesTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
 >    
     // 2
     cell.noteTitleLabel.text = "note's title"

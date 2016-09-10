@@ -32,7 +32,7 @@ When a segue is triggered, but before the segue actually happens, the system can
 > [action]
 Add the following method to the List Notes Table View Controller:
 >
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       // 1
       if let identifier = segue.identifier {
         // 2

@@ -55,7 +55,7 @@ Define the Note class as follows inside `Note.swift`:
     class Note {
       var title = ""
       var content = ""
-      var modificationTime = NSDate()
+      var modificationTime = Date()
     }
 
 #Using our Note Data Model
@@ -76,7 +76,7 @@ Let's update our code to reflect this change.
 > [action]
 Modify `func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int` as follows:
 >
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return notes.count
     }
 
@@ -85,8 +85,8 @@ Remember that the above method is used by the table view to determine its number
 > [action]
 Modify `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` as follows:
 >
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier("listNotesTableViewCell", forIndexPath: indexPath) as! ListNotesTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
 >
       // 1
       let row = indexPath.row
