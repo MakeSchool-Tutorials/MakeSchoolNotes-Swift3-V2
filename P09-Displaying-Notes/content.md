@@ -48,12 +48,12 @@ What's going on here?
 
 1. Every table view has a property called `indexPathForSelectedRow`. When a user has selected a cell from a table view, we can use this method to access that particular cell's index path. Remember, an index path has `section` and `row` properties, which we can use to associate the selected table view cell with the data model backing it, in this case the `notes` array.
 
-	> [info]
-	> Notice that we are forcefully unwrapping the `indexPathForSelectedRow` property. We have to be sure that `indexPathForSelectedRow` is not nil, otherwise this will cause a crash. In this case, we are sure that this is safe because we will only execute this code when the segue identifier is set to *displayNote*, which can only happen when a user has just selected a cell from the table view.
+> [info]
+> Notice that we are forcefully unwrapping the `indexPathForSelectedRow` property. We have to be sure that `indexPathForSelectedRow` is not nil, otherwise this will cause a crash. In this case, we are sure that this is safe because we will only execute this code when the segue identifier is set to *displayNote*, which can only happen when a user has just selected a cell from the table view.
 
 2. Because our table view only has one section, we can uniquely identify each cell only using the `row` property of its corresponding index path. We use `indexPath.row` to retrieve the note from the `notes` array that corresponds to the touched cell.
 
-3. We are get access to the Display Note View Controller using the segue's `destination` property. Notice we downcast it, just like we did before for the segue from the Display Note View Controller.
+3. We are getting access to the Display Note View Controller using the segue's `destination` property. Notice we downcast it, just like we did before for the segue from the Display Note View Controller.
 
 4. We are setting the `note` property of the Display Note View Controller to the note corresponding to the cell that the user tapped.
 
