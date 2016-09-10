@@ -28,7 +28,7 @@ The *Make School Notes* tutorial consists of three parts:
 	* Connect app interface to app logic
 
 3. In the third and final part we will focus on **persisting data** between app launches. You will learn how to:
-	* Locally store information using the Realm framework
+	* Locally store information using the Core Data framework
 	* Create static helper methods
 	* Modify existing code to integrate data persistence
 

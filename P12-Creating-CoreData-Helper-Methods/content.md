@@ -63,7 +63,7 @@ First we will want to import CoreData and define a CoreDataHelper class as follo
 
 Static methods are methods that can be called directly on the class, without having to instantiate an instance of the class first. For example, if we add a static method called `doSomething()` to the `CoreDataHelper` class, we can call it like this:
 
-	RCoreDataHelper.doSomething()
+	CoreDataHelper.doSomething()
 
 If `doSomething()` were not static, calling it would look like more like this:
 
