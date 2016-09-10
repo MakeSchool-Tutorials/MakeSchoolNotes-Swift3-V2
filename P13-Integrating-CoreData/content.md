@@ -55,7 +55,7 @@ Update the `tableView(tableView:commitEditingStyle:forRowAtIndexPath:)` method a
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     	if editingStyle == .delete {
 	  	 	//1
-    		CoreDataHelper.deleteNote(notes[indexPath.row])
+    		CoreDataHelper.delete(note: notes[indexPath.row])
     		//2
     		notes = CoreDataHelper.retrieveNotes()
     	}
