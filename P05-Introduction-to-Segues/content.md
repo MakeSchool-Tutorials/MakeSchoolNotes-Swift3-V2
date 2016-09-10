@@ -25,9 +25,9 @@ Set the identifier of the segue that we created above to "displayNote".
 >
 ![image showing changes from segue](./images/segue-id.png)
 
-#The prepareForSegue() method
+#The prepare(for:sender:) method
 
-When a segue is triggered, but before the segue actually happens, the system can notify us by calling a method called `prepareForSegue()`. This method doesn't actually perform the segue, and we will never call it ourselves. Instead, it's a way for us to be told that a segue is about to happen, so that we can do some set up work before the next view is displayed.
+When a segue is triggered, but before the segue actually happens, the system can notify us by calling a method called `prepare(for:sender:)`. This method doesn't actually perform the segue, and we will never call it ourselves. Instead, it's a way for us to be told that a segue is about to happen, so that we can do some set up work before the next view is displayed.
 
 > [action]
 Add the following method to the List Notes Table View Controller:
@@ -73,6 +73,6 @@ Now when we tap a table view cell we should transition to the *Display Note View
 >
 >1. Created a segue from the listNotesTableViewCell to the Display Note View Controller.
 >2. Added the identifier *displayNote* to the segue
->3. Added the `prepareForSegue()` method to the List Notes Table View Controller.
+>3. Added the `prepare(for:sender:)` method to the List Notes Table View Controller.
 >4. Made the navigation controller the initial view controller.
 >5. Run and tested your app

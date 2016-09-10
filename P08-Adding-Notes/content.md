@@ -35,7 +35,7 @@ Every time a view controller is about to be displayed on screen, the operating s
 Great! We are finally ready to create our first note!
 
 > [action]
-Update the `prepareForSegue(_:sender:)` method in the Display Note View Controller class to the following:
+Update the `prepare(for:sender:)` method in the Display Note View Controller class to the following:
 >
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
@@ -70,9 +70,9 @@ Again, notice that the code we added is inside of the `else if identifier == "Sa
 Once the user is finished creating their note, we need a way to store the new note in the `notes` array in the List Notes Table View Controller, so we can list it with their other notes. But currently the note only exists in the Display Note View Controller. How can we get the note from there to the List Notes Table View Controller? The answer is segues!
 
 > [action]
-Add the lines marked `1` `2` and `3` to the `prepareForSegue(_:sender:)` method in the Display Note View Controller class:
+Add the lines marked `1` `2` and `3` to the `prepare(for:sender:)` method in the Display Note View Controller class:
 >
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "Cancel" {
                 print("Cancel button tapped")
@@ -82,7 +82,7 @@ Add the lines marked `1` `2` and `3` to the `prepareForSegue(_:sender:)` method 
                 let note = Note()
                 note.title = noteTitleTextField.text ?? ""
                 note.content = noteContentTextView.text
-                note.modificationTime = NSDate()
+                note.modificationTime = Date()
 >                
                 // 1
                 let listNotesTableViewController = segue.destination as! ListNotesTableViewController
@@ -133,6 +133,6 @@ Also we still have the issue that our current app doesn't persist note data betw
 >
 >1. Linked the `noteTitleTextField` and `noteContentTextView` to the Display Note View Controller using IBOutlets.
 >2. Implemented `viewWillAppear()` in the Display Note View Controller and used it to delete the placeholder text.
->3. Modified Display Note View Controller's `prepareForSegue(_:sender:)` method to create a new `Note()` with the user's input.
->4. Modified `prepareForSegue(_:sender:)` again to place the created note into the List Notes Table View Controller's array.
+>3. Modified Display Note View Controller's `prepare(for:sender:)` method to create a new `Note()` with the user's input.
+>4. Modified `prepare(for:sender:)` again to place the created note into the List Notes Table View Controller's array.
 >5. Tried running the app to see what happens.

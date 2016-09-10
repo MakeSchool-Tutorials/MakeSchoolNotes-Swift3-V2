@@ -132,7 +132,7 @@ Switch back to the *Standard Editor*, show the *Navigator* and *Utilities* menus
 Now that we are using a custom cell with type *ListNotesTableViewCell*, we must make some changes to our table view methods. Let's make the necessary changes and then discuss what was changed afterwards.
 
 > [action]
-Replace the content of the `tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` method with the following:
+Replace the content of the `tableView(_ tableView: UITableView, cellForRow indexPath: NSIndexPath) -> UITableViewCell` method with the following:
 >
     // 1
     let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell

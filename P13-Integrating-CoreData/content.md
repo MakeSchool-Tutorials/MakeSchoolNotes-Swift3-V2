@@ -55,7 +55,7 @@ Update the `tableView(tableView:commitEditingStyle:forRowAtIndexPath:)` method a
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     	if editingStyle == .delete {
 	  	 	//1
-    		CoreDataHelper.deleteNote(notes[(indexPath as NSIndexPath).row])
+    		CoreDataHelper.deleteNote(notes[indexPath.row])
     		//2
     		notes = CoreDataHelper.retrieveNotes()
     	}
@@ -70,7 +70,7 @@ Update the `tableView(tableView:commitEditingStyle:forRowAtIndexPath:)` method a
 Remember that we both create new notes and modify existing notes in the DisplayNoteViewController. Now that we are using CoreData, we must update our code to add and update notes to CoreData as well.
 
 > [action]
-Update `prepareForSegue(_:sender:)` as follows:
+Update `prepare(for:sender:)` as follows:
 >
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Save" {
@@ -109,5 +109,5 @@ Congratulations -- you have just built a fully functioning note taking app! Run 
 >1. Updated ListNotesViewController's `viewDidLoad()` to grab all the notes from CoreData.
 >2. Added a `didSet` property listener on the `notes` property so that it reloads the table view every time the property is updated
 >3. Updated ListNotesViewController's `tableView(tableView:commitEditingStyle:forRowAtIndexPath:)` method to delete the notes from CoreData when they're deleted from the table view.
->4. Updated DisplayNoteViewController's `prepareForSegue(_:sender:)` method to save or update the notes in CoreData, depending on what the user does. Also it now updates the `notes` property in the ListNotesViewController to make sure it's fully up to date.
+>4. Updated DisplayNoteViewController's `prepare(for:sender:)` method to save or update the notes in CoreData, depending on what the user does. Also it now updates the `notes` property in the ListNotesViewController to make sure it's fully up to date.
 >5. Run and tested your fully functioning app!

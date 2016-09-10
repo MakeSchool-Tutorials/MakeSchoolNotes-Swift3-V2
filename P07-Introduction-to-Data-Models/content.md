@@ -11,7 +11,7 @@ Oftentimes when programming, we will need a way to represent an object that can 
 
       // properties (characteristics)
       var name = "Daniel"
-      let birthdate = NSDate()
+      let birthdate = Date()
       var height = 74
 
       // methods (actions)
@@ -83,7 +83,7 @@ Modify `func tableView(tableView: UITableView, numberOfRowsInSection section: In
 Remember that the above method is used by the table view to determine its number of cells. In our previous code, we hard coded the return value to 10, but now we are returning the number of notes that are in the `notes` array.
 
 > [action]
-Modify `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell` as follows:
+Modify `func tableView(tableView: UITableView, cellForRow indexPath: NSIndexPath) -> UITableViewCell` as follows:
 >
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
@@ -105,10 +105,10 @@ Modify `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: 
 
 Remember that the table view calls this method for each row in the table view, asking for a cell to populate the row with.
 
-1. The `indexPath` is an argument that was passed into `cellForRowAtIndexPath` and is how the table view tells us what row it wants a cell for. We access the `row` property of index path to figure out which row.
+1. The `indexPath` is an argument that was passed into `cellForRow` and is how the table view tells us what row it wants a cell for. We access the `row` property of index path to figure out which row.
 2. Here we use the row to index into our `notes` array to get the appropriate note object.
 3. We set the text of the `noteTitleLabel` in the cell to be the title of the note.
-4. We are converting the `modificationTime` of the note (which is of type `NSDate`) to a `String` using a method that was included in the starter project. We are then setting the `text` property of the `noteModificationTimeLabel`'s to be the modification time of the note.
+4. We are converting the `modificationTime` of the note (which is of type `Date`) to a `String` using a method that was included in the starter project. We are then setting the `text` property of the `noteModificationTimeLabel`'s to be the modification time of the note.
 
 #Running the App!
 
@@ -128,4 +128,4 @@ In the next tutorial, we will fix this by building the functionality that will a
 >2. Created the `Note.swift` file and added it to your *Models* directory.
 >3. Created the `Note` class and added the `title`, `content` and `modificationTime` properties.
 >4. Added the `notes` property to the List Notes Table View Controller. `notes` is an array of the user's notes.
->5. Updated `tableView(_:numberOfRowsInSection:)` and `tableView(_:cellForRowAtIndexPath:indexPath)`to now work with the `notes` array.
+>5. Updated `tableView(_:numberOfRowsInSection:)` and `tableView(_:cellForRow:indexPath)`to now work with the `notes` array.

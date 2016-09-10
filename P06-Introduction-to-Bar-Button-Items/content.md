@@ -49,7 +49,7 @@ Great! We have successfully added the necessary bar buttons items for Make Schoo
 >
 > Set the segue identifier to "addNote".
 >
-Next, update the `prepareForSegue()` method in the *List Notes Table View Controller* as follows:
+Next, update the `prepare(for:sender:)` method in the *List Notes Table View Controller* as follows:
 >
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let identifier = segue.identifier {
@@ -90,7 +90,7 @@ To accomplish this we must first set up the unwind segue method in the *List Not
 
 >[action] Select the `ListNotesTableViewController.swift` file and add the following method inside the ListNotesTableViewController class:
 >
-    @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue) {
+    @IBAction func unwindToListNotesViewController(_ segue: UIStoryboardSegue) {
 >
       // for now, simply defining the method is sufficient.
       // we'll add code later
@@ -118,7 +118,7 @@ Select the top  *Unwind segue to "Exit"* segue from the Document Outline, then i
 > [action]
 Add the following to the *Display Note View Controller* class:
 >
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let identifier = segue.identifier {
         if identifier == "Cancel" {
           print("Cancel button tapped")
@@ -128,7 +128,7 @@ Add the following to the *Display Note View Controller* class:
       }
     }
 
-The code above is identical to the code we added in the `prepareForSegue()` method in the *List Notes Table View Controller*.
+The code above is identical to the code we added in the `prepare(for:sender:)` method in the *List Notes Table View Controller*.
 
 #Running the App!
 
@@ -147,8 +147,8 @@ Congratulations! We have finished building the interface of Make School Notes! I
 >2. Placed a **+** bar button item on the *List Notes Table View Controller*'s navigation bar
 >3. Placed **Save** and **Cancel** bar button items on the *Display Note View Controller*'s navigation bar
 >4. Created a show segue with the identifier "addNote" from the **+** button to the *Display Note View Controller*
->5. Updated the `prepareForSegue()` method in the *List Notes Table View Controller*
+>5. Updated the `prepare(for:sender:)` method in the *List Notes Table View Controller*
 >6. Learned about unwind segues.
 >7. Created unwind segues from the **Save** and **Cancel** buttons, and given them the identifiers "Save" and "Cancel" respectively.
->8. Added the `prepareForSegue()` method to the *Display Note View Controller*
+>8. Added the `prepare(for:sender:)` method to the *Display Note View Controller*
 >9. Run and tested your app while looking at the debug console to see that the output is correct.

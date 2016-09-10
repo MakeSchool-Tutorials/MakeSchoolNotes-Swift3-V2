@@ -19,10 +19,10 @@ The `note` must be of type `Note?` because it could either contain a value (in t
 
 #Determining the Selected Note
 
-When creating a new note, we used the `prepareForSegue()` method to pass a *newly created* note from the Display Note View Controller to the List Notes Table View Controller. When modifying a note, we will take a similar approach, except we will pass an *existing* note from the List Notes Table View Controller to the Display Note View Controller.
+When creating a new note, we used the `prepare(for:sender:)` method to pass a *newly created* note from the Display Note View Controller to the List Notes Table View Controller. When modifying a note, we will take a similar approach, except we will pass an *existing* note from the List Notes Table View Controller to the Display Note View Controller.
 
 > [action]
-Add the following to the `prepareForSegue(_:sender:)` method in the ListNotesTableViewController class:
+Add the following to the `prepare(for:sender:)` method in the ListNotesTableViewController class:
 >
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let identifier = segue.identifier {
@@ -95,7 +95,7 @@ We've done it! You can now add new notes and modify existing notes. However, the
 To solve this problem, we are going to need to check wether we are creating a new note or modifying an existing note. We can do this the same way we did in the `viewWillAppear()` method. When the user taps the **Save** button, if we are creating a new note, then we need to add it to the `notes` array, but if we are modifying an existing note, we only need to update the title and content of the note.
 
 > [action]
-Update `prepareForSegue(_:sender:)` in the *DisplayNoteViewController* class as follows:
+Update `prepare(for:sender:)` in the *DisplayNoteViewController* class as follows:
 >
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let listNotesTableViewController = segue.destination as! ListNotesTableViewController
@@ -137,7 +137,7 @@ Congratulations! We now have a note taking app that can add new notes and edit e
 >###On this page, you should have:
 >
 >1. Added the `note` property to the Display Note View Controller, so it can be passed a note to be modified.
->2. Added code to the `prepareForSegue(_:sender:)` method of the List Notes Table View Controller so that when a cell is selected, the appropriate note is sent to the Display Note View Controller so it can be edited.
+>2. Added code to the `prepare(for:sender:)` method of the List Notes Table View Controller so that when a cell is selected, the appropriate note is sent to the Display Note View Controller so it can be edited.
 >3. Modified the `viewWillAppear()` method in the Display Note View Controller to display the contents note passed to it when a note is being edited.
->4. Updated the `prepareForSegue(_:sender:)` method of the Display Note View Controller to ensure we only add a note to the List Notes Table View Controller if the note is a new one.
+>4. Updated the `prepare(for:sender:)` method of the Display Note View Controller to ensure we only add a note to the List Notes Table View Controller if the note is a new one.
 >5. Run the app to play with it!

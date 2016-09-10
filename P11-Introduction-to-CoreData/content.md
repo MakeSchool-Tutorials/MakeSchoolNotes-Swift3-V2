@@ -1,11 +1,11 @@
 ---
-title: "Introduction to Core Data"
+title: "Introduction to CoreData"
 slug: intro-coredata
 ---
 
 With the ability to add, modify, and delete notes, our app is nearly finished! The last step is to persist data between app launches so that user's notes won't get deleted every time they close the app.
 
-Core Data is a native mobile database that is built by Apple. Core Data is used to save and retrieve objects locally on our user's device. For Make School Notes, we want to save all of a user's notes when they close the app, and retrieve all of their notes when they reopen the app.
+CoreData is a native mobile database that is built by Apple. CoreData is used to save and retrieve objects locally on our user's device. For Make School Notes, we want to save all of a user's notes when they close the app, and retrieve all of their notes when they reopen the app.
 
 ##Importing the CoreData Framework
 
@@ -102,7 +102,7 @@ do {
 }
 ```
 
-The above code saves the `chris` variable to the default Core Data.
+The above code saves the `chris` variable to the default CoreData.
 
 ##Updating Objects
 
@@ -153,4 +153,4 @@ We have discussed how to add, modify, retrieve, and delete objects in CoreData a
 >[info]
 >###On this page, you should have:
 >
->1. Learned the basic ways you can interact with Core Data to persist data.
+>1. Learned the basic ways you can interact with CoreData to persist data.

@@ -29,7 +29,7 @@ We need to import the `CoreData` header, make `Note` a subclass of CoreData's `N
 	}
 
 ##Add Note entity in the data model
-Click MakeSchoolNotes.xcdatamodeld and you will see your data model for CoreData. Follow the following steps to create an entity in CoreData
+Click `MakeSchoolNotes.xcdatamodeld` and you will see your data model for CoreData. Follow the following steps to create an entity in CoreData
 
 1. On the bottom left, you will see "Add Entity". Click it.
 2. On the top left, you will see the entity you just created called "Entity". Double click "Entity" to change the name to "Note"
@@ -109,7 +109,7 @@ We want to define a static method that accepts a `Note` object as its one parame
 
 > [solution]
 >
-	static func deleteNote(note: Note) {
+	static func delete(note: Note) {
 		managedContext.delete(note)
 		saveNote()
 	}
