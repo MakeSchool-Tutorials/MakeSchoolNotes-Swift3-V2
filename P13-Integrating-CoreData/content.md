@@ -29,18 +29,7 @@ Also, update the `unwindToListNotesViewController()` method in ListNotesTableVie
 
 We're calling the `retrieveNotes()` method in the ListNotesViewController `unwindToListNotesViewController()` method because we want to update the `notes` property every time the ListNotesViewController is unwinded from another view controller.
 
-Finally, let's ensure that the table view is always in sync with our `notes` property.
-
-> [action]
-Update the `notes` property as follows:
->
-    var notes: [Note] = [] {
-    	didSet {
-    		tableView.reloadData()
-    	}
-    }
-
-Remember the `didSet` from before?  As a reminder, it's a kind of *property observer* and it allows us to execute some code whenever the property its declared under changes. In this case, every time the `notes` property changes, we tell the table view to reload its data.
+The property observer we added earlier to `notes` will ensure the table view is always in sync with our data.
 
 ##Deleting Notes
 
