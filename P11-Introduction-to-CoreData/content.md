@@ -49,6 +49,7 @@ We save and retrieve objects from the *NSManagedContext*. NSManagedContext can b
 Before adding, modifying, retrieving, or deleting objects in CoreData, we must get access to the default NSManagedContext:
 
 ```
+// needs import of UIKit and CoreData
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let persistentContainer = appDelegate.persistentContainer
 let managedContext = persistentContainer.viewContext

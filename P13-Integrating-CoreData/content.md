@@ -75,33 +75,22 @@ Update `prepare(for:sender:)` as follows:
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Save" {
             // if note exists, update title and content
-            if let note = note {
-                // 1
-                note.title = noteTitleTextField.text ?? ""
-                note.content = noteContentTextView.text ?? ""
-								note.modificationTime = Date()
-                CoreDataHelper.saveNote()
-            } else {
-                // if note does not exist, create new note
-                let note = Note()
-                note.title = noteTitleTextField.text ?? ""
-                note.content = noteContentTextView.text ?? ""
-                note.modificationTime = Date()
-                // 2
-                CoreDataHelper.addNote(note)
-            }
+            let note = self.note ?? Note()
+            note.title = noteTitleTextField.text ?? ""
+            note.content = noteContentTextView.text ?? ""
+            note.modificationTime = Date()
+            CoreDataHelper.saveNote()
         }
     }
 
-For the most, the above code is identical to what we had before, except for 3 things:
+For the most, the above code is identical to what we had before, except for 2 things:
 
-1. We change the note object and save the changed object.
-
+1. We update the note object if it exists and save the changed object.
 2. Here we use our CoreData helper to add the newly created note to CoreData, so that it's persisted.
 
 #Running the App
 
-Congratulations -- you have just built a fully functioning note taking app! Run it and test it out! You can even try force quitting Make School Notes, then reopening it to see that beautiful persistance. To force quit, press the home button twice (**shift+command+h**, ⇧⌘H in simulator) and swipe up on Make School Notes. You should see all the notes you saved when it re-opens!
+Congratulations -- you have just built a fully functioning note taking app! Run it and test it out! You can even try force quitting Make School Notes, then reopening it to see that beautiful persistence. To force quit, press the home button twice (**shift+command+h**, ⇧⌘H in simulator) and swipe up on Make School Notes. You should see all the notes you saved when it re-opens!
 
 >[info]
 >###On this page, you should have:

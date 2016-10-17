@@ -10,10 +10,10 @@ In this section of the tutorial we will create CoreData helper methods that will
 **What do we need to do to update the Note class so that it can be used with CoreData?** Don't be afraid to refer back to the previous page; the "CoreData's Object Type" section in particular.
 
 > [solution]
-We need to import the `CoreData` header, make `Note` a subclass of CoreData's `NSManagedObject` class, and make the properties are `@NSManaged`. The `Note.swift` file should look as follows:
+We need to import `CoreData` and `UIKit`, make `Note` a subclass of CoreData's `NSManagedObject` superclass for Note, and make the properties are `@NSManaged`. The `Note.swift` file should look as follows:
 >
-	import Foundation
 	import CoreData
+	import UIKit
 >
 	class Note: NSManagedObject {
 		@NSManaged public var title: String?
@@ -54,9 +54,13 @@ In `CoreDataHelper.swift` we will define *static methods* that we can call to ad
 First we will want to import CoreData and define a CoreDataHelper class as follows:
 
 	import CoreData
+	import UIKit
 
 	class CoreDataHelper {
-	  //static methods will go here
+		static let appDelegate = UIApplication.shared.delegate as! AppDelegate
+		static let persistentContainer = appDelegate.persistentContainer
+		static let managedContext = persistentContainer.viewContext
+		//static methods will go here
 	}
 
 ##Static Methods
@@ -80,7 +84,7 @@ To declare a static method is very easy, just add the `static` keyword to the fr
 
 ##Save Note
 
-We want to define a static method that accepts a `Note` object as its one parameter and then saves that note to the default CoreData.
+We want to define a static method that saves that note to the default CoreData.
 
 > [action]
 **Try it on your own and then compare with the solution below.** It's okay to look back to the last section to see how it's done.
@@ -89,7 +93,7 @@ We want to define a static method that accepts a `Note` object as its one parame
 
 > [solution]
 >
-	static func addNote(note: Note) {
+	static func saveNote() {
 		do {
 			try managedContext.save()
 		} catch let error as NSError {
