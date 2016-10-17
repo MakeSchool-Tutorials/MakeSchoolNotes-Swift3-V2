@@ -41,7 +41,10 @@ Click `MakeSchoolNotes.xcdatamodeld` and you will see your data model for CoreDa
 
 		modificationTime with type Date
 
-4. On the right side, change the class from the default NSManagedObject to the Note class you defined.
+4. On the right side, change the class from the default `NSManagedObject` to the `Note` class you defined.
+5. On the right side, change the `Module` field to `Current Product Module`.
+
+![Correct settings for entity](entity.png)
 
 
 #Creating CoreData Helper Methods
@@ -130,7 +133,7 @@ We want to define a static method that retrieves all notes from the default Core
 
 > [solution]
 >
-	static func retrieveNotes() -> Results<Note> {
+	static func retrieveNotes() -> [Note] {
 		let fetchRequest = NSFetchRequest<Note>(entityName: "Note")
 		do {
 			let results = try managedContext.fetch(fetchRequest)
