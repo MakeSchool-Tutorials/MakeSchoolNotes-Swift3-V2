@@ -70,7 +70,7 @@ Again, notice that the code we added is inside of the `else if identifier == "Sa
 Once the user is finished creating their note, we need a way to store the new note in the `notes` array in the List Notes Table View Controller, so we can list it with their other notes. But currently the note only exists in the Display Note View Controller. How can we get the note from there to the List Notes Table View Controller? The answer is segues!
 
 > [action]
-Add the lines marked `1` `2` and `3` to the `prepare(for:sender:)` method in the Display Note View Controller class:
+Add the lines marked `1` and `2` to the `prepare(for:sender:)` method in the Display Note View Controller class:
 >
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
