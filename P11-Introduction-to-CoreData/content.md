@@ -16,8 +16,9 @@ import CoreData
 ```
 
 #CoreData's Object Type
+As of Xcode 8, CoreData now generates code for you, based on a data model that you specify. It used to be that we had to both give CoreData a model AND write all of the code ourselves, but now Xcode will do it for us! That being said, it's important for you to know a bit about what Xcode is doing for you, so we're going to explain some of how CoreData works. This will help when you go on to build your own app, and will help prevent any issues you might run into.
 
-When using CoreData to store objects, the object we are storing must inherit from a CoreData provided class called `NSManagedObject`. For instance, if we wanted to store and retrieve objects of type `Person`, we would declare the `Person` class as follows:
+When CoreData stores and object, the object inherits from a CoreData provided class called `NSManagedObject`. For instance, if we wanted to store and retrieve objects of type `Person`, we would declare the `Person` class as follows:
 
 ```
 class Person: NSManagedObject {
@@ -34,16 +35,35 @@ class Person: NSManagedObject {
 }
 ```
 
-Despite the fact that we added a special superclass and a fancy keyword to the properties of our `Person` class, it will still behave the same as a regular class. We would create an instance of the `Person` class like this:
+Because we added a special superclass and a fancy keyword to the properties of our `Person` class, it will not always behave the same as a regular class.
+
+
+## Creating an instance of a CoreData Object
+Now that we've given you a behind-the-scenes look at CoreData, let's talk about what code you will need to write yourself. The rest of the code we will go over in this section will be code you _will_ have to use in your projects. In the future, we would create an instance of the `Person` class like this:
 
 ```
-var chris = Person()
+var chris = NSEntityDescription.insertNewObject(forEntityName: "Person", into: managedContext) as! Person
 chris.name = "Chris"
 chris.age = 23
 ```
+While this looks scary, we'll break it down so that it makes sense. Let's take a look at it bit by bit:
+
+```
+var chris = NSEntityDescription.insertNewObject
+```
+To create a new variable with the name chris, we're calling a class method on something called NSEntityDescription, which is just an object that is stored in CoreData. We're simply adding a new object.
+
+```
+(forEntityName: "Person", into: managedContext)
+```
+The parameters that are passed into the insertNewObject function are the name of the entity that we are adding, and where it's going. We have to specify these, because in a larger app, you may have multiple objects being stored into CoreData, and multiple managedContexts, or places that those objects could go.
+
+```
+as! Person
+```
+We then force a cast of the object that is retrieved into a Person object, because CoreData doesn't directly store your object as itself, it is converted into a special type of data that can easily be stored and retrieved from your phone's storage.
 
 ##CoreData's NSManagedContext Type
-
 We save and retrieve objects from the *NSManagedContext*. NSManagedContext can be configured in many different ways, but for our purposes, the default NSManagedContext will suffice.
 
 Before adding, modifying, retrieving, or deleting objects in CoreData, we must get access to the default NSManagedContext:
@@ -53,23 +73,6 @@ Before adding, modifying, retrieving, or deleting objects in CoreData, we must g
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let persistentContainer = appDelegate.persistentContainer
 let managedContext = persistentContainer.viewContext
-```
-
-##Initializing an entry in CoreData
-We have to have a convenience initializer to make our NSManagedObject know which entity and managedContext it belongs to. So the following would be the full implmentation of the Person class.
-
-```
-class Person: NSManagedObject {
-	@NSManaged var name = ""
-	@NSManaged var age = 0
-	convenience init() {
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-		let persistentContainer = appDelegate.persistentContainer
-		let managedContext = persistentContainer.viewContext
-		let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)
-		self.init(entity: entity!, insertInto: managedContext)
-	}
-}
 ```
 
 ##Save transactions in CoreData
@@ -154,4 +157,5 @@ We have discussed how to add, modify, retrieve, and delete objects in CoreData a
 >[info]
 >###On this page, you should have:
 >
+>1. Learned about what code CoreData generates for you, and what code you will have to write yourself.
 >1. Learned the basic ways you can interact with CoreData to persist data.

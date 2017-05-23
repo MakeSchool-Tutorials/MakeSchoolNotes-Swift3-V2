@@ -9,8 +9,8 @@ Table views are one of the most common visual elements used in iOS development a
 
 Table views are instances of the `UITableView` class and can be created in two ways:
 
-1. Programmatically
-2. Visually using Interface Builder / Storyboards
+1. Programmatically, using code to create one
+2. Visually, using Interface Builder & Storyboards
 
 (For more information on table views check out this [explanation](https://www.makeschool.com/tutorials/swift-concepts-explained/table-views))
 
@@ -27,7 +27,7 @@ Click the *Project navigator* icon, expand the *MakeSchoolNotes* folder, and sel
 
 Table view controllers are the easiest way to use table views because they do a lot of the necessary table view setup for you. Table view controllers are instances of the `UITableViewController` class and, similar to table views, can be created programmatically or in Interface Builder.
 
-The table view controller in the starter project was created in Interface Builder, we will want to be able manipulate it with code. This is very common situation when building iOS apps, so Interface Builder provides a way to link our table view controller with controlling code. To do this, we will use a feature of Xcode called *custom classes*. We want to set the custom class of our table view controller to *ListNotesTableViewController*. The *ListNotesTableViewController* class was included in the starter project and can be found in the `ListNotesTableViewController.swift` file.
+The table view controller in the starter project was created in Interface Builder, but we will want to be able manipulate it with code. This is very common situation when building iOS apps, so Interface Builder provides a way to link our table view controller with controlling code. To do this, we will use a feature of Xcode called *custom classes*. We want to set the custom class of our table view controller to *ListNotesTableViewController*. The *ListNotesTableViewController* class was included in the starter project and can be found in the `ListNotesTableViewController.swift` file.
 
 > [action]
 Set up the code connection by selecting the table view controller in your storyboard. (Note that when you have successfully selected the table view controller, it will be outlined in blue.) Click the *Identity inspector* icon, and set the *Class* field to *ListNotesTableViewController*.
@@ -93,7 +93,12 @@ The nice thing is that this is all handled for you automatically by Apple's `UIT
 
 5. We return the updated cell to be used within the table view.
 
-##Setting the Identifier
+## Confused?
+We just tossed a LOT of information at you! Delegation patterns? Prototype cells? Reuse Identifiers? It's all pretty complicated.
+<br>
+Don't worry though, this is all meant to be fairly simple, and you don't need to understand what's happening in the background just yet. In fact, many computer science concepts will make more sense to you in the future when you can relate them to something you've worked with in iOS. For now, feel free to refer back to this tutorial whenever you might need to, there's nothing wrong with looking up the answer when it comes to programming!
+<br>
+## Setting the Identifier
 
 Before we can run our app, we need to set the identifier of the prototype cell in the storyboard to match the identifier we used in the code above:
 
@@ -121,7 +126,8 @@ Now when you run your app, you should see something like this:
 
 ![image of table view displaying data](./images/table-view-with-data.png)
 
-Congratulations - You have just successfully set up a table view controller! In the next tutorial we will customize our table view cells so that we can display our note's title and modification time.
+Congratulations - You have just successfully set up a table view controller! In the next section we will customize our table view cells so that we can display our note's title and modification time.
+
 
 >[info]
 >###On this page, you should have:

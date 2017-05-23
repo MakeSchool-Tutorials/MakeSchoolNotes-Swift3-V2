@@ -5,30 +5,14 @@ slug: CoreData-helpers
 
 In this section of the tutorial we will create CoreData helper methods that will make it easier to integrate CoreData into our project in the next section. The CoreData helper methods will allow us to easily add new notes, update existing notes, delete old notes, and retrieve existing notes.
 
-##Updating the Note Class
-
-**What do we need to do to update the Note class so that it can be used with CoreData?** Don't be afraid to refer back to the previous page; the "CoreData's Object Type" section in particular.
-
-> [solution]
-We need to import `CoreData` and `UIKit`, make `Note` a subclass of CoreData's `NSManagedObject` superclass for Note, and make the properties are `@NSManaged`. The `Note.swift` file should look as follows:
->
-	import CoreData
-	import UIKit
->
-	class Note: NSManagedObject {
-		@NSManaged public var title: String?
-		@NSManaged public var content: String?
-		@NSManaged public var modificationTime: Date?
-		convenience init() {
-		    let appDelegate = 	UIApplication.shared.delegate as! AppDelegate
-	    	let persistentContainer = appDelegate.persistentContainer
-	    	let managedContext = persistentContainer.viewContext
-    		let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)
-	    	self.init(entity: entity!, insertInto: managedContext)
-		}
-	}
+##Delete your old Note.swift Class
+In order to get CoreData working with your new class, you'll first need to delete the note class that you made earlier. If you don't, Xcode will get confused, but don't worry, because CoreData will generate a new class for you!
+> [action]
+Control-Click or Right-Click on `Note.swift`, and click Delete.
 
 ##Add Note entity in the data model
+Now we need to show CoreData what kind of object we want it to make. We'll do this in the `MakeSchoolNotes.xcdatamodeld` file.
+> [action]
 Click `MakeSchoolNotes.xcdatamodeld` and you will see your data model for CoreData. Follow the following steps to create an entity in CoreData
 
 1. On the bottom left, you will see "Add Entity". Click it.
@@ -85,12 +69,27 @@ To declare a static method is very easy, just add the `static` keyword to the fr
 		}
 	}
 
+##Create Note
+We want to define a static method that creates a note object, and then returns it.
+
+> [action]
+**Try it on your own and then compare with the solution below.** It's okay to look back to the last section to see how it's done.
+
+<!-- html comment to break boxes -->
+
+> [solution]
+>
+	static func newNote() -> Note {
+		let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: managedContext) as! Note
+		return note
+	}
+
 ##Save Note
 
 We want to define a static method that saves that note to the default CoreData.
 
 > [action]
-**Try it on your own and then compare with the solution below.** It's okay to look back to the last section to see how it's done.
+**Try it on your own first!.**
 
 <!-- html comment to break boxes -->
 
@@ -127,7 +126,7 @@ We want to define a static method that accepts a `Note` object as its one parame
 We want to define a static method that retrieves all notes from the default CoreData. Unlike the other helper methods, this one should return a `[Note]` object.
 
 > [action]
-**Try it on your own, don't be afraid to refer back to the previous section!w**
+**Try it on your own, don't be afraid to refer back to the previous section!**
 
 <!-- html comment to break boxes -->
 
@@ -154,4 +153,4 @@ We now have all the helper methods we will need to integrate CoreData into Make 
 >
 >1. Learned what a static method is, and how to make one.
 >2. Created the `CoreDataHelper` class.
->3. Implemented four different static helper methods, ones to add, delete, update and retrieve notes from CoreData.
+>3. Implemented three different static helper methods within the `CoreDataHelper` class, ones to save, delete, and retrieve notes from CoreData.
