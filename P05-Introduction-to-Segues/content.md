@@ -30,7 +30,7 @@ Set the identifier of the segue that we created above to "displayNote".
 When a segue is triggered, but before the segue actually happens, the system can notify us by calling a method called `prepare(for:sender:)`. This method doesn't actually perform the segue, and we will never call it ourselves. Instead, it's a way for us to be told that a segue is about to happen, so that we can do some set up work before the next view is displayed.
 
 > [action]
-Add the following method to the List Notes Table View Controller:
+Add the following method to the *List Notes Table View Controller*:
 >
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       // 1

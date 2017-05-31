@@ -64,10 +64,10 @@ Update `prepare(for:sender:)` as follows:
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Save" {
             // if note exists, update title and content
-            let note = self.note ?? Note()
+            let note = self.note ?? CoreDataHelper.newNote()
             note.title = noteTitleTextField.text ?? ""
             note.content = noteContentTextView.text ?? ""
-            note.modificationTime = Date()
+            note.modificationTime = Date() as NSDate
             CoreDataHelper.saveNote()
         }
     }

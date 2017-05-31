@@ -3,14 +3,13 @@ title: "Creating Custom Table Views Cells"
 slug: custom-table-view-cells
 ---
 
-In the last step, we got a table view up and running. We're going to use this table view to display a list of each of the notes the user has made. We're going to customize the table view cells so that we can display the note's title and modification time.
+In the last section, we got a table view up and running. Now, we're going to use that table view to display a list of each of the notes the user has made. We're going to customize the table view cells so that we can display the note's title and modification time.
 
 ##Resizing our Cell
-
 We're going to need two labels to display the note's title and modification time. To ensure we have enough room for both of our labels, let's make the cell a little bit bigger.
 
 > [action]
-Select the *listNotesTableViewCell* in the *Document Outline*, click the *Size inspector* icon, and change the *Row Height* to 60:
+Select the *listNotesTableViewCell* in the *Document Outline*, click the *Size inspector* icon, set the *Row Height* to *Custom*, and change the *Row Height* to 60:
 >
 ![image showing how to change the row height](./images/height.png)
 
@@ -20,7 +19,7 @@ Now let's change the height of the table view to match.
 Select the *Table View* in the *Document Outline*, click the *Size inspector* icon, and change the row height to 60:
 ![image showing changing table view row height](./images/tableview-row-height.png)
 
-Notice that we had to change the row height for both our table view and our table view cell!
+Notice that we had to change the row height for both our table view and our table view cell! If you're wondering why BOTH of these needed to be changed, it's because you can have more than one type of cell within a TableView. For instance, on instagram, your feed looks pretty similar to a table view. In fact, instragram uses different prototype cells for pictures and videos that users post. Try to think of another app that uses different cells within a TableView!
 
 
 #Adding Labels to our Cell
@@ -131,6 +130,7 @@ Switch back to the *Standard Editor*, show the *Navigator* and *Utilities* menus
 
 Now that we are using a custom cell with type *ListNotesTableViewCell*, we must make some changes to our table view methods. Let's make the necessary changes and then discuss what was changed afterwards.
 
+
 > [action]
 Replace the content of the `tableView(_ tableView: UITableView, cellForRow indexPath: NSIndexPath) -> UITableViewCell` method with the following:
 >
@@ -142,6 +142,8 @@ Replace the content of the `tableView(_ tableView: UITableView, cellForRow index
     cell.noteModificationTimeLabel.text = "note's modification time"
 >    
     return cell
+
+Important Note: Make sure this goes in the *TableViewController* class, not the *TableViewCell* class!
 
 So what did we change in the code above?
 

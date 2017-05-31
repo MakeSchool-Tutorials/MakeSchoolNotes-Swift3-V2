@@ -35,9 +35,9 @@ Now let's change the style of our bar button item so that it looks like a **+** 
 
 > [action] Select the bar button item, click the Attributes inspector icon, and set the *System Item* field to *Add*.
 
-Now that you know how to add and customize bar button items, try adding the Cancel and Save bar button items to the *Display Note View Controller* on your own. There are system items for both.
+Awesome! Now that you know how to add and customize bar button items, try adding the Cancel and Save bar button items to the *Display Note View Controller* on your own.
 
->[action] Add the Cancel and Save bar button items to the left and right of the *Display Note View Controller* respectively. The result should look like this:
+>[action] Add the Cancel and Save bar button items to the left and right of the *Display Note View Controller* . The result should look like this:
 >
 ![result of adding bar button items](./images/barButtonItems-added.png)
 

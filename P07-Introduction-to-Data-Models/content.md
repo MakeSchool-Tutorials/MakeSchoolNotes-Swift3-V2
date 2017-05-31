@@ -108,7 +108,7 @@ Remember that the table view calls this method for each row in the table view, a
 1. The `indexPath` is an argument that was passed into `cellForRow` and is how the table view tells us what row it wants a cell for. We access the `row` property of index path to figure out which row.
 2. Here we use the row to index into our `notes` array to get the appropriate note object.
 3. We set the text of the `noteTitleLabel` in the cell to be the title of the note.
-4. We are converting the `modificationTime` of the note (which is of type `Date`) to a `String` using a method that was included in the starter project. We are then setting the `text` property of the `noteModificationTimeLabel`'s to be the modification time of the note.
+4. We are converting the `modificationTime` of the note (which is of type `Date`) to a `String` using a method that was included in the starter project. We are then setting the `text` property of the `noteModificationTimeLabel`'s to be the modification time of the note. At the moment, you may see an error on this line of code - ignore it for now, as it will be resolved later.
 
 #Running the App!
 
