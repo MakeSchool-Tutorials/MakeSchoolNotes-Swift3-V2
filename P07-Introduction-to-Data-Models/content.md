@@ -98,7 +98,7 @@ Modify `func tableView(tableView: UITableView, cellForRow indexPath: NSIndexPath
       cell.noteTitleLabel.text = note.title
 >
       // 4
-      cell.noteModificationTimeLabel.text = note.modificationTime?.convertToString()
+      cell.noteModificationTimeLabel.text = note.modificationTime.convertToString()
 >      
       return cell
     }
