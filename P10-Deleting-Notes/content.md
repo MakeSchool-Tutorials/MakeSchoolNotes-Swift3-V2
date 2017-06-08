@@ -20,8 +20,6 @@ Add the following method to the *ListNotesTableViewController* class:
         if editingStyle == .delete {
             // 3
             notes.remove(at: indexPath.row)
-            // 4
-            tableView.reloadData()
         }
     }
 
@@ -30,8 +28,6 @@ Add the following method to the *ListNotesTableViewController* class:
 2. We check to see if the `editingStyle` is the `.delete` one - there's also an `.insert` one. We wouldn't want to accidentally delete a user's notes when they intended to insert a new one!
 
 3. We are removing the appropriate note from the `notes` array, using the `row` property of the passed in `indexPath`.
-
-4. Because we modified the `notes` array, we must tell the table view to update itself with `reloadData()`.
 
 And that's all we have to do to delete a note! =]
 
