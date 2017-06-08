@@ -35,15 +35,13 @@ The *Make School Notes* tutorial consists of three parts:
 *Persisting data* is a fancy way of saying "saving data to disk". Apps in iOS don't keep data around between app launches by default, it's up to you as the developer to implement it.
 
 #Getting Started
-<br>
-## Prerequisites
-<br>
->
-> A basic understanding of Swift, Xcode, Autolayout, and constraints (Check out our [Tip Calculator ](https://www.makeschool.com/academy/tutorial/tip-calculator-your-first-app/your-first-project) tutorial if you need a refresher!)
->
-> Download the [Make School Notes Starter Project](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Starter/archive/swift3-coredata.zip)
 
-<br>
+## Prerequisites
+
+A basic understanding of Swift, Xcode, Autolayout, and constraints is required. Check out our Tip Calculator tutorial if you need a refresher!
+
+Download the [Make School Notes Starter Project](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Starter/archive/swift3-coredata.zip)
+
 ## Objective
-<br>
+
 The goal of this tutorial is to teach you the fundamentals of iOS development, not to confuse you with how to set up Xcode projects. For this reason, we have provided a starter project that will allow you to hit the ground running with learning iOS development.
