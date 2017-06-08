@@ -7,7 +7,7 @@ Now that we can add new notes and modify existing notes, let's make it so users 
 
 We would like our users to be able to swipe right on a note and be presented with a delete option:
 
-![ms-video](./videos/P10-complete.mov)
+![ms-video](videos/P10-complete.mov)
 
 Luckily, table views make this incredibly easy.
 
