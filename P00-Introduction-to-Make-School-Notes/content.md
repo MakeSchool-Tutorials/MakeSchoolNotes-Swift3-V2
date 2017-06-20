@@ -9,7 +9,7 @@ This series was designed for beginning iOS developers and will teach you the fun
 
 The final product will look something like this:
 
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P13-complete.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P13-complete.mp4)
 
 The *Make School Notes* tutorial consists of three parts:
 

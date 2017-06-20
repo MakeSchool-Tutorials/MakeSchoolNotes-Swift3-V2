@@ -129,7 +129,7 @@ Notice that we are once again using the `note` property to take different action
 
 Congratulations! We now have a note taking app that can add new notes and edit existing notes! Run it and try it out!
 
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P09-complete.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P09-complete.mp4)
 
 ...But what if we no longer need a note? In the next section, let's add the functionality that allows users to delete notes.
 

@@ -43,7 +43,7 @@ You can add new source code files to our project as follows:
 > [action]
 Add a new file called *Note* to the *Models* group, making sure to save it in your starter project's `MakeSchoolNotes/Models` directory.
 >
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addFile.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addFile.mp4)
 
 #The Note Data Model
 
@@ -114,7 +114,7 @@ Remember that the table view calls this method for each row in the table view, a
 
 At this point, your app should look something like this:
 
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P07-complete.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P07-complete.mp4)
 
 Remember that our table view is now populating its cells based on the user's notes. Currently, we don't have any notes, so our table view has nothing to display!
 

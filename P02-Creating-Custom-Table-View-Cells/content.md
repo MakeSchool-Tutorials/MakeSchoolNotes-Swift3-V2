@@ -31,7 +31,7 @@ Now that we have enough room, let's add our labels!
 > [action]
 Add two labels to the *listNotesTableViewCell* prototype. Open *Main.storyboard*, find the *object library* on the bottom of the right-hand side panel. From the object library, drag two labels onto the prototype cell. See the video below:
 >
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/drag-labels.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/drag-labels.mp4)
 >
 Replace the text of the top label with `Note Title` and the bottom with `Note Modification Time`. Your cell should look something like this when finished:
 >
@@ -117,7 +117,7 @@ With the *Assistant Editor* open, connecting our labels from Interface Builder t
 > [action]
 Add `IBOutlets` to the the *ListNotesTableViewCell* class as follows:
 >
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/add-iboutlets.mp4)
 
 We can now access the labels of our *listNotesTableViewCell* through the `noteTitleLabel` and `noteModificationTimeLabel` instance properties of the *ListNotesTableViewCell* class! One last small change and then we will be ready to run our app!
 

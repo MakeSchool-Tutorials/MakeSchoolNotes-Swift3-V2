@@ -122,7 +122,7 @@ Look at that fancy syntax!  Ooh. We are using the `didSet` *property observer* t
 
 #Running the App!
 
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P08-complete.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P08-complete.mp4)
 
 Great! Try running the app. Now we can add new notes, but what happens if we want to modify one of the notes? Try creating a new note. Then tap on it in the table view - we successfully segue to the Display Note View Controller, but the note's title and content doesn't yet display! Let's fix that in the next section.
 

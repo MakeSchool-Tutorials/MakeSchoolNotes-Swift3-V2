@@ -23,7 +23,7 @@ Let's add a Navigation Item to the *Display Note View Controller* now.
 
 > [action] Drag a *Navigation Item* from the Object library to the *Display Note View Controller* in your storyboard.
 
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addNavigationItem.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addNavigationItem.mp4)
 
 Great! Now that both of our view controllers have Navigation items, we can easily add our bar button items.
 
@@ -45,7 +45,7 @@ Great! We have successfully added the necessary bar buttons items for Make Schoo
 
 >[action] Create a *show* segue from the **+** button to the *Display Note View Controller*. Start by selecting the **+** button, then **control+clicking** on it and dragging to the *Display Note View Controller*.
 >
-> ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addNoteSegue.mov)
+> ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addNoteSegue.mp4)
 >
 > Set the segue identifier to "addNote".
 >
@@ -101,7 +101,7 @@ Next, we need to connect our **Cancel** and **Save** buttons to the unwind segue
 
 >[action] *Control-click* and *drag* from the **Cancel** button to the *Exit icon* and select *unwindToListNotesViewController* when prompted. Do the same with the **Save** button.
 >
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/connectToExit.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/connectToExit.mp4)
 
 
 #Adding Unwind Segue Identifiers
@@ -134,7 +134,7 @@ The code above is identical to the code we added in the `prepare(for:sender:)` m
 
 Now when you run your app each segue should print the correct message to the screen like this:
 
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P06-complete.mov)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P06-complete.mp4)
 
 If you notice that the messages printed to the console do not match with the buttons you are tapping, you should change the identifiers of the mismatched segues.
 
