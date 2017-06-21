@@ -62,7 +62,7 @@ Remember that we both create new notes and modify existing notes in the DisplayN
 Update `prepare(for:sender:)` as follows:
 >
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Save" {
+        if segue.identifier == "save" {
             // if note exists, update title and content
             let note = self.note ?? CoreDataHelper.newNote()
             note.title = noteTitleTextField.text ?? ""

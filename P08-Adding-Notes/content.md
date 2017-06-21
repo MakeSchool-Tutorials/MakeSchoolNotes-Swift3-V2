@@ -39,9 +39,9 @@ Update the `prepare(for:sender:)` method in the Display Note View Controller cla
 >
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if identifier == "Cancel" {
+            if identifier == "cancel" {
                 print("Cancel button tapped")
-            } else if identifier == "Save" {
+            } else if identifier == "save" {
                 print("Save button tapped")
 >                
                 // 1
@@ -63,7 +63,7 @@ So what did we change in the code above?
 
 3. We are setting the note's modification time to the current time.
 
-Again, notice that the code we added is inside of the `else if identifier == "Save"` block, and will only be executed if the user taps the **Save** button.
+Again, notice that the code we added is inside of the `else if identifier == "save"` block, and will only be executed if the user taps the **Save** button.
 
 #Saving the Note
 
@@ -74,9 +74,9 @@ Add the lines marked `1` and `2` to the `prepare(for:sender:)` method in the Dis
 >
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if identifier == "Cancel" {
+            if identifier == "cancel" {
                 print("Cancel button tapped")
-            } else if identifier == "Save" {
+            } else if identifier == "save" {
                 print("Save button tapped")
 >                
                 let note = Note()

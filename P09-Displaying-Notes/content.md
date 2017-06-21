@@ -99,7 +99,7 @@ Update `prepare(for:sender:)` in the *DisplayNoteViewController* class as follow
 >
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let listNotesTableViewController = segue.destination as! ListNotesTableViewController
-        if segue.identifier == "Save" {
+        if segue.identifier == "save" {
             if let note = note {
                 // 1
                 note.title = noteTitleTextField.text ?? ""

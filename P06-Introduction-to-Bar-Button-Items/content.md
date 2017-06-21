@@ -109,7 +109,7 @@ Next, we need to connect our **Cancel** and **Save** buttons to the unwind segue
 Unwind segues are only accessible from the Document outline. Unfortunately, there is no easy way to identify which button corresponds to which segue. Thus we must use the guess-and-check method when setting the identifier of unwind segues.
 
 > [action]
-Select the top  *Unwind segue to "Exit"* segue from the Document Outline, then in the Attributes inspector set its *Identifier* field to "Cancel". (Set the other segue's identifier to "Save".)
+Select the top  *Unwind segue to "Exit"* segue from the Document Outline, then in the Attributes inspector set its *Identifier* field to "cancel". (Set the other segue's identifier to "save".)
 >
  ![image displaying how to set segue identifier](./images/identifier.png)
 
@@ -120,9 +120,9 @@ Add the following to the *Display Note View Controller* class:
 >
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let identifier = segue.identifier {
-        if identifier == "Cancel" {
+        if identifier == "cancel" {
           print("Cancel button tapped")
-        } else if identifier == "Save" {
+        } else if identifier == "save" {
           print("Save button tapped")
         }
       }
@@ -149,6 +149,6 @@ Congratulations! We have finished building the interface of Make School Notes! I
 >4. Created a show segue with the identifier "addNote" from the **+** button to the *Display Note View Controller*
 >5. Updated the `prepare(for:sender:)` method in the *List Notes Table View Controller*
 >6. Learned about unwind segues.
->7. Created unwind segues from the **Save** and **Cancel** buttons, and given them the identifiers "Save" and "Cancel" respectively.
+>7. Created unwind segues from the **Save** and **Cancel** buttons, and given them the identifiers "save" and "cancel" respectively.
 >8. Added the `prepare(for:sender:)` method to the *Display Note View Controller*
 >9. Run and tested your app while looking at the debug console to see that the output is correct.
