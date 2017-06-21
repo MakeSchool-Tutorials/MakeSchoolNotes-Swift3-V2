@@ -48,7 +48,7 @@ Update the `prepare(for:sender:)` method in the Display Note View Controller cla
                 let note = Note()
                 // 2
                 note.title = noteTitleTextField.text ?? ""
-                note.content = noteContentTextView.text
+                note.content = noteContentTextView.text ?? ""
                 // 3
                 note.modificationTime = Date()
             }
@@ -81,7 +81,7 @@ Add the lines marked `1` and `2` to the `prepare(for:sender:)` method in the Dis
 >                
                 let note = Note()
                 note.title = noteTitleTextField.text ?? ""
-                note.content = noteContentTextView.text
+                note.content = noteContentTextView.text ?? ""
                 note.modificationTime = Date()
 >                
                 // 1
