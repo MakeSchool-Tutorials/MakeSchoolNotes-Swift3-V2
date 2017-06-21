@@ -18,7 +18,7 @@ import CoreData
 #CoreData's Object Type
 As of Xcode 8, CoreData now generates code for you, based on a data model that you specify. It used to be that we had to both give CoreData a model AND write all of the code ourselves, but now Xcode will do it for us! That being said, it's important for you to know a bit about what Xcode is doing for you, so we're going to explain some of how CoreData works. This will help when you go on to build your own app, and will help prevent any issues you might run into.
 
-When CoreData stores and object, the object inherits from a CoreData provided class called `NSManagedObject`. For instance, if we wanted to store and retrieve objects of type `Person`, we would declare the `Person` class as follows:
+When CoreData stores an object, the object inherits from a CoreData provided class called `NSManagedObject`. For instance, if we wanted to store and retrieve objects of type `Person`, we would declare the `Person` class as follows:
 
 ```
 class Person: NSManagedObject {
