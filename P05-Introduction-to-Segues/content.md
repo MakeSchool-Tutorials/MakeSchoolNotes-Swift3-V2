@@ -16,7 +16,7 @@ Notice that when we added the segue an arrow appeared pointing from our *List No
 
 ![image showing changes from segue](./images/segue.png)
 
-#Segue Identifiers
+#Segue Identifiers & Fixing Constraints
 
 Segue identifiers are used to uniquely identify segues. We can set a segue's identifier in the Attributes inspector.
 
@@ -24,6 +24,16 @@ Segue identifiers are used to uniquely identify segues. We can set a segue's ide
 Set the identifier of the segue that we created above to "displayNote".
 >
 ![image showing changes from segue](./images/segue-id.png)
+
+Now, let's fix the constraints on the detail view since adding the navigation bar controller messed them up a bit...
+
+> [action]
+>
+First, delete all the constraints. Now rearrange your elements and then `Reset to Suggested Constraints` again.
+>
+Watch the video if you need some guidance!
+>
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/fix-constraints.mp4) 
 
 #The prepare(for:sender:) method
 
