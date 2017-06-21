@@ -93,6 +93,7 @@ do {
 The `try` keyword in the above code signals that the call to `managedContext.save()` can *throw an error*. (Throwing an error is a fancy way of saying that a method can fail.) By using the `try!` keyword (note the exclamation point) we are indicating that we know the `managedContext.save()` method can throw an error, but that we are sure that it will not, and therefore will not handle the error case.
 
 In Swift, errors are handled using the do/try/catch paradigm. For more information on the do/try/catch paradigm of error handling, check out these [lecture slides](https://www.makeschool.com/tutorials/advanced-ios-development/error-handling-swift) or read the [official documentation](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html).
+
 ##Saving Objects
 
 In order to save an object in CoreData, we just need to create a instance of the class and then make the save transaction shown above. If we wanted to save the `chris` variable from above, we would do the following:
@@ -144,7 +145,6 @@ Once inside the write transaction, we can delete an object using the `delete()` 
 
 ```
 managedContext.delete(chris)
-saveNote()
 ```
 
 The above code deletes the `chris` variable from the default managedContext.
