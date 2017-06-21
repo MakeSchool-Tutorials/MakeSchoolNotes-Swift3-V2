@@ -92,7 +92,7 @@ Because the Display Note View Controller is used to both create new notes and mo
 
 We've done it! You can now add new notes and modify existing notes. However, there is a small problem: when saving modifications to existing notes, they are added to the `notes` array as new notes! Try it out and see for yourself.
 
-To solve this problem, we are going to need to check wether we are creating a new note or modifying an existing note. We can do this the same way we did in the `viewWillAppear()` method. When the user taps the **Save** button, if we are creating a new note, then we need to add it to the `notes` array, but if we are modifying an existing note, we only need to update the title and content of the note.
+To solve this problem, we are going to need to check whether we are creating a new note or modifying an existing note. We can do this the same way we did in the `viewWillAppear()` method. When the user taps the **Save** button, if we are creating a new note, then we need to add it to the `notes` array, but if we are modifying an existing note, we only need to update the title and content of the note.
 
 > [action]
 Update `prepare(for:sender:)` in the *DisplayNoteViewController* class as follows:
