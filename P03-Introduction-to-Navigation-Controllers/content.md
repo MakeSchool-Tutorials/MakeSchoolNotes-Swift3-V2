@@ -59,4 +59,4 @@ Great job -- our note app is really starting to come along!
 >
 >1. Learned the basics of what a navigation controller does.
 >2. Added a navigation controller to your app by embedding the `ListNotesTableViewController` in one.
->3. Learned how set the title of a view so that it displays in the navigation bar. We set the `ListNotesTableViewController`'s title to Notes.
+>3. Learned how to set the title of a view so that it displays in the navigation bar. We set the `ListNotesTableViewController`'s title to Notes.
