@@ -23,7 +23,7 @@ Add the following method to the *ListNotesTableViewController* class:
         }
     }
 
-1. By implementing `tableView(_:commitEditingStyle:forRowAtIndexPath:)`, we enable the table view to have additional editing modes, one of which is that the cells display the delete option when a user swipes right. The other mode is an insert mode, but that won't appear without additional configuration.
+1. By implementing `tableView(_:commitEditingStyle:forRowAt indexPath:)`, we enable the table view to have additional editing modes, one of which is that the cells display the delete option when a user swipes right. The other mode is an insert mode, but that won't appear without additional configuration.
 
 2. We check to see if the `editingStyle` is the `.delete` one - there's also an `.insert` one. We wouldn't want to accidentally delete a user's notes when they intended to insert a new one!
 
