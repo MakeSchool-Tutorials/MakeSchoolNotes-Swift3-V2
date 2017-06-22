@@ -7,6 +7,10 @@ With the ability to add, modify, and delete notes, our app is nearly finished! T
 
 CoreData is a native mobile database that is built by Apple. CoreData is used to save and retrieve objects locally on our user's device. For Make School Notes, we want to save all of a user's notes when they close the app, and retrieve all of their notes when they reopen the app.
 
+> [info]
+>
+Please note, this page is purely informational. We'll start working with CoreDate on the next page!
+
 ##Importing the CoreData Framework
 
 When using the CoreData framework in Swift you must use the following import statement:
