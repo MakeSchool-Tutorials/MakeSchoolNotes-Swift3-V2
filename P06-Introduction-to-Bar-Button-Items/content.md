@@ -51,17 +51,19 @@ Great! We have successfully added the necessary bar buttons items for Make Schoo
 >
 Next, update the `prepare(for:sender:)` method in the *List Notes Table View Controller* as follows:
 >
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let identifier = segue.identifier {
-        if identifier == "displayNote" {
-          print("Table view cell tapped")
-        } else if identifier == "addNote" {
-          print("+ button tapped")
-        }
-      }
+```
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  if let identifier = segue.identifier {
+    if identifier == "displayNote" {
+      print("Table view cell tapped")
+    } else if identifier == "addNote" {
+      print("+ button tapped")
     }
+  }
+}
+```
 
-The code above is identical to our previous code with the exception that we have added an `else if` statement to check for when the **+** button is tapped.
+The code above is identical to our previous code with the exception that we have added an `else if` statement to check for when the `+` button is tapped. We've also changed the first print statement to make it consistent with the second ("Table view cell tapped" instead of "Transitioning to the Display Note View Controller").
 
 > [action]
 > Now when you tap the **+** button the *Display Note View Controller* should appear. Test out your new segue by running the app. Make sure to look in the debug console!
