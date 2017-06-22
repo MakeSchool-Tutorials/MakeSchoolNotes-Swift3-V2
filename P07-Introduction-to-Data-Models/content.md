@@ -83,7 +83,7 @@ Modify `func tableView(tableView: UITableView, numberOfRowsInSection section: In
 Remember that the above method is used by the table view to determine its number of cells. In our previous code, we hard coded the return value to 10, but now we are returning the number of notes that are in the `notes` array.
 
 > [action]
-Modify `func tableView(tableView: UITableView, cellForRow indexPath: NSIndexPath) -> UITableViewCell` as follows:
+Modify `func tableView(tableView: UITableView, cellForRow indexPath: IndexPath) -> UITableViewCell` as follows:
 >
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
