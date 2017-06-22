@@ -132,7 +132,7 @@ Now that we are using a custom cell with type *ListNotesTableViewCell*, we must 
 
 
 > [action]
-Replace the content of the `tableView(_ tableView: UITableView, cellForRow indexPath: NSIndexPath) -> UITableViewCell` method with the following:
+Replace the content of the `tableView(_ tableView: UITableView, cellForRow indexPath: IndexPath) -> UITableViewCell` method with the following:
 >
     // 1
     let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
