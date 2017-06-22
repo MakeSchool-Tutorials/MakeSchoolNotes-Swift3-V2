@@ -94,7 +94,7 @@ Add the lines marked `1` and `2` to the `prepare(for:sender:)` method in the Dis
 
 We are now adding the new note to the `notes` array in List Notes Table View Controller. Read on to find out how:
 
-1. Remember that a segue is a link between two view controllers. The segue class, `UIStoryBoardSegue` provides access both the source and destination view controllers using the `sourceViewController` and `destinationViewController` properties. Here we're using the `destinatonViewController` property to get a reference to the `ListNotesTableViewController`. However, the `segue` doesn't know that the `destinationViewController` is a `ListNotesTableViewController`, it just knows is that it's some kind of `UIViewController`. But we *do* know that the `destinationViewController` is a `ListNotesViewController` so we tell the compiler that by downcasting with `as! ListNotesTableViewController`.
+1. Remember that a segue is a link between two view controllers. The segue class, `UIStoryBoardSegue` provides access to both the source and destination view controllers using the `sourceViewController` and `destinationViewController` properties. Here we're using the `destinatonViewController` property to get a reference to the `ListNotesTableViewController`. However, the `segue` doesn't know that the `destinationViewController` is a `ListNotesTableViewController`, it just knows is that it's some kind of `UIViewController`. But we *do* know that the `destinationViewController` is a `ListNotesViewController` so we tell the compiler that by downcasting with `as! ListNotesTableViewController`.
 
 2. We are adding the new note to the `notes` array.
 
