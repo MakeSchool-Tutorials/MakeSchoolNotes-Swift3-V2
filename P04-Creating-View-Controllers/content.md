@@ -21,7 +21,7 @@ Add a *Text Field* to the top of the Display Note View Controller and a *Text Vi
 >
 ![image displaying resized text objects](./images/addText.png)
 
-We're going to ensure that our text field and text view will appear on screen correctly by using *Auto Layout*. Auto Layout is Apple's system for laying out views, it was built to give programmers and designers the power and flexibility to define layouts that look good on all devices and resolutions. As this point, you shouldn't worry too much about Auto Layout; we will go in-depth into Auto Layout in later tutorials.
+We're going to ensure that our text field and text view will appear on screen correctly by using *Auto Layout*. Auto Layout is Apple's system for laying out views, it was built to give programmers and designers the power and flexibility to define layouts that look good on all devices and resolutions. At this point, you shouldn't worry too much about Auto Layout; we will go in-depth into Auto Layout in later tutorials.
 
 > [action]
 Select the *Display Note View Controller* from the Document Outline, then select `Editor > Resolve Auto Layout Issues > Reset to Suggested Constraints`. Make sure that you select the option under `All Views in Display Note View Controller`.
