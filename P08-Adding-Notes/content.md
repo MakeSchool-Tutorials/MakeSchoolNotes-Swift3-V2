@@ -14,6 +14,7 @@ Currently, when we tap the **+** button and segue to the Display Note View Contr
 Instead, it would be better to show an empty text view so that our users can begin taking notes.
 
 > [action]
+>
 1. Create an IBOutlet from the *text view* to the *Display Note View Controller* with the name "noteContentTextView".
 2. Create an IBOutlet for the text field as well, name it "noteTitleTextField".
 3. Add the following method to the Display Note View Controller:
