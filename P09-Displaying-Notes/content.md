@@ -85,6 +85,17 @@ Because the Display Note View Controller is used to both create new notes and mo
 
 3.  This code is executed if the `note` property was `nil`. This happens if we are creating a new note, so we set the text field and text view to empty strings to ensure that our users can immediately begin typing their new note.
 
+> [info]
+>
+The `if let` / `else` can be simplified as:
+>
+```
+noteTitleTextField.text = note?.title ?? ""
+noteContentTextView.text = note?.content ?? ""
+```
+>
+We wrote it out the expanded version for now to make it super clear what was happening.
+
 #Updating the Table View
 
 We've done it! You can now add new notes and modify existing notes. However, there is a small problem: when saving modifications to existing notes, they are added to the `notes` array as new notes! Try it out and see for yourself.
