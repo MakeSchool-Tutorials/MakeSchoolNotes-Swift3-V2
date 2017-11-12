@@ -3,89 +3,110 @@ title: "Integrating CoreData"
 slug: integrating-CoreData
 ---
 
-Make School Notes is almost finished! In this section let's integrate CoreData into our project.
+We're at the beginning of the end. It's been quite a journey. In this section, we'll finish our _Notes_ app functionality by implementing persistence with our `CoreDataHelper`.
 
-##Retrieving Notes
+# Retrieving Notes
 
-Remember that we want all of the user's notes to be displayed in the ListNotesViewController. When the app is launched, we need to retrieve all the notes from the default CoreData and store them in the `notes` property of the ListNotesViewController.
-Now we can call the `retrieveNotes()` method and store the result directly in the `notes` property.
+When a user first opens our app, we want to retrieve and display all of the user's existing notes. We can do this by retrieve our existing notes and updating our `notes` array in `ListNotesTableViewController` at app launch.
 
-> [action]
-Update the `viewDidLoad()` method in ListNotesTableViewController as follows:
->
-    override func viewDidLoad() {
-     	super.viewDidLoad()
-    	notes = CoreDataHelper.retrieveNotes()
-    }
-
-We're calling the `retrieveNotes()` method in the ListNotesViewController `viewDidLoad()` method because we want to update the `notes` property every time the ListNotesViewController is loaded.
+Let's go ahead and implement this with our `CoreDataHelper`!
 
 > [action]
-Also, update the `unwindToListNotesViewController()` method in ListNotesTableViewController as follows:
+In `ListNotesTableViewController`, update the method `viewDidLoad()` to retrieve the user's previously existing notes:
 >
-    @IBAction func unwindToListNotesViewController(_ segue: UIStoryboardSegue){
-        self.notes = CoreDataHelper.retrieveNotes()
-    }
+```
+override func viewDidLoad() {
+    super.viewDidLoad()
+>    
+    notes = CoreDataHelper.retrieveNotes()
+}
+```
 
-We're calling the `retrieveNotes()` method in the ListNotesViewController `unwindToListNotesViewController()` method because we want to update the `notes` property every time the ListNotesViewController is unwinded from another view controller.
+The `viewDidLoad()` of our `ListNotesTableViewController` happens roughly when the app first launches. We can use our `CoreDataHelper` to retrieve the user's previously existing notes and populate our `notes` array.
 
-The property observer we added earlier to `notes` will ensure the table view is always in sync with our data.
-
-##Deleting Notes
-
-Remember that when we implemented the ability to delete notes, we did so in the
-`tableView(_:commitEditingStyle:forRowAtIndexPath:)` method.
-
-We need to update the above method to delete the note from CoreData as well.
+Next, we'll also update our _unwind segue_ to retrieve our updated notes.
 
 > [action]
-Update the `tableView(tableView:commitEditingStyle:forRowAtIndexPath:)` method as follows:
+In `ListNotesTableViewController`, update the _unwind segue_ method `unwindWithSegue(_:)` to the following:
 >
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    	if editingStyle == .delete {
-	  	 	//1
-    		CoreDataHelper.delete(note: notes[indexPath.row])
-    		//2
-    		notes = CoreDataHelper.retrieveNotes()
-    	}
-    }
+```
+@IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+    notes = CoreDataHelper.retrieveNotes()
+}
+```
 
-1. Here we delete the note from CoreData using the helper method we defined earlier. Also like before, we use the `indexPath.row` to index into `notes` to delete the correct one.
+Now, each time the user taps the save or cancel bar button item in `DisplayNoteViewController`, we update our `notes` array in `ListNotesTableViewController`. Our `didSet` property observer will take care of reloading our table view. In combination, we can be sure our table view data is always synced with our `NSManagedObjectContext`.
 
-2. Here we update the `notes` property to reflect the changes.
+# Deleting Notes
 
-#Updating the DisplayNoteViewController
-
-Remember that we both create new notes and modify existing notes in the DisplayNoteViewController. Now that we are using CoreData, we must update our code to add and update notes to CoreData as well.
+We'll also need to update our delete note functionality.
 
 > [action]
-Update `prepare(for:sender:)` as follows:
+In `ListNotesTableViewController`, update the table view data source method `tableView(_:commitEditingStyle:forRowAtIndexPath:)` to use our _Core Data_ helper:
 >
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "save" {
-            // if note exists, update title and content
-            let note = self.note ?? CoreDataHelper.newNote()
-            note.title = noteTitleTextField.text ?? ""
-            note.content = noteContentTextView.text ?? ""
-            note.modificationTime = Date() as NSDate
-            CoreDataHelper.saveNote()
-        }
+```
+override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+        let noteToDelete = notes[indexPath.row]
+        CoreDataHelper.delete(note: noteToDelete)
+>
+        notes = CoreDataHelper.retrieveNotes()
     }
-
-For the most, the above code is identical to what we had before, except for 2 things:
-
-1. We update the note object if it exists and save the changed object.
-2. Here we use our CoreData helper to add the newly created note to CoreData, so that it's persisted.
-
-#Running the App
-
-Congratulations -- you have just built a fully functioning note taking app! Run it and test it out! You can even try force quitting Make School Notes, then reopening it to see that beautiful persistence. To force quit, press the home button twice (**shift+command+h**, ⇧⌘H in simulator) and swipe up on Make School Notes. You should see all the notes you saved when it re-opens!
-
->[info]
->###On this page, you should have:
+}
+```
 >
->1. Updated ListNotesViewController's `viewDidLoad()` to grab all the notes from CoreData.
->2. Added a `didSet` property listener on the `notes` property so that it reloads the table view every time the property is updated
->3. Updated ListNotesViewController's `tableView(tableView:commitEditingStyle:forRowAtIndexPath:)` method to delete the notes from CoreData when they're deleted from the table view.
->4. Updated DisplayNoteViewController's `prepare(for:sender:)` method to save or update the notes in CoreData, depending on what the user does. Also it now updates the `notes` property in the ListNotesViewController to make sure it's fully up to date.
->5. Run and tested your fully functioning app!
+In the code above, we retrieve the note to be deleted corresponding to the selected index path. Then we use our _Core Data_ helper to delete the selected note. Last we update our `notes` array to reflect the changes in our `NSManagedObjectContext`.
+
+# Updating DisplayNoteViewController
+
+Last, we'll need to update our functionality in `DisplayNoteViewController` for creating new notes or modifying existing ones. Once again, let's use our `CoreDataHelper` to update our code.
+
+> [action]
+In `DisplayNoteViewController`, update `prepare(for:sender:)` to use our `CoreDataHelper`:
+>
+```
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let identifier = segue.identifier else { return }
+>
+    switch identifier {
+    case "save" where note != nil:
+        note?.title = titleTextField.text ?? ""
+        note?.content = contentTextView.text ?? ""
+        note?.modificationTime = Date()
+>
+        CoreDataHelper.saveNote()
+>
+    case "save" where note == nil:
+        let note = CoreDataHelper.newNote()
+        note.title = titleTextField.text ?? ""
+        note.content = contentTextView.text ?? ""
+        note.modificationTime = Date()
+>
+        CoreDataHelper.saveNote()
+>
+    case "cancel":
+        print("cancel bar button item tapped")
+>
+    default:
+        print("unexpected segue identifier")
+    }
+}
+```
+>
+We update our `prepare(for:sender:)` method to make use of our `CoreDataHelper`. Since we're retrieving notes in our `ListNotesTableViewController` _unwind segue_, we no longer need to reference our segue's destination controller.
+
+# Running the App
+
+Wooooooooo! We're done. Phew... I'm just as happy as you are. Congrats, you've just finishing building a fully functioning _Notes_ app with _Core Data_.
+
+Let your hair down, take it for a test run.
+
+You can write notes in a box. <br />
+You can write notes with a fox. <br />
+You can write notes in a house. <br />
+You can write notes with a mouse. <br />
+
+You can write notes here or there. <br />
+You can write notes anywhere. <br />
+
+Notes, you can now write.

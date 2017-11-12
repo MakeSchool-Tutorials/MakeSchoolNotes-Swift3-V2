@@ -3,134 +3,144 @@ title: "Introduction to Table Views"
 slug: intro-table-view
 ---
 
-Table views are one of the most common visual elements used in iOS development and can be found in many of the apps bundled with iOS: *Messages*, *Photos*, *Maps*, and many more! Table views use *cells* to display lists of information.
+In the apps we've built so far, we've learned how to build UI layouts using `UIKit` objects and _Auto-Layout_. But what if all of the content can't fit onto our device's screen at the same time? 
 
-![image illustrating difference between table views and cells](./images/tableview-vs-cell.png)
+![Overflowing Content](assets/overflowing_content.png)
 
-Table views are instances of the `UITableView` class and can be created in two ways:
+As in the example above, this is especially common for UI layouts involving feeds or lists of content.
 
-1. Programmatically, using code to create one
-2. Visually, using Interface Builder & Storyboards
+![Table View Examples](assets/examples_table_views.png)
 
-(For more information on table views check out this [explanation](https://www.makeschool.com/tutorials/swift-concepts-explained/table-views))
+Twitter uses this layout to a vertically scrollable feed of tweets. Likewise, Spotify uses the same UI layout to display a playlist of songs.
 
-#Make School Note's Table View Controller
+To create this UI layout, we'll introduce a new `UIKit` object: `UITableView`. Table views provide a way for us to easily build vertical and horizontal scrolling content.
 
-For the table view in Make School Notes, we will be using a *table view controller* created in a *storyboard* as it is the quickest way to get started.
+A `UITableView` uses one or more `UITableViewCell` objects to create a scrollable list of cells. In most basic cases, each cell represents one item. For example, in our Twitter example, each tweet, or row, is a `UITableViewCell`.
 
-The starter project that you downloaded earlier already contains a table view controller. Let's take a look at it now.
+![Table View Vs Cells](assets/table_view_vs_cells.png)
 
-> [action]
-Click the *Project navigator* icon, expand the *MakeSchoolNotes* folder, and select the `Main.storyboard` file:
->
-![image illustrating how to open the Main.storyboard file](./images/open-main-storyboard.png)
+On the left, we have the _frame_ of our `UITableView`. Within the table view, we can see that each tweet, or row, is made up of a `UITableViewCell`.
 
-Table view controllers are the easiest way to use table views because they do a lot of the necessary table view setup for you. Table view controllers are instances of the `UITableViewController` class and, similar to table views, can be created programmatically or in Interface Builder.
-
-The table view controller in the starter project was created in Interface Builder, but we will want to be able manipulate it with code. This is very common situation when building iOS apps, so Interface Builder provides a way to link our table view controller with controlling code. To do this, we will use a feature of Xcode called *custom classes*. We want to set the custom class of our table view controller to *ListNotesTableViewController*. The *ListNotesTableViewController* class was included in the starter project and can be found in the `ListNotesTableViewController.swift` file.
-
-> [action]
-Set up the code connection by selecting the table view controller in your storyboard. (Note that when you have successfully selected the table view controller, it will be outlined in blue.) Click the *Identity inspector* icon, and set the *Class* field to *ListNotesTableViewController*.
->
-![image illustrating how to open the Main.storyboard file](./images/code-connection.png)
-
-Now that we have set the custom class of our table view controller, we will be able to make changes programmatically to our table view controller from inside the *ListNotesTableViewController* class.
-
-> [action]
-Click the *Project navigator* icon, expand the *Controllers* folder, and select the `ListNotesTableViewController.swift` file.
->
-![image illustrating how to open the Main.storyboard file](./images/ListNotesTableViewController.png)
-
-Currently, there is nothing interesting in this file, but we will change that soon!
-
-#Displaying Information with our Table View
-
-To inform our table view about which information to display, we must do some setup.
-
-When displaying information, a table view *must* know two things:
-
-1. The total number of cells
-2. What information to display for each specific cell
-
-Let's add the necessary code to our project -- we will discuss it afterwards.
-
-> [action]
-Add these two methods inside the scope of the *ListNotesTableViewController* class:
->
-    // 1
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
->   
-    // 2
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      // 3
-      let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath)
->   
-      // 4
-      cell.textLabel?.text = "Yay - it's working!"
->
-      // 5
-      return cell
-    }
-
-So what exactly is happening in the code above? We added two new methods to our class: `tableView(_:numberOfRowsInSection:)` and `tableView(_:cellForRow:)`. Both of these methods are part of the `UITableViewDataSource` protocol, which is a way of saying that these are methods we are implementing in order to answer questions the table view will ask us about the data it should display. This type of interaction is called a *delegate pattern* in which one object (the table view in this case) *delegates* to another object (our `ListNotesTableViewController` class) to help it accomplish its task. If you want you can read more about the delegate pattern [here](https://www.makeschool.com/tutorials/swift-concepts-explained/delegates).
-
-Let's take a look at what's happening line by line:
-
-1. We use `tableView(_:numberOfRowsInSection:)` to answer the table view's question about how many cells it should display. Often this number is set dynamically, because the information we want to display is dynamic - a list of notes created by the user, for example. But for now we will just use the hard-coded value `10` for demonstration.
-
-2. `tableView(_:cellForRow:)` is the table view's way of asking us, "what cell should I dsplay in this particular row of the table?"  We answer that question by constructing a `UITableViewCell`, updating that cell to look how we want, then returning that cell to the table view. To help us answer that question, the table view tells us the *indexPath*. The index path tells us which *section* and *row* the cell that we construct will belong to within the table view. Currently, our table view has 1 section (the default value) and 10 rows. We're going to ignore the `indexPath` for now, but we'll end up using it soon.
-
-3. This line is fetching the actual cell that will be displayed in the table view. Option click on `cell` to see the type: `UITableViewCell`. The identifier, `"listNotesTableViewCell"`, is a unique name that we give to the *prototype cell* of a table view in our storyboard in Interface Builder. After setting the identifier, we can reference the prototype cell in code using the identifier. (We will set the identifier for our cell in the next step.) The reason identifiers exist is because we might want to have more than one kind of cell in our table view. Using different identifiers will allow us to reference the different prototype designs that we create in Interface Builder.
 > [info]
-> Notice that we are *dequeueing* a *reusable cell*. This is actually an interesting performance optimization: it turns out that it's fairly expensive to create and lay out a brand new `UITableViewCell`. So instead of creating new cells as they're about to display on screen, and destroying them as they scroll out of view, `UITableView` relies on giving us previously constructed cells for us to update with new information. If there's no recycled cells ready to be reused, `dequeueReusableCellWithIdentifier(_:forIndexPath:)` will give us a new one instead.
+The `UITableView` class has a lot of depth. You can customize your table view to have headers, footers, multiple sections, etc. For the scope of this tutorial, we'll be covering the fundamentals. For more information on table views, check out this [explanation.](https://www.makeschool.com/tutorials/swift-concepts-explained/table-views)
+
+Next, let's look at how to create our own `UITableView`.
+
+# Using an UITableViewController
+
+In our Notes app, we'll be using a subclass of `UIViewController` called `UITableViewController`. As the name might suggest, a `UITableViewController` is a `UIViewController` with a `UITableView` on it.
+
+Our starter project already contains our table view controller. Let's open it now.
+
+> [action]
+Open your `Main.storyboard`, using your _Project Navigator_. ![Starting Storyboard](./images/open-main-storyboard.png)
+
+Using `UITableViewController` are great for simple lists of content because they abstract a lot of boilerplate code that you'd usually need to implement a table view in a view controller.
+
+Next, we need to pair our storyboard table view controller with it's Swift source file. If you recall from our previous tutorials, we can do this by setting our storyboard table view controller's custom class. Let's connect our storyboard's table view controller with our `ListNotesTableViewController` that's already included in our project.
+
+> [action]
+Open `Main.storyboard` and set the custom class of the `UITableViewController`:
 >
-The nice thing is that this is all handled for you automatically by Apple's `UITableView` code. Apple's code figures out which cells it can reuse and when cells need to be created! All you have to do is call `dequeueReusableCellWithIdentifier(_:forIndexPath:)`.
-
-4. Here we set the `text` property of our cell's `UILabel` to "Yay - it's working!".
-
-5. We return the updated cell to be used within the table view.
-
-## Confused?
-We just tossed a LOT of information at you! Delegation patterns? Prototype cells? Reuse Identifiers? It's all pretty complicated.
-<br>
-Don't worry though, this is all meant to be fairly simple, and you don't need to understand what's happening in the background just yet. In fact, many computer science concepts will make more sense to you in the future when you can relate them to something you've worked with in iOS. For now, feel free to refer back to this tutorial whenever you might need to, there's nothing wrong with looking up the answer when it comes to programming!
-<br>
-## Setting the Identifier
-
-Before we can run our app, we need to set the identifier of the prototype cell in the storyboard to match the identifier we used in the code above:
-
-1. Open the *Document Outline*.
-
-  ![image illustrating how to open the document outline](./images/document-outline.png)
-
-2. Select the *Table View Cell*.
-
-  ![image illustrating location of table view cell](./images/tableViewCell.png)
-
-3. Click the *Attributes inspector*.
-
-  ![image illustrating location of attributes inspector](./images/attributes-inspector.png)
-
-4. Enter `listNotesTableViewCell` into the *identifier* field.
-
-  ![image illustrating location of identifier field](./images/identifier.png)
-
-Notice that when we changed the *identifier* of the cell to `listNotesTableViewCell`, the name of the cell in the *Document Outline* changed from "Table View Cell" to `listNotesTableViewCell`.
-
-#Running the App!
-
-Now when you run your app, you should see something like this:
-
-![image of table view displaying data](./images/table-view-with-data.png)
-
-Congratulations - You have just successfully set up a table view controller! In the next section we will customize our table view cells so that we can display our note's title and modification time.
-
-
->[info]
->###On this page, you should have:
+1. Select your storyboard table view controller by selecting it in _Interface Builder_ or in the _Document Outline_.
+1. Open the _Identity Inspector_ in the _Utilities area_.
+1. In the _Custom Class_ section, set the _Class_ attribute to `ListNotesTableViewController`. Auto-complete should help you select the correct class.
 >
->1. Learned how to link a view controller in Interface Builder to your code with a *custom class*. We linked the table view controller in Interface Builder to our custom ListNotesTableViewController class.
->2. Added the functions for `tableView(_:numberOfRowsInSection:)` and `tableView(_:cellForRow:)`, to our ListNotesTableViewController class. These methods are the minimum required to be able to display custom information in our table view.
->3. Learned how to set a prototype table view cell's reuse identifier. In this case, we set it to `listNotesTableViewCell`.
+![Set Custom Class](./images/code-connection.png)
+
+Now that we've set our custom subclass of our storyboard table view controller to `ListNotesTableViewController`, we can add code to `ListNotesTableViewController.swift` file.
+
+# Displaying Table View Cells
+
+With our `UITableViewController` subclass set, let's look at how to display a simple, unstyled table view cell.
+
+First, open your table view controller's source file.
+
+> [action]
+Open `ListNotesTableViewController.swift` from your _Project Navigator_. ![Open Table View Controller](./images/ListNotesTableViewController.png)
+
+Even though our `ListNotesTableViewController` class is currently empty, this is where our table view controller related code will go.
+
+## Implementing Data Source Methods
+
+Hidden within the `UITableViewController` abstraction, is the `UITableViewDataSource` methods. These methods provide the table view with the necessary information to display it's table view cells.
+
+The two most important `UITableViewDataSource` methods are:
+
+```
+public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+>
+public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+```
+
+<!-- break -->
+
+> [challenge]
+From the method names above, can you guess what each method does?
+
+<!-- break -->
+
+> [solution]
+The method `tableView(_:numberOfRowsInSection:)` tells the `UITableView` how many `UITableViewCell` objects it should display. You might be wondering what the section parameter is referring to. As we briefly mentioned earlier, table views can be very complex and make use of multiple sections. By default, each `UITableView` has 1 section with an index starting at `0`.
+>
+The second method `tableView(_:cellForRowAt:)` returns the instance of the stylized `UITableViewCell` at the given `IndexPath`. A `IndexPath` is a simple data structure that contain's the cell's row and section indices.
+
+To get a better idea of what these methods do, let's implement them in our table view controller.
+
+> [action]
+In `ListNotesTableViewController.swift`, add the following two methods:
+>
+```
+override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // 1
+    return 10
+}
+>
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    // 2
+    let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath)
+    cell.textLabel?.text = "Cell Row: \(indexPath.row) Section: \(indexPath.section)"
+>
+    return cell
+}
+```
+
+By implementing the _data source_ method, we provide our table view controller's `UITableView` with information on what it should display. In the case above, we specify:
+
+1. The table view should display 10 table view cells. This is hardcoded right now but eventually it'll reflect the number of notes the user has.
+1. Return a table view cell (UIView subclass) instance. In addition, we configure the default `UITableViewCell` to display the cell's index path (row and section).
+
+> [info]
+There's a little more happening behind there scenes here! 
+>
+First, our `UITableView` is using the _delegate pattern_ to communicate with the `UITableViewController`. As we've already mentioned, the table view needs to know the number of cells to display and cell instance for each index path. The _delegate pattern_ provides a specific way for one object to communicate with another. Usually, we'd have to set this up manually, but our `UITableViewController` does this for us behind the scenes. You can learn more about the _delegate pattern_ by clicking [here](https://www.makeschool.com/tutorials/swift-concepts-explained/delegates).
+>
+When we retrieve our `UITableViewCell` instance, we use the method `dequeueReusableCell(withIdentifier:for:)` to retrieve the instance of our `UITableViewCell` at a specific index path. This method hides some optimizations that determine if the table view will reuse a previously created cell or initialize a new cell instance. This prevents our app from creating a potentially infinite number of cells as we keep scrolling!
+>
+Finally, let's discuss the table view cell's identifier. The identifier is a unique string that allows us to connect our code to the correct `UITableViewCell` subclass. Before running our app, we'll need to set our identifier in our storyboard.
+
+## Setting the Cell Identifier
+
+To connect our table view cell, we need to set our cell identifier in storyboard. By setting our cell's identifier in storyboard, our code is able to identify the correct `UITableViewCell` subclass.
+
+> [action]
+Open `Main.storyboard` and set the `UITableViewCell` identifier:
+>
+1. Select the `UITableViewCell` instance in our table view controller by selecting the cell in the _Document Outline_. ![image illustrating location of table view cell](./images/tableViewCell.png)
+1. Open the _Attributes Inspector_ in _Utilities area_. ![Open Attributes Inspector](./images/attributes-inspector.png)
+1. Find the _Identifier_ field and set it's value to `listNotesTableViewCell`. ![image illustrating location of identifier field](./images/identifier.png)
+
+## Running The App
+
+With our cell identifier set, let's check our progress. Build and run your app in the simulator. 
+
+You should see the following:
+
+![Test Progress](assets/test_progress.png)
+
+> [info]
+Notice how each index path's row corresponds to the the index of each cell. In addition, since we're only using the default section, our section index is always 0.
+
+Congrats on setting up your first table view controller! If something's gone wrong, try re-tracing each step to make sure you didn't miss any instructions. Two common mistakes are forgetting to set custom classes and cell identifiers. 
+
+In the next section we will customize our table view cells so that we can display our note's title and modification time.

@@ -3,53 +3,80 @@ title: "Creating View Controllers"
 slug: creating-view-controllers
 ---
 
-For Make School Notes, when a user clicks on a note in the *Table View*, we want to display the content of that note in a new *View*. Remember that in iOS, each *View Controller* can display one *View*.
+In our _Notes_ app, when a user taps on a note cell in our table view controller, we want our navigation controller to _push_ our `DisplayNoteViewController` on to the top of the navigation stack.
+
+In order for us to set this functionality up, first we'll need to set up our new `DisplayNoteViewController`. Let's get started by creating a new view controller object in our storyboard.
 
 > [action]
-Add a *View Controller* from the Object library to your storyboard by dragging it to a blank area. Click the view controller, then click the identity inspector button on the right panel. Set the custom class of this view controller to *DisplayNoteViewController*.
+In `Main.storyboard`, create a new view controller:
 >
-![image displaying new view controller in storyboard](./images/addVC-labeled.png)
+1. Drag a view controller from the _Object Library_ into your storyboard. Position it on the right-side of your table view controller.
+1. Select your new view controller.
+1. With the view controller selected, navigate to the _Identity Inspector_ in the _Utilities area_.
+1. In the _Class_ field, set the view controller's custom class to `DisplayNoteViewController`. Auto-complete should help you select the correct class.
+>
+![New View Controller](assets/new_view_controller.png)
 
-#Displaying and Editing Text
+# Displaying and Editing
 
-In our new Display Note View Controller, we want to give our users the ability to view and optionally edit the title and content of their notes. For the editing case, using a label would not be sufficient because users cannot change the text of labels. Luckily there are two other objects that will give us this functionality: the *text field* and the *text view*.
+Next, we'll need to create our UI layout for `DisplayNoteViewController`. Our view controller will contain the note's title and a body for each note's content. The user should be able to edit the title and content of the note.
 
-The text field is best for when you want to capture a single line of text from the user, while the text view is best for when you want to capture multiple lines of text. In Make School Notes, we will use a *text field* for the note's **title** and a *text view* for the note's **content**. Let's add one of each to our project now.
+To provide this functionality, we'll use two `UIKit` objects: the text field and text view.
+
+We've already used a  in our tip calculator app. In this app, we'll use the `UITextField` to edit and display the note's title.
+
+As for the note's content, we'll need to introduce a new class we haven't used before: the `UITextView`. A text view provides an easy way to display and edit multiple lines of text.
+
+Let's add both to our `DisplayNoteViewController`.
 
 > [action]
-Add a *Text Field* to the top of the Display Note View Controller and a *Text View* underneath. Resize your objects as necessary, they should look as follows:
+In `Main.storyboard`, add a text field and text view to the `DisplayNoteViewController`:
 >
-![image displaying resized text objects](./images/addText.png)
+1. Drag a text field from the _Object Library_ to the top of your storyboard view controller. Make sure there's a little space between the top of the view controller and your text field. This will be important for setting up our _auto-layout_ constraints next.
+1. Right under your text field, drag a text view from the _Object Library_ and position it's frame so that it roughly covers the remaining view.
+>
+![Display Note UI](assets/display_note_ui.png)
 
-We're going to ensure that our text field and text view will appear on screen correctly by using *Auto Layout*. Auto Layout is Apple's system for laying out views, it was built to give programmers and designers the power and flexibility to define layouts that look good on all devices and resolutions. At this point, you shouldn't worry too much about Auto Layout; we will go in-depth into Auto Layout in later tutorials.
+<!-- break -->
+
+> [info]
+Check that you've left some space between the top of the view controller and your text field. This will be important for setting up our _auto-layout_ constraints next.
+
+## Adding Constraints
+
+Let's add our _auto-layout_ constraints to both of our new views.
 
 > [action]
-Select the *Display Note View Controller* from the Document Outline, then select `Editor > Resolve Auto Layout Issues > Reset to Suggested Constraints`. Make sure that you select the option under `All Views in Display Note View Controller`.
+In `Main.storyboard`, add the following constraints to the text field:
 >
- ![image displaying how to resolve auto layout constraints](./images/resolve.png)
+- (Text Field) Top Edge 10pts from _Safe Area_ Top Edge
+- (Text Field) Leading Edge 15pts from Super View (Root View) Leading Edge
+- (Text Field) Trailing Edge 15pts from Super View Trailing Edge
+>
+![Text Field Constraints](assets/text_field_constraints.png)
 
-#Running the App!
-
-In order to test that our Display Note View Controller is set up correctly, we are going to set the Display Note View Controller to be the *Initial View Controller*. The Initial View Controller is the first view controller that is displayed when your app is launched. We're going to temporarily make the Display Note View Controller the initial view controller because we haven't yet created a transition from the List Notes Table View Controller to the Display Note View Controller.
+Next, let's do the same for our text view.
 
 > [action]
-Select the Display Note View Controller from the Document Outline, select the Attributes inspector, and click the *Is Initial View Controller* button.
+In `Main.storyboard`, add the following constraints to the text view:
 >
-![image showing how to set Initial View Controller](./images/initial.png)
-
-<br>
-Now when you run, your app should display the Display Note View Controller, something like this:
-<br>
-
-![image showing finished Display Note View Controller](./images/finished.png)
-
-Great job! In the next section we'll add the functionality that allows us to transition between views!
-<br>
-
->[info]
->###On this page, you should have:
+- (Text View) Top Edge 10pts from Text Field Top Edge
+- (Text View) Leading Edge 15pts from Super View (Root View) Leading Edge
+- (Text View) Trailing Edge 15pts from Super View Trailing Edge
+- (Text View) Bottom Edge 15pts from Super View Bottom Edge
 >
->1. Created a new view controller with custom class `DisplayNoteViewController` in storyboard.
->2. Added a text field and text view to your `DisplayNoteViewController`.
->3. Used the Reset to Suggested Constraints feature of Auto Layout to ensure the fields display correctly.
->4. Set your Display Note View Controller to be the initial view controller so you can run and check out your app.
+![Text View Constraints](assets/text_view_constraints.png)
+
+That's it! We've added our constraints for our `DisplayNoteViewController` subviews. You're getting pretty good at this...
+
+## Checkpoint
+
+We've created a new view controller in storyboard, connected it's custom class to our Swift source file, added it's subviews and finally implemented each subview's _auto-layout_ constraints.
+
+Because our new view controller isn't yet connected to our `UINavigationController`, there's no way for us to check our progress other than comparing storyboards.
+
+Your storyboard should now look like the following:
+
+![Storyboard Checkpoint](assets/new_vc_checkpoint.png)
+
+We'll setup our navigation controller to access our `DisplayNoteViewController` using segues in the next section. Onwards!

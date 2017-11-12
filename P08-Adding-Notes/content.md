@@ -3,137 +3,173 @@ title: "Adding Notes"
 slug: adding-notes
 ---
 
-Now that we have the table view set up correctly, let's add some note taking functionality!
+With our data model setup, we can begin adding our note functionality! But first, we'll need to do some initial setup.
 
-##Removing the Default Text
+# View Controller Setup
 
-Currently, when we tap the **+** button and segue to the Display Note View Controller, we are greeted with this screen:
+We'll need to create an `IBOutlet` for our text field and text view respectively. We'll need these `IBOutlet` properties to reference our text field and text view in our code.
 
-![image of Display Note View Controller with lorem ipsum text](./images/lorem.png)
+Here we go again...
 
-Instead, it would be better to show an empty text view so that our users can begin taking notes.
+> [challenge]
+Using the _Assistant Editor_, create an `IBOutlet` for the text field and text view in `DisplayNoteViewController`.
+>
+1. Name the text field's `IBOutlet` as `titleTextField`.
+1. Name the text view's `IBOutlet` as `contentTextView`.
+
+Easy enough.
+
+Next, let's use the `IBOutlet` we created to remove the initial filler text in our text view.
+
+## Removing Lorem Ipsum
+
+Right now, if you tap the _Create Note_ bar button item, you'll see the following:
+
+![Filler Text](assets/filler_text.png)
+
+As you can see, our text view contains a bunch of lorem ipsum which is filler text.
+
+That's not right... if a user wants to create a new note, the text view should be empty so that the user can begin taking notes.
+
+Let's fix that now.
 
 > [action]
+In `DisplayNoteViewController`, add the following code right below your `viewDidLoad` method:
 >
-1. Create an IBOutlet from the *text view* to the *Display Note View Controller* with the name "noteContentTextView".
-2. Create an IBOutlet for the text field as well, name it "noteTitleTextField".
-3. Add the following method to the Display Note View Controller:
+```
+override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+>    
+    titleTextField.text = ""
+    contentTextView.text = ""
+}
+```
 >
-	override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+The method `viewWillAppear(_:)` is a view controller lifecycle method that is called right before a view is about to appear on the screen.
+>
+In the code above, we set the text property of both our text field and text view to an empty string. This removes the current lorem ipsum text that we saw previously from our text view.
+
+# Create a New Note
+
+With out setup complete, we're ready to create our first note.
+
+> [action]
+In `DisplayNoteViewController`, update the following code to `prepare(for:sender:)`:
+>
+```
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let identifier = segue.identifier else { return }
+>
+    switch identifier {
+    case "save":
         // 1
-        noteTitleTextField.text = ""
-        noteContentTextView.text = ""
-    }
-
-
-So what's going on with this whole `viewWillAppear(animated: Bool)` thing?
-
-Every time a view controller is about to be displayed on screen, the operating system will call the `viewWillAppear()` method. This gives us the opportunity to execute some view controller specific code before the user sees the view controller. In this case, we used that opportunity to remove the "Lorem ipsum..." placeholder text from the Display Note View Controller.
-
-#Creating the Note
-
-Great! We are finally ready to create our first note!
-
-> [action]
-Update the `prepare(for:sender:)` method in the Display Note View Controller class to the following:
+        let note = Note()
 >
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            if identifier == "cancel" {
-                print("Cancel button tapped")
-            } else if identifier == "save" {
-                print("Save button tapped")
->                
-                // 1
-                let note = Note()
-                // 2
-                note.title = noteTitleTextField.text ?? ""
-                note.content = noteContentTextView.text ?? ""
-                // 3
-                note.modificationTime = Date()
-            }
-        }
-    }
-
-So what did we change in the code above?
-
-1. When the save button is pressed, we need to store the text from the `noteTitleTextField` and `noteContentTextView`. What better place to put it, than in our data model, the `Note` class? So first, we create an instance of `Note`.
-
-2. We are setting the note's title and content to the text contained in the `noteTitleTextField` and `noteContentTextView` respectively. Recall that the `??` is the *nil coalescing operator* and provides a default value if the object is `nil`.
-
-3. We are setting the note's modification time to the current time.
-
-Again, notice that the code we added is inside of the `else if identifier == "save"` block, and will only be executed if the user taps the **Save** button.
-
-#Saving the Note
-
-Once the user is finished creating their note, we need a way to store the new note in the `notes` array in the List Notes Table View Controller, so we can list it with their other notes. But currently the note only exists in the Display Note View Controller. How can we get the note from there to the List Notes Table View Controller? The answer is segues!
-
-> [action]
-Add the lines marked `1` and `2` to the `prepare(for:sender:)` method in the Display Note View Controller class:
+        // 2
+        note.title = titleTextField.text ?? ""
+        note.content = contentTextView.text ?? ""
 >
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            if identifier == "cancel" {
-                print("Cancel button tapped")
-            } else if identifier == "save" {
-                print("Save button tapped")
->                
-                let note = Note()
-                note.title = noteTitleTextField.text ?? ""
-                note.content = noteContentTextView.text ?? ""
-                note.modificationTime = Date()
->                
-                // 1
-                let listNotesTableViewController = segue.destination as! ListNotesTableViewController
-                // 2
-                listNotesTableViewController.notes.append(note)
-            }
-        }
+        // 3
+        note.modificationTime = Date()
+>
+    case "cancel":
+        print("cancel bar button item tapped")
+>
+    default:
+        print("unexpected segue identifier")
     }
+}
+```
+>
+In the code above, we update our `save` switch-case to do the following:
+>
+1. Initialize a new `Note` object.
+1. Set the new note's title and content to the corresponding text field and text view text values. If either value is `nil`, we provide an empty string as the default value using the nil coalescing operation (??).
+1. Set the new note's last modified time to the current date and time.
 
-We are now adding the new note to the `notes` array in List Notes Table View Controller. Read on to find out how:
+## Saving The Note
 
-1. Remember that a segue is a link between two view controllers. The segue class, `UIStoryBoardSegue` provides access to both the source and destination view controllers using the `sourceViewController` and `destinationViewController` properties. Here we're using the `destinatonViewController` property to get a reference to the `ListNotesTableViewController`. However, the `segue` doesn't know that the `destinationViewController` is a `ListNotesTableViewController`, it just knows is that it's some kind of `UIViewController`. But we *do* know that the `destinationViewController` is a `ListNotesViewController` so we tell the compiler that by downcasting with `as! ListNotesTableViewController`.
-
-2. We are adding the new note to the `notes` array.
-
-#Property Observers
-
-This is all well and good, but we have a problem.
-
-> [action]
-> Try running the app. Create and a new note and save it. See any problems? Our table view is still blank!
-
-We have to tell the table view to update itself when there are new notes.
+We've created a new note, but it hasn't been saved yet. To save our new note, we want to add it to our `notes` array in our `ListNotesTableViewController`. To do so, we'll need to use segues to pass data between view controllers.
 
 > [action]
-> Open `ListNotesTableViewController` and modify your `notes` property to look as follows:
+In `DisplayNoteViewController`, update the following code to `prepare(for:sender:)`:
+>
+```
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let identifier = segue.identifier else { return }
+>
+    switch identifier {
+    case "save":
+        let note = Note()
+        note.title = titleTextField.text ?? ""
+        note.content = contentTextView.text ?? ""
+        note.modificationTime = Date()
+>
+        // 1
+        let destination = segue.destination as! ListNotesTableViewController
+        // 2
+        destination.notes.append(note)
+>
+    case "cancel":
+        print("cancel bar button item tapped")
+>
+    default:
+        print("unexpected segue identifier")
+    }
+}
+```
+>
+Step-by-step:
+>
+1. Each segue is a link between two view controllers and provides reference to both the source and destination view controllers. We can use the segue's `destination` property to reference the destination view controller. But, in order to access the destination view controller's properties, we need to type cast the destination view controller to type `ListNotesTableViewController`.
+1. With a reference to `ListNotesTableViewController`, we're able to direct append our new note to it's `notes` array.
+
+## Reloading The Table View Data Source
+
+Tapping the save bar button item will now add our newly created note instance to the `ListNotesTableViewController` note array. To finish up, we'll also need to notify our `UITableView` to reload it's data using the `UITableView` method `reloadData()`.
+
+> [info]
+Table views don't automatically know when they should update their table view cell UI. When you want to update a table view by adding, modifying or deleting a cell, you need to explicitly tell the table view to reload it's data source.
+>
+Doing so will cause the table view to re-calculate it's table view cells using it's table view data source methods.
+
+But when should we tell the table view it's data?
+
+We can use property observers! Property observers allow us to write code when a property has been changed.
+
+> [action]
+In `ListNotesTableViewController`, change your `notes` array property to the following:
 >
 ```
 var notes = [Note]() {
-	didSet {
-   		tableView.reloadData()
-   	}
+    didSet {
+        tableView.reloadData()
+    }
 }
 ```
-
-Look at that fancy syntax!  Ooh. We are using the `didSet` *property observer* to tell the table view to reload all of its data whenever our `notes` property is changed. A property observer is some code you can add to a property that will be triggered whenever the property changes. With `didSet` the code is triggered immediately following a property change. There's a second property observer is called `willSet`, which is triggered immediately before a property is about to change.
-
-#Running the App!
-
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P08-complete.mp4)
-
-Great! Try running the app. Now we can add new notes, but what happens if we want to modify one of the notes? Try creating a new note. Then tap on it in the table view - we successfully segue to the Display Note View Controller, but the note's title and content doesn't yet display! Let's fix that in the next section.
-
-Also we still have the issue that our current app doesn't persist note data between app launches. This means that if you create a new note, then force-quit and relaunch the app, your note will be gone! Not to worry, we will also fix this problem later.
-
->[info]
->###On this page, you should have:
 >
->1. Linked the `noteTitleTextField` and `noteContentTextView` to the Display Note View Controller using IBOutlets.
->2. Implemented `viewWillAppear()` in the Display Note View Controller and used it to delete the placeholder text.
->3. Modified Display Note View Controller's `prepare(for:sender:)` method to create a new `Note()` with the user's input.
->4. Modified `prepare(for:sender:)` again to place the created note into the List Notes Table View Controller's array.
->5. Tried running the app to see what happens.
+In the code above, we add syntax to create a property observer for our `notes` array. As the name suggests, the `didSet` observes the `notes` property. If the property changes the code within the `didSet` block is executed.
+>
+For us, this is extremely useful for reloading the table view whenever a new note has been added to the `notes` array. Oh you fancy huh?
+
+## Running the App
+
+In this section, we implemented the functionality to add a new note to our `ListNotesTableViewController` notes array. We use `prepare(for:sender:)` to pass data between view controllers and a property observer to update our table view when a new note has been added.
+
+Let's test that everything works!
+
+> [action]
+Build and run the app. Create a new note using the _Create Note_ bar button item and then save it. Check that the new note shows up back in the table view controller.
+>
+![ms-video](assets/create_note_checkpoint.mov)
+
+We've implemented the functionality for creating new notes, but what happens if we click on an existing note?
+
+![Empty Existing Note](assets/empty_existing_note.png)
+
+We get a blank, empty note! Hmm... something's not right. Let's figure out how to display existing notes in the next section.
+
+> [info]
+You also might be wondering, "Why are your notes are reset whenever you re-launch the app?"
+>
+This is because we haven't set up persistence to save our note data yet. We'll get there soon, but in the mean time, our notes will be delete from memory each time the app is terminated.

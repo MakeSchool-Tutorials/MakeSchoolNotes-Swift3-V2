@@ -3,45 +3,64 @@ title: "Welcome to Make School Notes!"
 slug: welcome
 ---
 
-Welcome to the *Make School Notes* tutorial series and congratulations on taking the first step to building your very own iOS app! We're going to build something very similar to iOS's built in Notes app - an easy way for you to jot down some notes.
+This is the third tutorial of Make School's iOS app tutorial series.
 
-This series was designed for beginning iOS developers and will teach you the fundamentals of iOS application development. After finishing this series, you will have built a fully functional note taking app and will be well prepared to start the more advanced tutorial, *Makestagram*.
+In this tutorial, we'll focus on navigation and data persistence. First, we'll learn to use navigation controllers and segues to navigate between multiple view controllers. Additionally, we'll get started with Core Data and saving data to our devices. Throughout the process, we'll build a notes app!
 
-The final product will look something like this:
+"Are you ready for it?" - Taylor Swift
+
+# Who Is This For?
+
+iOS beginners who already have some experience with Xcode and building simple apps. 
+
+## What You Should Already Know
+
+This tutorial builds on key concepts from the first two Make School tutorials. You should know your way around Xcode, be able to create _IBConnections_ (on your own) and be familiar with _Auto-Layout_.
+
+If you're struggling with the concepts above, it's recommended to first complete the previous Make School tutorials.
+
+## Estimated Completion Time:
+
+4 hours
+
+# What We're Building
+
+At the end of this tutorial, you'll have built your own _Notes_ app!
+
+If you've been searching for an app to record all those ideas you've come up with in the shower, this one's for you! (But please first make sure your iPhone device is waterproof.)
 
 ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P13-complete.mp4)
+<!-- TODO: replace with image of finished app -->
 
-The *Make School Notes* tutorial consists of three parts:
+Your notes app will be able to:
 
-1. In the first part we will focus on building the **interface** of our app. You will learn how to:
-	* Display lists of information using table views
-	* Create custom table view cells in Interface Builder
-	* Create new view controllers
-	* Setup navigation controllers
-	* Use segues to transition between view controllers
-	* Trigger user initiated actions using bar button items
+1. Create, edit and delete notes.
+1. Give each note a title and body.
+1. Save notes between app launches (data persistence.)
+1. View a scrollable list of existing notes.
 
-2. The second part is devoted to programming our app's **logic**. You will learn how to:
-	* Create appropriate data models
-	* Pass data between view controllers
-	* Program the functionality to add, display, modify, and delete notes
-	* Connect app interface to app logic
+# What You'll Learn
 
-3. In the third and final part we will focus on **persisting data** between app launches. You will learn how to:
-	* Locally store information using the CoreData framework
-	* Create static helper methods
-	* Modify existing code to integrate data persistence
+By the end of this tutorial, you will:
 
-*Persisting data* is a fancy way of saying "saving data to disk". Apps in iOS don't keep data around between app launches by default, it's up to you as the developer to implement it.
+- learn to use `UITableView` and `UITableViewCell` to create scrollable views
+- use `UINavigationController` and segues to navigate between multiple view controllers
+- how to pass data between different view controllers
+- persist data between app launches using _Core Data_
 
-#Getting Started
+> [info]
+*Persisting data* is a fancy way of saying "saving data to your device". Normally, if you close your app, all your data is deleted. By using _Core Data_, we can save and retrieve our app's data between each app launch.
 
-## Prerequisites
+# Starter Project
 
-A basic understanding of Swift, Xcode, Autolayout, and constraints is required. Check out our Tip Calculator tutorial if you need a refresher!
+<!-- TODO: Needs to be updated to Swift4 -->
 
-Download the [Make School Notes Starter Project](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Starter/archive/swift3-coredata.zip)
+When you're ready, download the [start project](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Starter/archive/swift3-coredata.zip) and move onto the next section!
 
-## Objective
+# If You Get Stuck
 
-The goal of this tutorial is to teach you the fundamentals of iOS development, not to confuse you with how to set up Xcode projects. For this reason, we have provided a starter project that will allow you to hit the ground running with learning iOS development.
+Getting stuck when coding (and debugging) is a natural part of the programming process. If you find yourself stuck on a problem or lost, pause for a moment and take a breath. Maybe take a walk. Then retrace your steps (in the tutorial, not the walk.) Make sure you've follow each step of the tutorial. It's easy to make typos or to accidentally skip over important steps.
+
+If you want to compare your code to the solution, you can find it here.
+
+TODO: insert link to github repo

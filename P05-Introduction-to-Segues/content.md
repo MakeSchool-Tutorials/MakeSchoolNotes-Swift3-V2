@@ -3,86 +3,95 @@ title: "Introduction to Segues"
 slug: intro-segues
 ---
 
-Now that we have our view controllers set up, let's add the functionality that will allow us to transition between view controllers!
+With our new `DisplayNoteViewController` set up, we can implement the functionality for our `UINavigationController` to navigation between view controllers.
 
-To transition to a new view in iOS we use *segues* (pronounced seg-way). For Make School Notes, when a user taps a table view cell in the List Notes Table View Controller we want to trigger a segue to our Display Note View Controller Screen. Segues can be created programmatically, but they can also be created in storyboards, which is how we're going to do it.
+A navigation controller uses _segues_ (pronounced seg-way) to navigate from one view controller to another. A _segue_ allows us to _push_ and _pop_ on and off the navigation stack.
 
-> [action]
-***Control-click*** starting on the *listNotesTableViewCell* and drag to the *Display Note View Controller*, select *show* from underneath the *Selection Segue* options.
->
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/segue.mp4)
+# Creating A Segue
 
-Notice that when we added the segue an arrow appeared pointing from our *List Notes Table View Controller* to our *Display Note View Controller* and that a new segue entry appeared in our Document Outline. We can click either of the two to view the segue's attributes.
+In our _Notes_ app, when a user taps on a `ListNotesTableViewCell` in our table view controller, we want to trigger a segue to our `DisplayNoteViewController`.
 
-![image showing changes from segue](./images/segue.png)
+> [info]
+Segues can be triggered programmatically and in storyboard with _Interface Builder_. This tutorial will focus on creating segues in storyboard.
 
-#Segue Identifiers & Fixing Constraints
-
-Segue identifiers are used to uniquely identify segues. We can set a segue's identifier in the Attributes inspector.
+<!-- break -->
 
 > [action]
-Set the identifier of the segue that we created above to "displayNote".
+In `Main.storyboard`, create a segue that's triggered when a user taps on a notes cell:
 >
-![image showing changes from segue](./images/segue-id.png)
+![ms-video](assets/cell_tap_segue.mov)
+>
+Step-by-step:
+>
+1. Select the storyboard cell in your table view controller.
+1. With your notes cell selected, control-click and drag to the `DisplayNoteViewController`.
+1. In the popup, select a _Selection Segue_ of `Show` to create your new segue.
 
-Now, let's fix the constraints on the detail view since adding the navigation bar controller messed them up a bit...
+After creating your new segue, you'll see a segue arrow connecting the table view controller and `DisplayNoteViewController`. You can also see this segue in the _Document Outline_.
+
+![New Segue](assets/new_segue.png)
+
+You'll also notice that since we setup our text field with _auto-layout_ constraints using our _Safe Area_, when our `UINavigationController` added a navigation bar to our `DisplayNoteViewController`, our subviews re-positioned themselves automatically. This is because the _Safe Area_ now registers it's top edge as the bottom of the navigation bar. Neat!
+
+## Adding A Segue Identifier
+
+Segue identifiers, similar to the table view cell identifiers we previously used, allow us to uniquely identify a storyboard segue in our Swift code.
+
+Let's add a segue identifier to our new segue.
 
 > [action]
+Add a segue identifier to the segue between our table view controller and display notes view controller:
 >
-First, delete all the constraints. Now rearrange your elements and then `Reset to Suggested Constraints` again.
+![Set Segue Identifier](assets/set_segue_identifier.png)
 >
-Watch the video if you need some guidance!
+Step-by-step:
 >
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/fix-constraints.mp4) 
+1. Select the segue by clicking on it.
+1. With the segue selected, navigate to the _Attributes Inspector_ in the _Utilities area_.
+1. Set the _Identifier_ field to `displayNote`.
 
-#The prepare(for:sender:) method
+Now, we're able to reference this specific segue in our code using it's new identifier that we've just setup.
 
-When a segue is triggered, but before the segue actually happens, the system can notify us by calling a method called `prepare(for:sender:)`. This method doesn't actually perform the segue, and we will never call it ourselves. Instead, it's a way for us to be told that a segue is about to happen, so that we can do some set up work before the next view is displayed.
+# Preparing For Segues
+
+Right before a segue is completed, we can use a built-in `UIViewController` method named `prepare(for:sender:)` to execute code just before the new view controller is _pushed_ on to the navigation stack.
+
+> [info]
+You should never called `prepare(for:sender:)` yourself. Each `UIViewController` will automatically notify you with the `prepare(for:sender:)` when segues are about to happen.
+
+This allows us to, as the name suggests, prepare for a segue. This will be especially useful for passing data from one view controller to the next.
+
+Let's test it out!
 
 > [action]
-Add the following method to the *List Notes Table View Controller*:
+Open `ListNotesTableViewController` with your _Project Navigator_, and add the following code below your table view data source methods:
 >
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // 1
-      if let identifier = segue.identifier {
-        // 2
-        if identifier == "displayNote" {
-          // 3
-          print("Transitioning to the Display Note View Controller")
-        }
-      }
+```
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // 1
+    guard let identifier = segue.identifier else { return }
+>
+    // 2
+    if identifier == "displayNote" {
+        print("Transitioning to the Display Note View Controller")
     }
+}
+```
 >
+In the code above:
+>
+1. Check that the segue has a identifier.
+1. If so, check if the identifier is equal to `displayNote`. If yes, add a print statement to our debug console.
 
-In the code above, we are:
+## Running the App
 
-1. Storing the identifier of the segue that was triggered into a local variable called `identifier`.
-2. Checking to see if the "displayNote" segue was triggered.
-3. Printing a message to the *console*.
+In this section, we setup a segue for when a user taps on a note cell in our `ListNotesTableViewController`. We've also implemented code that override our table view controller's `prepare(for:sender:)` and print to the debug console each time the segue is triggered.
 
-All `print()` statements are printed to the console. The console can be opened by:
-
-1. Showing the *Debug area*
-2. Showing the console
-
-![opening the console](./images/console.png)
-
-#Running the App!
+Let's test that our new segue works!
 
 > [action]
-Before running your app, set the navigation controller as the *Initial View Controller*.
-
-![set navigation controller as initial view controller](./images/reset-initial-view-controller.png)
-
-Now when we tap a table view cell we should transition to the *Display Note View Controller* screen and a message should be printed to the console! Also, note that the navigation controller we added earlier is providing the back button functionality. Also, if you click either of the text boxes, a keyboard shows up and you can begin editing, although the changes won't be saved just yet. We'll add the note saving functionality in later. =]
-
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P05-complete.mp4)
-
->[info]
->###On this page, you should have:
+Build and run the app. In the table view controller, click on a note cell. To _pop_ off the `DisplayNoteViewController` off the navigation stack, we can tap the back button. Navigate back and forth between the two view controllers and check that `prepare(for:sender:)` is printing to the debug console correctly.
 >
->1. Created a segue from the listNotesTableViewCell to the Display Note View Controller.
->2. Added the identifier *displayNote* to the segue
->3. Added the `prepare(for:sender:)` method to the List Notes Table View Controller.
->4. Made the navigation controller the initial view controller.
->5. Run and tested your app
+![ms-video](assets/segue_checkpoint.mov)
+
+If everything looks correct, let's segue to adding new bar button items to our navigation bar.

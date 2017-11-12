@@ -3,154 +3,222 @@ title: "Introduction to Bar Button Items"
 slug: intro-bar-button
 ---
 
-The basic interface of our app is nearly finished! Only one more step to go and then we are on to implementing our app's logic.
+In our _Notes_ app, a user will need to create, edit and/or discard notes. To do so, we'll need to introduce bar button items.
 
-*Bar button items* are special buttons that function the same way as normal buttons, but can be placed inside a navigation bar.
+`UIBarButtonItem` allows us to add additional buttons in our navigation bar.
 
 ![image showing bar button items](./images/barButtonItem.png)
 
-In Make School Notes we want our users to be able to add new notes, remove old notes, and edit the content and title of any note. To enable note adding and editing functionality (note removal will come later), we are going to use three bar button items :
+To support the creating, editing, and discarding actions, we'll new to implement 3 new bar button items.
 
-  1. A **+** button on the top right of the *List Notes Table View Controller* so that users can add new notes.
-  2. A **Save** button on the top right of the *Display Note View Controller* so that users can save their changes after modifying or creating a note.
-  3. A **Cancel** button on the top left of the *Display Note View Controller* so that users can discard their changes after modifying a note.
+First, in our `ListNotesTableViewController`, we'll need to add an **create** bar button item for creating new notes.
 
-Before adding bar button items to a navigation bar, we must first ensure that the navigation bar has a *navigation item*. Notice that the *Notes View Controller* contains a navigation item (which was created by default when we added the navigation controller) and that the *Display Note View Controller* does not.
+Next, in our `DisplayNoteViewController`, we'll add a **save** bar button item for editing existing notes and a **cancel** button for either discarding unintended changes or _popping_ the view controller off the navigation stack.
 
-![image showing navigation item](./images/navigationItem.png)
+To add `UIBarButtonItem` to a navigation bar in storyboard, the navigation bar must first have a _Navigation Item_.
 
-Let's add a Navigation Item to the *Display Note View Controller* now.
+If you open `Main.storyboard`, you can see that our `ListNotesTableViewController` has a _Navigation Item_ in the _Document Outline_.
 
-> [action] Drag a *Navigation Item* from the Object library to the *Display Note View Controller* in your storyboard.
+![Existing Navigation Item](assets/existing_navigation_item.png)
 
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addNavigationItem.mp4)
+Conversely, if you look at our `DisplayNoteViewController` navigation bar, it doesn't have a _Navigation Item_ yet. Let's change that now.
 
-Great! Now that both of our view controllers have Navigation items, we can easily add our bar button items.
-
-> [action] Select the *List Notes Table View Controller* (which is now named "Notes" in the Document Outline) and drag a *Bar Button Item* from the Object library to the right side of the navigation bar.
+> [action]
+In `Main.storyboard`, add a _Navigation Item_ to your `DisplayNoteViewController` navigation bar:
 >
-![image showing how to add bar button item](./images/add-barButtonItem.png)
+![Add Navigation Item](assets/add_nav_item.png)
 
-Now let's change the style of our bar button item so that it looks like a **+** (add symbol).
+Both of our storyboard view controllers should now have _Navigation Items_. Next, we'll add our create, save, and cancel `UIBarButtonItem` views.
 
-> [action] Select the bar button item, click the Attributes inspector icon, and set the *System Item* field to *Add*.
+# Adding Bar Button Items
 
-Awesome! Now that you know how to add and customize bar button items, try adding the Cancel and Save bar button items to the *Display Note View Controller* on your own.
+Let's start by creating a new _Create Note_ bar button item in our `ListNotesTableViewController`.
 
->[action] Add the Cancel and Save bar button items to the left and right of the *Display Note View Controller* . The result should look like this:
+> [action]
+In `Main.storyboard`, implement a new bar button item for your table view controller:
 >
-![result of adding bar button items](./images/barButtonItems-added.png)
+1. Drag a `UIBarButtonItem` from your _Object Library_ to the top right side of your `ListNotesTableViewController` navigation bar.
+1. Select the `UIBarButtonItem`.
+1. With the bar button item selected, navigate to the _Attributes Inspector_ in the _Utilities area_.
+1. Change the _System Item_ dropdown from `Custom` to `Add`.
+>
+![Add Create Bar Button Item](assets/add_create_bar_button_item.png)
 
-Great! We have successfully added the necessary bar buttons items for Make School Notes! If you tried running the app and clicking the **+** button you will have noticed that it doesn't actually do anything yet. Let's fix that by creating a new segue from the + button to the *Display Note View Controller*.
+One bar button item down, two more to go!
 
->[action] Create a *show* segue from the **+** button to the *Display Note View Controller*. Start by selecting the **+** button, then **control+clicking** on it and dragging to the *Display Note View Controller*.
+Repeat the same process above to add a save and cancel bar button item to your `DisplayNoteViewController`.
+
+> [action]
+In `Main.storyboard`, implement both save and cancel buttons to your `DisplayNoteViewController`.
 >
-> ![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/addNoteSegue.mp4)
+![Save Cancel Bar Button Items](assets/save_cancel_bar_button_items.png)
+
+We've successfully added 3 new bar button items. However, if you run the app right now, tapping on them do anything.
+
+Next, we'll need to configure each bar button item so that tapping on it performs it's expected behavior.
+
+# Bar Button Item Segues
+
+Each time the user taps on one of our bar button items, we want to either _push_ or _pop_ off of our navigation stack.
+
+In the case of our _Create Note_ button, when a user taps on the `UIBarButtonItem`, the `ListNotesTableViewController` should segue to the `DisplayNoteViewController`.
+
+Let's implement that now!
+
+> [action]
+In `Main.storyboard`, create a segue when the user taps the _Create Note_ bar button item and set it's identifier:
 >
-> Set the segue identifier to "addNote".
+![ms-video](assets/create_add_segue_w_identifier.mov)
 >
-Next, update the `prepare(for:sender:)` method in the *List Notes Table View Controller* as follows:
+Step-by-step:
+>
+1. Select the _Create Note_ bar button item in the navigation bar of your table view controller. It should look like a plus (+) button.
+1. Hold control and click-drag from the _Create Note_ bar button item to the `DisplayNoteViewController`.
+1. In the popup, select a _Action Segue_ of `Show` to create your new segue.
+>
+Next, let's set our new segue's identifier:
+>
+1. Select the new segue that appears between your `ListNotesTableViewController` and `DisplayNoteViewController`. When the correct segue is selected, you should see the _Create Note_ bar button item highlighted.
+1. With the segue selected, navigate to the _Attributes Inspector_ in the _Utilities area_.
+1. Set the _Identifier_ field to `addNote`.
+
+With our new segue identifier, we can update `prepare(for:sender:)` to notify us before the segue triggered by the _Create Note_ bar button item completes.
+
+> [action]
+Open `ListNotesTableViewController.swift` and update the method `prepare(for:sender:)` to the following:
 >
 ```
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  if let identifier = segue.identifier {
-    if identifier == "displayNote" {
-      print("Table view cell tapped")
-    } else if identifier == "addNote" {
-      print("+ button tapped")
+    guard let identifier = segue.identifier else { return }
+>
+    switch identifier {
+    case "displayNote":
+        print("note cell tapped")
+>
+    case "addNote":
+        print("create note bar button item tapped")
+>
+    default:
+        print("unexpected segue identifier")
     }
-  }
 }
 ```
+>
+In the code above, we update our if-statement to a switch-statement that checks for each segue identifier.
+>
+For each identifier, the switch-statement outputs a corresponding print statement to the debug console.
 
-The code above is identical to our previous code with the exception that we have added an `else if` statement to check for when the `+` button is tapped. We've also changed the first print statement to make it consistent with the second ("Table view cell tapped" instead of "Transitioning to the Display Note View Controller").
+Now, if we build and run our app, tapping on the _Create Note_ bar button item will segue to the `DisplayNoteViewController` and output a print statement to the debug console.
 
-> [action]
-> Now when you tap the **+** button the *Display Note View Controller* should appear. Test out your new segue by running the app. Make sure to look in the debug console!
+Next, we'll look at how to implement segues for our `DisplayNoteViewController`.
 
-#Introducing Unwind Segues
+# Unwind Segues
 
-Next we would like to trigger segues when we tap the *Cancel* and *Save* buttons; however, we must use a special type of segue for these buttons called an *unwind segue*.
+Both the save and cancel bar button items will need to _pop_ the `DisplayNoteViewController` off the navigation stack.
 
-Unwind segues are used to undo transitions that were triggered by other segues. For instance, if we had used a segue to get from view controller A to view controller B, we could use an unwind segue to undo that segue, thus taking us from view controller B back to view controller A.
+Because these segues are _pops_, instead of _pushes_, we'll need to implement a special type of segue known as a _unwind segue_.
 
-![image showing unwind segue with notes app](./images/unwind-segue.png)
+_Unwind segues_ are used to _pop_ view controllers off the navigation stack. In other words, they're used to navigate back to previous view controllers on the navigation stack.
 
-Regular segues actually create new instances of the view controller that you're segueing to. So in the above example, if we *didn't* use an unwind segue (i.e. we used a regular segue) when transitioning from view controller B back to view controller A, we would create a new instance of view controller A. (Which means we would have two instances of view controller A and one instance of view controller B.) If we then transitioned back to view controller B, we would once again create a new instance, this time of view controller B. (Which means we would then have two instances of both view controllers.) If we kept transitioning back and forth between the view controllers, we would continue to create new instances of both view controllers - this is called a *memory leak* and can lead to your app crashing! We use unwind segues when transitioning between view controllers to avoid memory leaks.
+For instance, when a user taps the _Create Note_ bar button item, a segue is triggered and our navigation controller _pushes_ an instance of `DisplayNoteViewController` to the top of our navigation stack.
+
+When we tap the cancel bar button item, we can use an _unwind segue_ to navigate back from the `DisplayNoteViewController` to the table view controller.
+
+![Notes Unwind Segue Example](./images/unwind-segue.png)
+
+## Segue Memory Leaks
+
+When navigating between multiple view controllers, be careful about creating memory leaks!
+
+When triggering _show_ segues, a new instance of a view controller is _pushed_ onto the navigation stack. If we were to only use _show_ segues to navigate between view controllers, we would be continuously creating and adding new instances of view controllers onto the navigation stack. If unbounded, this could cause our app to run out of memory, potentially crashing our app!
+
+In the image below, we only use segues to _push_ new instances of our two view controllers onto the navigation stack. After a few segues, our navigation stack has multiple instances of both our `ListNotesTableViewController` and `DisplayNoteViewController`.
 
 ![image showing no unwind segues](./images/no-unwind-segue.png)
 
-To create an unwind segue we must do two things:
+Bad! This is why we must be aware of our navigation stack and use _unwind segues_ to navigate back and forth between existing instances of view controllers.
 
-1. Create an unwind segue method in the view controller that you want to end up in after executing the unwind segue. (If you wanted to unwind from view controller B to view controller A, you would put your unwind segue method in view controller A.)
+## Implementing Unwind Segues
 
-2. Connect an action to the unwind segue.
+To make sure we don't keep adding new instances with _show_ segues, let's implement our _unwind segues_ for our `DisplayNoteViewController`.
 
-For Make School Notes, when our users are in the *Display Note View Controller* and they tap either the **Cancel** or **Save** buttons, we want to execute an unwind segue back to the *List Notes Table View Controller*.
+Creating a _unwind segue_ requires two steps (in order):
 
-To accomplish this we must first set up the unwind segue method in the *List Notes Table View Controller* class.
+1. Create a special `@IBAction` method in the destination view controller that we're trying to unwind to. In our case, we'll put this method in our table view controller.
+1. Create a _unwind segue_ in our storyboard.
 
->[action] Select the `ListNotesTableViewController.swift` file and add the following method inside the ListNotesTableViewController class:
->
-    @IBAction func unwindToListNotesViewController(_ segue: UIStoryboardSegue) {
->
-      // for now, simply defining the method is sufficient.
-      // we'll add code later
->
-    }
+It's important to follow these steps in order. If we don't add our special `@IBAction` method in the destination view controller that we're unwinding to, we won't be able to create our _unwind segue_ in storyboard.
 
-Next, we need to connect our **Cancel** and **Save** buttons to the unwind segue.
-
->[action] *Control-click* and *drag* from the **Cancel** button to the *Exit icon* and select *unwindToListNotesViewController* when prompted. Do the same with the **Save** button.
->
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/connectToExit.mp4)
-
-
-#Adding Unwind Segue Identifiers
-
-Unwind segues are only accessible from the Document outline. Unfortunately, there is no easy way to identify which button corresponds to which segue. Thus we must use the guess-and-check method when setting the identifier of unwind segues.
+Let's start with step 1. We want to unwind from `DisplayNoteViewController` back to `ListNotesTableViewController`. For us, our destination view controller will be `ListNotesTableViewController`.
 
 > [action]
-Select the top  *Unwind segue to "Exit"* segue from the Document Outline, then in the Attributes inspector set its *Identifier* field to "cancel". (Set the other segue's identifier to "save".)
+In `ListNotesTableViewController`, add the following `@IBAction`:
 >
- ![image displaying how to set segue identifier](./images/identifier.png)
+```
+@IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+>
+}
+```
+>
+We don't need to add any code within our unwind `IBAction`. Xcode just needs to register the function definition for us to create our _unwind segue_ in storyboard.
 
- To ensure that we have assigned the correct identifier to each unwind segue, we will test each button.
+Next, we'll follow step 2: create our _unwind segues_ for both cancel and save bar button items in storyboard. Let's start with our cancel bar button item.
 
 > [action]
-Add the following to the *Display Note View Controller* class:
+In `Main.storyboard`, create a _unwind segue_ for your cancel bar button item and give it a identifier:
 >
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let identifier = segue.identifier {
-        if identifier == "cancel" {
-          print("Cancel button tapped")
-        } else if identifier == "save" {
-          print("Save button tapped")
-        }
-      }
+![ms-video](assets/create_cancel_segue_w_identifier.mov)
+>
+Step-by-step:
+>
+1. Select your cancel bar button item.
+1. Hold down control and click-drag from the cancel back button item to the orange exit icon on the top bar above your view controller.
+1. In the popup, selected the `IBAction` you created in step 1.
+>
+Next, let's give our _unwind segue_ an identifier:
+>
+1. Select your _unwind segue_. You won't see it appear in storyboard, so you'll need to select it using your _Document Outline_.
+1. With your segue selected, navigate to the _Attributes Inspector_ in the _Utilities area_.
+1. Set the _Identifier_ field to `cancel`.
+
+Next, we'll repeat the same steps for our save bar button item's _unwind segue_. We don't need to repeat step 1 since our `ListNotesTableViewController` already has a `IBAction` for _unwind segues_.
+
+> [challenge]
+Repeat step 2 for our `DisplayNoteViewController` save bar button item. Set the new _unwind segue_ to have an identifier of `save`.
+>
+If you get stuck, refer back to the steps on how we previously created a _unwind segue_ for our cancel bar button item.
+
+When you're done, we can add code to our `DisplayNoteViewController` to notify us before a _unwind segue_ completes. In addition, we can use our new identifiers to identify which segue is being triggered.
+
+> [action]
+In `DisplayNoteViewController.swift`, add the following code to your view controller:
+>
+```
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let identifier = segue.identifier else { return }
+>    
+    switch identifier {
+    case "save":
+        print("save bar button item tapped")
+>        
+    case "cancel":
+        print("cancel bar button item tapped")
+>        
+    default:
+        print("unexpected segue identifier")
     }
-
-The code above is identical to the code we added in the `prepare(for:sender:)` method in the *List Notes Table View Controller*.
-
-#Running the App!
-
-Now when you run your app each segue should print the correct message to the screen like this:
-
-![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/P06-complete.mp4)
-
-If you notice that the messages printed to the console do not match with the buttons you are tapping, you should change the identifiers of the mismatched segues.
-
-Congratulations! We have finished building the interface of Make School Notes! In the next tutorial we will start programming the logic. =]
-
->[info]
->###On this page, you should have:
+}
+```
 >
->1. Added a Navigation Item to the *Display Note View Controller*
->2. Placed a **+** bar button item on the *List Notes Table View Controller*'s navigation bar
->3. Placed **Save** and **Cancel** bar button items on the *Display Note View Controller*'s navigation bar
->4. Created a show segue with the identifier "addNote" from the **+** button to the *Display Note View Controller*
->5. Updated the `prepare(for:sender:)` method in the *List Notes Table View Controller*
->6. Learned about unwind segues.
->7. Created unwind segues from the **Save** and **Cancel** buttons, and given them the identifiers "save" and "cancel" respectively.
->8. Added the `prepare(for:sender:)` method to the *Display Note View Controller*
->9. Run and tested your app while looking at the debug console to see that the output is correct.
+In the code above, we use `prepare(for:sender:)` to notify us if an _unwind segue_ from one of our bar button items is being triggered. The method `prepare(for:sender:)` is especially useful because we're able to prepare for navigating both back and forth between other view controllers.
+
+## Running the App
+
+In this section, we setup new segues for our bar button items. Let's test that each of our new bar button items work!
+
+> [action]
+Build and run the app. In the table view controller, click on the _Create Note_ bar button item. Next try the cancel and save buttons. Make sure each bar button item segues and outputs the correct print statement to the debug console.
+>
+![ms-video](assets/bar_button_item_segue_checkpoint.mov)
+
+Next, we'll look at how to start implementing our logic for our notes app!
