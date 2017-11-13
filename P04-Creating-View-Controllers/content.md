@@ -23,7 +23,7 @@ Next, we'll need to create our UI layout for `DisplayNoteViewController`. Our vi
 
 To provide this functionality, we'll use two `UIKit` objects: the text field and text view.
 
-We've already used a  in our tip calculator app. In this app, we'll use the `UITextField` to edit and display the note's title.
+We've already used a text field in our tip calculator app. In this app, we'll use the `UITextField` to edit and display the note's title.
 
 As for the note's content, we'll need to introduce a new class we haven't used before: the `UITextView`. A text view provides an easy way to display and edit multiple lines of text.
 
@@ -50,8 +50,8 @@ Let's add our _auto-layout_ constraints to both of our new views.
 In `Main.storyboard`, add the following constraints to the text field:
 >
 - (Text Field) Top Edge 10pts from _Safe Area_ Top Edge
-- (Text Field) Leading Edge 15pts from Super View (Root View) Leading Edge
-- (Text Field) Trailing Edge 15pts from Super View Trailing Edge
+- (Text Field) Leading Edge 15pts from _Safe Area_ Leading Edge
+- (Text Field) Trailing Edge 15pts from _Safe Area_ Trailing Edge
 >
 ![Text Field Constraints](assets/text_field_constraints.png)
 
@@ -61,9 +61,9 @@ Next, let's do the same for our text view.
 In `Main.storyboard`, add the following constraints to the text view:
 >
 - (Text View) Top Edge 10pts from Text Field Top Edge
-- (Text View) Leading Edge 15pts from Super View (Root View) Leading Edge
-- (Text View) Trailing Edge 15pts from Super View Trailing Edge
-- (Text View) Bottom Edge 15pts from Super View Bottom Edge
+- (Text View) Leading Edge 15pts from _Safe Area_ Leading Edge
+- (Text View) Trailing Edge 15pts from _Safe Area_ Trailing Edge
+- (Text View) Bottom Edge 15pts from _Safe Area_ Bottom Edge
 >
 ![Text View Constraints](assets/text_view_constraints.png)
 

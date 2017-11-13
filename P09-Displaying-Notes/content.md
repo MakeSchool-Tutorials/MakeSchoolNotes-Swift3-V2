@@ -109,7 +109,7 @@ We've successfully implemented the code for displaying an existing note. However
 
 Next, let's figure out how to save edits to existing notes.
 
-Let's look at our logic in `prepare(for:sender:)`:
+Let's look at our `DisplayNoteViewController` logic in `prepare(for:sender:)` :
 
 ```
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

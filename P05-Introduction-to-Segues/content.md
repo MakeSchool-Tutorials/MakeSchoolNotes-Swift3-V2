@@ -3,9 +3,9 @@ title: "Introduction to Segues"
 slug: intro-segues
 ---
 
-With our new `DisplayNoteViewController` set up, we can implement the functionality for our `UINavigationController` to navigation between view controllers.
+With our new `DisplayNoteViewController` set up, we can implement the functionality for our `UINavigationController` to navigate between view controllers.
 
-A navigation controller uses _segues_ (pronounced seg-way) to navigate from one view controller to another. A _segue_ allows us to _push_ and _pop_ on and off the navigation stack.
+A navigation controller uses _segues_ (pronounced seg-way) to navigate from one view controller to another. A _segue_ allows us to _push_ and _pop_ view controllers on and off the navigation stack.
 
 # Creating A Segue
 
@@ -94,4 +94,4 @@ Build and run the app. In the table view controller, click on a note cell. To _p
 >
 ![ms-video](assets/segue_checkpoint.mov)
 
-If everything looks correct, let's segue to adding new bar button items to our navigation bar.
+If everything looks correct, let's _segue_ on to the next section and learn about how to add new bar button items to our navigation bar.

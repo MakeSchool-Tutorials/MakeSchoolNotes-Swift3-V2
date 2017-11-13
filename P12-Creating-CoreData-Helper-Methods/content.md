@@ -41,7 +41,7 @@ Open `MakeSchoolNotes.xcdatamodeld` with your _Project Navigator_, and create a 
 1. With your _Note_ entity selected, navigate to the _Data Model inspector_ in the _Utilities area_. ![Data Model Inspector](assets/data_model_inspector.png)
 1. In the _Data Model inspector_, set the following attributes: ![Updated Data Model Inspector](assets/updated_data_model_inspector.png)
 	You should have set following fields in your _Data Model inspector_:
-	- _Class_: Change from `NSManagedObject` to `Note`
+	- _Class_: Make sure the value is set as `Note`
 	- _Module_: Set from empty to `Current Product Module`
 
 ## Bug Fixing
@@ -60,12 +60,12 @@ In `ListNotesTableViewController`, update your `tableView(_:cellForRowAt:)` with
 ```
 override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
-
+>
     let note = notes[indexPath.row]
     cell.noteTitleLabel.text = note.title
 		// 1
     cell.noteModificationTimeLabel.text = note.modificationTime?.convertToString() ?? "unknown"
-
+>
     return cell
 }
 ```

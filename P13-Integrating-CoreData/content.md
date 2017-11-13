@@ -99,14 +99,15 @@ We update our `prepare(for:sender:)` method to make use of our `CoreDataHelper`.
 
 Wooooooooo! We're done. Phew... I'm just as happy as you are. Congrats, you've just finishing building a fully functioning _Notes_ app with _Core Data_.
 
-Let your hair down, take it for a test run.
+Let your hair down and take your new _Notes_ app for a test run.
 
+> [info]
 You can write notes in a box. <br />
 You can write notes with a fox. <br />
 You can write notes in a house. <br />
 You can write notes with a mouse. <br />
-
+>
 You can write notes here or there. <br />
 You can write notes anywhere. <br />
-
+>
 Notes, you can now write.

@@ -5,13 +5,13 @@ slug: intro-coredata
 
 In the current implementation of our _Notes_ app, we're able to create, edit and delete notes. However, currently our notes are all saved in-memory and not persisted between app launches. This means that if we terminate our app, all of notes will be deleted from memory.
 
-In this section, we'll introduce _Core Data_. A tool for persisting, or saving, our data between app launches. Finally, we'll be able to save notes and rest assured that they'll still be there later.
+In this section, we'll introduce _Core Data_. A tool that can help us persist (save) our data between app launches. Finally, we'll be able to save notes and rest assured that they'll still be there later.
 
 # What's Core Data
 
 _Core Data_ is an Apple framework for managing an object graph. That really just means that it's a way to create and manage special data models that come with a lot of built-in functionality.
 
-The functionality that we care most about, is the ability to persist our notes data to our device. _Core Data_ makes this super easy by abstracting the hard-core engineering behind an easy to use API that we can use to save data locally to our device (and retrieve it too!)
+The functionality that we care most about (at least for this tutorial), is the ability to persist our notes data to our device. _Core Data_ makes this super easy by abstracting the hard-core engineering behind an easy to use API that we can use to save data locally to our device (and retrieve it too!)
 
 In our _Notes_ app, we want to make sure each of our user's notes are saved with _Core Data_. Whenever the app launches, we want to use _Core Data_ to retrieve and display the user's previously existing notes.
 
@@ -33,25 +33,26 @@ Usually this is added at the top of your source file, outside of your class defi
 import UIKit
 import CoreData
 
-class SampleClass {
+class ExampleClass {
 	// ...
 }
 ```
 
 # Core Data Object Types
 
-You can use _Core Data_ to generate simple data models for you. Behind the scenes, _Core Data_ creates a new class definition that subclasses `NSManagedObject`.
+You can use _Core Data_ to generate simple data models for you. You won't see the code in your project, but behind the scenes, _Core Data_ creates a new class definition that subclasses `NSManagedObject`.
 
 For instance, we could use _Core Data_ to automatically generate a data model of type `Person`. _Core Data_ would define the following class definition:
 
 ```
 class Person: NSManagedObject {
+
 		@NSManaged var name = ""
 		@NSManaged var age = 0
 }
 ```
 
-Notice that `Person` subclasses `NSManagedObject`. This is super important in order for our `Person` data model to interact with _Core Data_. Luckily, we won't have to handle any of this code in our _Notes_ app. _Core Data_ will do it for us.
+Notice that `Person` subclasses `NSManagedObject`. This is super important in order for our `Person` data model to interact with _Core Data_. Remember, we won't have to write or handle any of this code in our _Notes_ app. _Core Data_ will do it for us.
 
 ## Initializing a Core Data Object
 
@@ -87,6 +88,9 @@ Saving the `NSManagedObjectContext` saves any unsaved _Core Data_ objects locall
 We can save our managed context like so:
 
 ```
+// reference to managed object context
+let context: NSManagedObjectContext = ...
+
 do {
 	try context.save()
 } catch let error {
@@ -106,6 +110,9 @@ To save an object with _Core Data_, you can simply create a new instance of the 
 For example, if we wanted to create and save a new `Person` object, we would write the following code:
 
 ```
+// reference to managed object context
+let context: NSManagedObjectContext = ...
+
 // create a new NSManagedObject subclass instance
 var meredithGrey = NSEntityDescription.insertNewObject(forEntityName: "Person", into: context) as! Person
 
@@ -128,6 +135,9 @@ We can change the `age` property of `meredithGrey`
 Let's look at how we would update the `age` property of the `meredithGrey` we created in the last step:
 
 ```
+let context: NSManagedObjectContext = ...
+var meredithGrey: Person = ...
+
 // update an existing NSManagedObject subclass instance
 meredithGrey.age = 6
 
@@ -168,7 +178,10 @@ Last, let's learn how to delete a `NSManagedObject` subclass. `NSManagedObjectCo
 We can use this method to delete objects from a managed object context:
 
 ```
-context..delete(meredithGrey)
+// reference to managed object context
+let context: NSManagedObjectContext = ...
+
+context.delete(meredithGrey)
 
 // save the NSManagedObjectContext
 do {

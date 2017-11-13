@@ -11,9 +11,11 @@ In our _Notes_ app, a user will need to create, edit and/or discard notes. To do
 
 To support the creating, editing, and discarding actions, we'll new to implement 3 new bar button items.
 
-First, in our `ListNotesTableViewController`, we'll need to add an **create** bar button item for creating new notes.
+First, in our `ListNotesTableViewController`, we'll need to add a **create** bar button item for creating new notes.
 
 Next, in our `DisplayNoteViewController`, we'll add a **save** bar button item for editing existing notes and a **cancel** button for either discarding unintended changes or _popping_ the view controller off the navigation stack.
+
+## Navigation Items
 
 To add `UIBarButtonItem` to a navigation bar in storyboard, the navigation bar must first have a _Navigation Item_.
 
@@ -120,9 +122,7 @@ Because these segues are _pops_, instead of _pushes_, we'll need to implement a 
 
 _Unwind segues_ are used to _pop_ view controllers off the navigation stack. In other words, they're used to navigate back to previous view controllers on the navigation stack.
 
-For instance, when a user taps the _Create Note_ bar button item, a segue is triggered and our navigation controller _pushes_ an instance of `DisplayNoteViewController` to the top of our navigation stack.
-
-When we tap the cancel bar button item, we can use an _unwind segue_ to navigate back from the `DisplayNoteViewController` to the table view controller.
+For instance, when a user taps the _Create Note_ bar button item, a segue is triggered and our navigation controller _pushes_ an instance of `DisplayNoteViewController` to the top of our navigation stack. Then, if we tap the cancel bar button item, we can use an _unwind segue_ to navigate back from the `DisplayNoteViewController` to the table view controller again.
 
 ![Notes Unwind Segue Example](./images/unwind-segue.png)
 

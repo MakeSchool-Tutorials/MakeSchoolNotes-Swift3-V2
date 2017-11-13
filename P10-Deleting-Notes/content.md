@@ -18,9 +18,7 @@ override func tableView(_ tableView: UITableView, commit editingStyle: UITableVi
 }
 ```
 >
-In the code above, we override the table view data source method `tableView(_:commit:forRowAt:)` to implement the table view's built-in slide-to-delete functionality.
->
-Within `tableView(_:commit:forRowAt:)`, we check for the delete editing mode and delete the note at the corresponding index path.
+In the code above, we override the table view data source method `tableView(_:commit:forRowAt:)` to implement the table view's built-in slide-to-delete functionality. Within the `tableView(_:commit:forRowAt:)` method, we check for the delete editing mode and delete the note at the corresponding index path.
 
 That was easy!
 

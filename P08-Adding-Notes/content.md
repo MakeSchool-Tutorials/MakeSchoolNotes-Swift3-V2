@@ -19,7 +19,7 @@ Using the _Assistant Editor_, create an `IBOutlet` for the text field and text v
 
 Easy enough.
 
-Next, let's use the `IBOutlet` we created to remove the initial filler text in our text view.
+Next, let's use the `IBOutlet` connections we created to remove the initial filler text in our text view.
 
 ## Removing Lorem Ipsum
 

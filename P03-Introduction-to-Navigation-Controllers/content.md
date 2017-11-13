@@ -84,4 +84,4 @@ At this point, your app should look like the following:
 
 ![Nav Bar Checkpoint](assets/nav_bar_checkpoint.png)
 
-Ta-da! Our new navigation bar is looking fine.
+Ta-da! Our new navigation bar is looking fineee.

@@ -27,28 +27,6 @@ In `Main.storyboard`, increase the table view's row height to the following:
 
 Making the height of each cell taller gives us a little more room to layout our UI for each note table view cell.
 
-## Updating the Storyboard Cell Height
-
-Although we've updated our table view to display each `UITableViewCell` with a height of `60pts`, our storyboard cell doesn't reflect that. Let's update _Interface Builder_ so that our storyboard cell object is also 60pts tall.
-
-> [action]
-In `Main.storyboard`, increase the individual table view cell's row height:
->
-1. Select the prototype cell in your storyboard table view from the _Document Outline_. Confirm that you're selecting the individual `UITableViewCell` and not the `UITableView`.
-1. Navigate to the _Size Inspector_ in the _Utilities area_.
-1. Find the _Row Height_ field and change it's value from it's empty default value to `60`. Make sure that the _Custom_ checkbox is ticked.
->
-![Set Cell Row Height](assets/set_cell_row_height.png)
-
-
-You might be wondering why we had to set the row height twice, once for the table view and another time for the individual cell.
-
-- The table view's row height tells the table view what height to display each cell when the app runs.
-- The individual cell's row height tells storyboard how tall the cell should be when displayed in _Interface Builder_.
-
-> [info]
-It's important not to get these two confused. A common pitfall for newbies is changing the individual `UITableViewCell` row height and expecting the table view to reflect the height changes.
-
 # Setting Our Cell UI
 
 With our heighten cells, let's layout our `UITableViewCell` UI.
