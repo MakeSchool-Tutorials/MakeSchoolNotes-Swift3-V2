@@ -70,7 +70,7 @@ Let's implement that now!
 > [action]
 In `Main.storyboard`, create a segue when the user taps the _Create Note_ bar button item and set it's identifier:
 >
-![ms-video](assets/create_add_segue_w_identifier.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p06_introduction_to_bar_button_items/create_add_segue_w_identifier.mp4)
 >
 Step-by-step:
 >
@@ -167,7 +167,7 @@ Next, we'll follow step 2: create our _unwind segues_ for both cancel and save b
 > [action]
 In `Main.storyboard`, create a _unwind segue_ for your cancel bar button item and give it a identifier:
 >
-![ms-video](assets/create_cancel_segue_w_identifier.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p06_introduction_to_bar_button_items/create_cancel_segue_w_identifier.mp4)
 >
 Step-by-step:
 >
@@ -219,6 +219,6 @@ In this section, we setup new segues for our bar button items. Let's test that e
 > [action]
 Build and run the app. In the table view controller, click on the _Create Note_ bar button item. Next try the cancel and save buttons. Make sure each bar button item segues and outputs the correct print statement to the debug console.
 >
-![ms-video](assets/bar_button_item_segue_checkpoint.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p06_introduction_to_bar_button_items/bar_button_item_segue_checkpoint.mp4)
 
 Next, we'll look at how to start implementing our logic for our notes app!

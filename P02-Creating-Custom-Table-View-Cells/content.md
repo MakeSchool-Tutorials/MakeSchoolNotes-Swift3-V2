@@ -34,7 +34,7 @@ With our heighten cells, let's layout our `UITableViewCell` UI.
 > [action]
 Create a vertical stack view with two `UILabel` on your prototype cell:
 >
-![ms-video](assets/create_vertical_stack_view.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p02_creating_custom_table_view_cells/create_vertical_stack_view.mp4)
 >
 Step-by-step:
 >
@@ -47,7 +47,7 @@ Next, we'll set our _auto-layout_ constraints for our stack view.
 > [action]
 Set constraints for each edge of the stack view:
 >
-![ms-video](assets/set_stack_view_constraints.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p02_creating_custom_table_view_cells/set_stack_view_constraints.mp4)
 >
 Step-by-step:
 >
@@ -63,7 +63,7 @@ Finally, we'll need to add an equal height constraint to our labels to remove so
 > [action]
 Set an equal height constraint for both labels within the stack view:
 >
-![ms-video](assets/set_equal_height_constraint.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p02_creating_custom_table_view_cells/set_equal_height_constraint.mp4)
 >
 Step-by-step:
 >
@@ -155,7 +155,7 @@ With our _Assistant Editor_ displaying storyboard file and `ListNotesTableViewCe
 > [action]
 Create a `IBOutlet` for each corresponding label:
 >
-![ms-video](assets/create_label_outlets.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p02_creating_custom_table_view_cells/create_label_outlets.mp4)
 >
 For each label:
 >

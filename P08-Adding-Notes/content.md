@@ -161,7 +161,7 @@ Let's test that everything works!
 > [action]
 Build and run the app. Create a new note using the _Create Note_ bar button item and then save it. Check that the new note shows up back in the table view controller.
 >
-![ms-video](assets/create_note_checkpoint.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p08_adding_notes/create_note_checkpoint.mp4)
 
 We've implemented the functionality for creating new notes, but what happens if we click on an existing note?
 

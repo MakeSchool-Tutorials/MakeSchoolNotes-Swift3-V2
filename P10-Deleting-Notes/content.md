@@ -29,6 +29,6 @@ We've just finished implementing the functionality for deleting notes. Let's cre
 > [action]
 Build and run the app. Create a few new notes and try deleting them.
 >
-![ms-video](assets/delete_note_checkpoint.mov)
+![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p10_deleting_notes/delete_note_checkpoint.mp4)
 
 In the next section, we'll introduce _Core Data_ and learn how to persist our note data between app launches.
