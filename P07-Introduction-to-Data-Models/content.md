@@ -62,7 +62,7 @@ Creating a new Swift file is easy. In fact, you may have already done it before.
 > [action]
 In your _Project Navigator_, create a new, empty Swift file:
 >
-![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p07_introduction_to_data_models/create_notes_file.mp4)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p07_introduction_to_data_models/create_notes_file.mp4)
 >
 Step-by-step:
 >

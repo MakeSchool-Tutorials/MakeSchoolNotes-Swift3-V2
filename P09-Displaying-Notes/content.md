@@ -198,6 +198,6 @@ In this section, we implemented the functionality to view and edit existing note
 > [action]
 Build and run the app. Make sure you can create new notes and edit existing ones.
 >
-![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p09_displaying_notes/editing_note_checkpoint.mp4)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p09_displaying_notes/editing_note_checkpoint.mp4)
 
 In the next section, we'll look at how to implement the functionality for deleting existing notes.

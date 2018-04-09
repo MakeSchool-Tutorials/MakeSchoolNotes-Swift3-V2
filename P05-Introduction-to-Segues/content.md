@@ -19,7 +19,7 @@ Segues can be triggered programmatically and in storyboard with _Interface Build
 > [action]
 In `Main.storyboard`, create a segue that's triggered when a user taps on a notes cell:
 >
-![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p05_introduction_to_segues/cell_tap_segue.mp4)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p05_introduction_to_segues/cell_tap_segue.mp4)
 >
 Step-by-step:
 >
@@ -92,6 +92,6 @@ Let's test that our new segue works!
 > [action]
 Build and run the app. In the table view controller, click on a note cell. To _pop_ off the `DisplayNoteViewController` off the navigation stack, we can tap the back button. Navigate back and forth between the two view controllers and check that `prepare(for:sender:)` is printing to the debug console correctly.
 >
-![ms-video(https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p05_introduction_to_segues/segue_checkpoint.mp4)
+![ms-video](https://s3.amazonaws.com/mgwu-misc/Make+School+Notes/p05_introduction_to_segues/segue_checkpoint.mp4)
 
 If everything looks correct, let's _segue_ on to the next section and learn about how to add new bar button items to our navigation bar.
