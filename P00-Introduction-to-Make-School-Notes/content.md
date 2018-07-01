@@ -33,7 +33,7 @@ If you're struggling with the concepts above, it's recommended to first complete
 
 At the end of this tutorial, you'll have built your own _Notes_ app!
 
-If you've been searching for an app to record all those ideas you've come up with in the shower, this one's for you! (But please first make sure your iPhone device is waterproof.)
+If you've been searching for an app to record all those ideas you've come up with in the shower, this one's for you! But please first make sure your iPhone device is waterproof.
 
 ![App Flow](assets/app_flow.png)
 
@@ -41,7 +41,7 @@ Your notes app will be able to:
 
 1. Create, edit and delete notes.
 1. Give each note a title and body.
-1. Save notes between app launches (data persistence.)
+1. Save notes between app launches (data persistence).
 1. View a scrollable list of existing notes.
 
 # What You'll Learn
@@ -64,6 +64,6 @@ When you're ready, download the [start project](https://github.com/MakeSchool-Tu
 
 # If You Get Stuck
 
-Getting stuck when coding (and debugging) is a natural part of the programming process. If you find yourself stuck on a problem or lost, pause for a moment and take a breath. Maybe take a walk. Then retrace your steps (in the tutorial, not the walk.) Make sure you've follow each step of the tutorial. It's easy to make typos or to accidentally skip over important steps.
+Getting stuck when coding (and debugging) is a natural part of the programming process. If you find yourself stuck on a problem or lost, pause for a moment and take a breath. Maybe take a walk. Then retrace your steps (in the tutorial, not the walk). Make sure you've follow each step of the tutorial. It's easy to make typos or to accidentally skip over important steps.
 
 <!-- TODO: insert link to github repo "If you want to compare your code to the solution, you can find it here." -->
