@@ -1,5 +1,5 @@
 ---
-title: "Creating Custom Table Views Cells"
+title: "Creating Custom Table View Cells"
 slug: custom-table-view-cells
 ---
 
