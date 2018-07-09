@@ -55,7 +55,7 @@ In `Main.storyboard`, implement both save and cancel buttons to your `DisplayNot
 >
 ![Save Cancel Bar Button Items](assets/save_cancel_bar_button_items.png)
 
-We've successfully added 3 new bar button items. However, if you run the app right now, tapping on them do anything.
+We've successfully added 3 new bar button items. However, if you run the app right now, tapping on them won't do anything.
 
 Next, we'll need to configure each bar button item so that tapping on it performs it's expected behavior.
 
