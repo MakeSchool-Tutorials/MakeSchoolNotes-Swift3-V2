@@ -147,8 +147,7 @@ Let's start by creating an `IBOutlet` for our note title label.
 First start by opening the _Assistant Editor_:
 >
 1. Open `Main.storyboard` from your _Project Navigator_.
-1. Click on the _Show the Assistant Editor_ button in the tool bar. ![Open Assistant Editor](./images/assistant.png)
-1. (Optionally) Hide both the _Navigator_ and _Utilities_ panes to create more screen space for the _Assistant Editor_. ![Hide Navigator and Utilities Panes](./images/hide.png)
+1. Open _Assistant Editor_ by clicking _Control_ + _Option_ + _Command_ + _Enter_
 1. (Troubleshooting) If you don't see the `ListNotesTableViewCell.swift` file show up in the second editor window, change the _Assistant Editor_ file by selecting `Manual > MakeSchoolNotes > MakeSchoolNotes > Views > ListNotesTableViewCell.swift` in the dropdown above. ![Troubleshooting Assistant Editor](./images/setup.png)
 
 With our _Assistant Editor_ displaying storyboard file and `ListNotesTableViewCell.swift` source code side-by-side, we can create each label's `IBOutlet`.
