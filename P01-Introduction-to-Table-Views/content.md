@@ -124,7 +124,7 @@ Open `Main.storyboard` and set the `UITableViewCell` identifier:
 >
 1. Select the `UITableViewCell` instance in our table view controller by selecting the cell in the _Document Outline_. ![image illustrating location of table view cell](./images/tableViewCell.png)
 1. Open the _Attributes Inspector_ in _Utilities area_. ![Open Attributes Inspector](./images/attributes-inspector.png) 
-    **Note** Icon ppdate by Apple: ![Open Attributes Inspector](./images/new-attr-icon.png) 
+    **Note** Icon update by Apple: ![Open Attributes Inspector](./images/new-attr-icon.png) 
 1. Find the _Identifier_ field and set it's value to `listNotesTableViewCell`. ![image illustrating location of identifier field](./images/identifier.png)
 
 ## Running The App

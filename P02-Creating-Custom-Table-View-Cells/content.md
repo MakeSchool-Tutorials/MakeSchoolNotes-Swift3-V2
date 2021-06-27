@@ -21,6 +21,7 @@ In `Main.storyboard`, increase the table view's row height to the following:
 >
 1. Select the `UITableView` from the _Document Outline_ in your storyboard.
 1. Navigate to the _Size Inspector_ in the _Utilities area_.
+     **Note** Icon update by Apple: ![Open Attributes Inspector](./images/new-size-icon.png) 
 1. Find the _Row Height_ field and change it's value from `44` to `60`.
 >
 ![Set Table View Row Height](assets/set_table_view_row_height.png)
@@ -38,9 +39,9 @@ Create a vertical stack view with two `UILabel` on your prototype cell:
 >
 Step-by-step:
 >
-1. Drag two labels from the _Object Library_ onto your blank prototype cell. Make sure to position both labels so that one is above the other.
+1. Drag two labels from the _Object Library_ onto your blank prototype cell. Make sure to position both labels so that one is above the other. To open  _Object Library_ you can use the shortcut _CMD_ + _Shift_ + _L_
 1. Select both labels simultaneously. You can do this by selecting one label and shift-clicking on the other label.
-1. Click the _Embed In Stack_ button. If the labels are positioned correct, _Interface Builder_ should create a vertical stack view with the selected label.
+1. Click the _Embed In Stack_ button. If the labels are positioned correct, _Interface Builder_ should create a vertical stack view with the selected label. ![Embed Stack View](assets/embed-stack.png)
 
 Next, we'll set our _auto-layout_ constraints for our stack view.
 
