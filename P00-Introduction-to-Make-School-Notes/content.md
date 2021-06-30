@@ -56,11 +56,13 @@ By the end of this tutorial, you will:
 > [info]
 *Persisting data* is a fancy way of saying "saving data to your device". Normally, if you close your app, all your data is deleted. By using _Core Data_, we can save and retrieve our app's data between each app launch.
 
-# Starter Project
+# Starter Project - Pick Your Journey! 
 
-<!-- TODO: Needs to be updated to Swift4 -->
+You have the option to choose whether you'd like more practice building out UI elements and adding constraints with storyboards yourself, **or** jumping right into the [Introduction to CoreData](https://www.makeschool.com/mediabook/oa/tracks/build-ios-apps/learn-how-to-build-make-school-notes-in-swift-4/intro-coredata/) chapter with the UI already built out for you.
 
-When you're ready, download the [start project](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Starter/archive/swift4-coredata.zip) and move onto the next section!
+1. [Starter Project without UI](https://github.com/MakeSchool-Tutorials/MakeSchoolNotes-Swift-V2-Starter/archive/swift4-coredata.zip)
+
+2. [Starter Project with UI](https://github.com/ellojess/new-starter-CD)
 
 # If You Get Stuck
 
